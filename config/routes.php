@@ -50,7 +50,7 @@ return [
     'data-profil' => '/integrasi/kepegawaian/profil',
 
     'bpjs-peserta' => '/bpjs/peserta',
-    'bpjs-iuran' => '/bpjs/iuran-bpjs',
+    'bpjs-iuran' => '/bpjs/iuran',
 
     '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
     ['class' => 'app\config\UrlRule', 'connectionID' => 'db'],

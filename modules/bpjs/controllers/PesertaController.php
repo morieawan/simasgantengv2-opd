@@ -10,18 +10,19 @@ class PesertaController extends Controller
     public function actionIndex()
     {
         return $this->render('@app/modules/bpjs/views/default/index', [
-            'initialRoute' => '/bpjs-peserta',
+            'initialRoute' => '/bpjs-peserta'
         ]);
     }
 
     public function actionGetData()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
+
         return [
             'status' => 'success',
             'data' => [
-                ['id' => 1, 'bulan' => 'Januari', 'total' => 1000],
-                ['id' => 2, 'bulan' => 'Februari', 'total' => 1500],
+                ['id' => 1, 'bulan' => 'Januari 2026', 'total' => 5000000],
+                ['id' => 2, 'bulan' => 'Februari 2026', 'total' => 7500000],
             ]
         ];
     }

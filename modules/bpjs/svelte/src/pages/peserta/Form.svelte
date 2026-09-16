@@ -1,90 +1,45 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { push } from 'svelte-spa-router';
+  import { push } from 'svelte-spa-router'; // Hanya import push
 
-  let listData: any[] = [];
-  let selectedData: any = null; // Untuk Modal View
+  // Deklarasi prop params untuk menangkap ID dari URL (contoh: /edit/:id)
+  export let params: { id?: string } = {};
 
-  async function loadData() {
-    const res = await fetch('/bpjs-peserta/index');
-    const result = await res.json();
-    listData = result.data;
-  }
+  let formData = {
+    bulan: '',
+    total: 0
+  };
+  let isEdit = false;
 
-  async function handleDelete(id: number) {
-    if (!confirm('Apakah Anda yakin ingin menghapus data ini?')) return;
+  onMount(async () => {
+    if (params && params.id) {
+      isEdit = true;
+      const res = await fetch(`/simasgantengv2-opd/web/bpjs/peserta/view?id=${params.id}`);
+      const result = await res.json();
+      if (result.status === 'success') {
+        formData = result.data;
+      }
+    }
+  });
 
-    const res = await fetch(`/bpjs-peserta/delete&id=${id}`, {
+  async function handleSubmit() {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+    const url = isEdit 
+      ? `/simasgantengv2-opd/web/bpjs/peserta/update?id=${params.id}` 
+      : '/simasgantengv2-opd/web/bpjs/peserta/create';
+
+    const res = await fetch(url, {
       method: 'POST',
-      headers: { 'X-CSRF-Token': yii.getCsrfToken() }
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken
+      },
+      body: JSON.stringify(formData)
     });
+
     const result = await res.json();
     if (result.status === 'success') {
-      loadData(); // Refresh list
+      push('/bpjs-peserta');
     }
   }
-
-  onMount(loadData);
 </script>
-
-<div class="d-flex justify-content-between mb-3">
-  <h5>Data Laporan Bulanan</h5>
-  <button class="btn btn-sm btn-primary" on:click={() => push('/bpjs-peserta/create')}>
-    <i class="fas fa-plus"></i> Tambah Bulanan
-  </button>
-</div>
-
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Bulan</th>
-      <th>Total</th>
-      <th style="width: 150px">Aksi</th>
-    </tr>
-  </thead>
-  <tbody>
-    {#each listData as item}
-      <tr>
-        <td>{item.id}</td>
-        <td>{item.bulan}</td>
-        <td>{item.total}</td>
-        <td>
-          <!-- VIEW (Bisa via Modal) -->
-          <button class="btn btn-xs btn-info" on:click={() => selectedData = item}>
-            <i class="fas fa-eye"></i>
-          </button>
-          <!-- UPDATE -->
-          <button class="btn btn-xs btn-warning" on:click={() => push(`/bpjs-peserta/edit/${item.id}`)}>
-            <i class="fas fa-edit"></i>
-          </button>
-          <!-- DELETE -->
-          <button class="btn btn-xs btn-danger" on:click={() => handleDelete(item.id)}>
-            <i class="fas fa-trash"></i>
-          </button>
-        </td>
-      </tr>
-    {/each}
-  </tbody>
-</table>
-
-<!-- Modal Detail View -->
-{#if selectedData}
-  <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5)">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Detail Laporan #{selectedData.id}</h5>
-          <button type="button" class="close" on:click={() => selectedData = null}>&times;</button>
-        </div>
-        <div class="modal-body">
-          <p><strong>Bulan:</strong> {selectedData.bulan}</p>
-          <p><strong>Total:</strong> {selectedData.total}</p>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" on:click={() => selectedData = null}>Tutup</button>
-        </div>
-      </div>
-    </div>
-  </div>
-{/if}

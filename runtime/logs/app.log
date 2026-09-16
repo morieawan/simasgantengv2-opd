@@ -158696,3 +158696,150 @@ $_SERVER = [
     'DB_USER7' => 'postgres'
     'DB_PASS7' => 'sinka-admin@3329'
 ]
+2026-09-16 13:21:50 [::1][8188][3plh9jlu1q1ptvehrtpsrimf08][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "bpjs/iuran-bpjs". in D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('bpjs/iuran-bpjs', Array)
+#1 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Halaman tidak ditemukan. in D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#2 {main}
+2026-09-16 13:21:49 [::1][8188][3plh9jlu1q1ptvehrtpsrimf08][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => '3plh9jlu1q1ptvehrtpsrimf08'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '_csrf-app' => '6HyFiB651wRBZ045y3_7kUBKhf8YoO8s'
+    '__returnUrl' => '/simasgantengv2-opd/web/'
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1789543310
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$w89u48gkvYx.x7uPv7Ih2er4woaiLJs0nHxirMCDoAO/aJnEkmIW2'
+    'token_expired' => '2026-09-16 13:03:22'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"152\", \"Not?A_Brand\";v=\"24\", \"Google Chrome\";v=\"152\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=3plh9jlu1q1ptvehrtpsrimf08'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '64726'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs-iuran'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs-iuran'
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1789539709.9746
+    'REQUEST_TIME' => 1789539709
+    'APP_ENV' => 'dev'
+    'APP_DEBUG' => 'true'
+    'APP_KEY' => 'pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console'
+    'DB_HOST1' => 'localhost'
+    'DB_NAME1' => 'simasgantengv2_auth_bak'
+    'DB_PORT1' => '5432'
+    'DB_USER1' => 'postgres'
+    'DB_PASS1' => 'admin-123'
+    'DB_HOST2' => 'localhost'
+    'DB_NAME2' => 'simasgantengv2_bak'
+    'DB_PORT2' => '5432'
+    'DB_USER2' => 'postgres'
+    'DB_PASS2' => 'admin-123'
+    'DB_HOST3' => 'localhost'
+    'DB_NAME3' => 'simpeg'
+    'DB_PORT3' => '3000'
+    'DB_USER3' => 'taspen'
+    'DB_PASS3' => 'taspen'
+    'DB_HOST4' => '192.168.4.3'
+    'DB_NAME4' => 'sppd2024'
+    'DB_PORT4' => '3306'
+    'DB_USER4' => 'binpeg'
+    'DB_PASS4' => 'binpegbekade01012017'
+    'DB_HOST5' => 'localhost'
+    'DB_NAME5' => 'gaji'
+    'DB_PORT5' => '3000'
+    'DB_USER5' => 'taspen'
+    'DB_PASS5' => 'taspen'
+    'DB_HOST6' => '192.168.2.6'
+    'DB_NAME6' => 'adms_db'
+    'DB_PORT6' => '3306'
+    'DB_USER6' => 'binpeg'
+    'DB_PASS6' => 'binpegbekade01012017'
+    'DB_HOST7' => '192.168.4.3'
+    'DB_NAME7' => 'fingerprint'
+    'DB_PORT7' => '5432'
+    'DB_USER7' => 'postgres'
+    'DB_PASS7' => 'sinka-admin@3329'
+]
