@@ -1,6 +1,5 @@
-<?php
-
-namespace app\modules\bpjs\assets; // Sesuaikan namespace modul Anda
+<?php 
+namespace app\modules\bpjs\assets;
 
 use yii\web\AssetBundle;
 use Yii;
@@ -14,18 +13,17 @@ class SvelteAsset extends AssetBundle
     {
         parent::init();
 
-        // Cek apakah server Vite sedang berjalan (Mode Dev / HMR)
-        $isDevMode = YII_ENV_DEV && $this->isViteDevServerRunning('127.0.0.1', 3000);
+        // 1. Cek Dev Server di Port 5000 (Sesuai dengan vite.config.ts)
+        $isDevMode = YII_ENV_DEV && $this->isViteDevServerRunning('127.0.0.1', 5000);
 
         if ($isDevMode) {
-            // Dalam mode Dev, panggil script Vite Dev Server
             $this->js = [
                 'http://127.0.0.1:5000/@vite/client',
                 'http://127.0.0.1:5000/src/main.ts',
             ];
             $this->jsOptions = ['type' => 'module'];
         } else {
-            // Dalam mode Production, baca manifest.json hasil 'npm run build'
+            // 2. Mode Production
             $manifestPath = Yii::getAlias($this->basePath . '/.vite/manifest.json');
             if (file_exists($manifestPath)) {
                 $manifest = json_decode(file_get_contents($manifestPath), true);

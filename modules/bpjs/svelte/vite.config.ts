@@ -5,7 +5,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [svelte()],
   build: {
-    outDir: path.resolve(__dirname, '../../../web/dist/modules/bpjs'),
+    outDir: path.resolve(import.meta.dirname, '../../../web/dist/modules/bpjs'),
     emptyOutDir: true,
     manifest: true,
     rollupOptions: {

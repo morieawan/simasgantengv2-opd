@@ -51,15 +51,17 @@
         <td>{item.total}</td>
         <td>
           <!-- VIEW (Bisa via Modal) -->
-          <button class="btn btn-xs btn-info" on:click={() => selectedData = item}>
+          <button class="btn btn-xs btn-info" title="Lihat Detail" aria-label="Lihat Detail" on:click={() => selectedData = item}>
             <i class="fas fa-eye"></i>
           </button>
+
           <!-- UPDATE -->
-          <button class="btn btn-xs btn-warning" on:click={() => push(`/bpjs-peserta/edit/${item.id}`)}>
+          <button class="btn btn-xs btn-warning" title="Edit Data" aria-label="Edit Data" on:click={() => push(`/bpjs-peserta/edit/${item.id}`)}>
             <i class="fas fa-edit"></i>
           </button>
+
           <!-- DELETE -->
-          <button class="btn btn-xs btn-danger" on:click={() => handleDelete(item.id)}>
+          <button class="btn btn-xs btn-danger" title="Hapus Data" aria-label="Hapus Data" on:click={() => handleDelete(item.id)}>
             <i class="fas fa-trash"></i>
           </button>
         </td>

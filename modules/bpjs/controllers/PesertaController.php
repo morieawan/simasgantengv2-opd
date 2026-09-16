@@ -46,6 +46,7 @@ class PesertaController extends Controller
 
     public function actionDelete($id)
     {
-        return ['status' => 'success', 'message' => 'Data berhasil dihapus'];
+        fetch(`/bpjs-peserta/delete?id=${id}`);
+        // return ['status' => 'success', 'message' => 'Data berhasil dihapus'];
     }
 }
