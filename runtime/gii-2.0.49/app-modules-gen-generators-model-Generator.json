@@ -1,0 +1,1 @@
+{"template":"default","enableI18N":"0","messageCategory":"app","ns":"app\\modules\\integrasi\\models","db":"db2","baseClass":"yii\\db\\ActiveRecord","generateRelations":"all","generateLabelsFromComments":"0","queryNs":"app\\modules\\integrasi\\models","queryBaseClass":"yii\\db\\ActiveQuery","useTablePrefix":"0","generateQuery":"0"}
