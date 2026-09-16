@@ -49,8 +49,11 @@ return [
     'data-view' => '/integrasi/kepegawaian/view',
     'data-profil' => '/integrasi/kepegawaian/profil',
 
-    'bpjs-peserta' => '/bpjs/peserta',
-    'bpjs-iuran' => '/bpjs/iuran',
+    'bpjs-peserta' => 'bpjs/peserta',
+    'bpjs-peserta/<action:\w+>' => 'bpjs/peserta/<action>',
+    
+    'bpjs-iuran' => 'bpjs/iuran',
+    'bpjs-iuran/<action:\w+>' => 'bpjs/iuran/<action>',
 
     '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
     ['class' => 'app\config\UrlRule', 'connectionID' => 'db'],

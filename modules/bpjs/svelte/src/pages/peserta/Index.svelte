@@ -9,21 +9,14 @@
 
   async function loadData() {
     isLoading = true;
-    errorMessage = '';
     try {
-      // Panggil URL API Yii2 yang mengarahkan ke actionGetData()
       const res = await fetch('/simasgantengv2-opd/web/bpjs-peserta/get-data');
-      
-      if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
-
       const result = await res.json();
-      if (result.status === 'success' && Array.isArray(result.data)) {
+      if (result.status === 'success') {
         listData = result.data;
-      } else {
-        errorMessage = result.message || 'Format data tidak sesuai';
       }
-    } catch (err: any) {
-      errorMessage = err.message;
+    } catch (err) {
+      console.error(err);
     } finally {
       isLoading = false;
     }

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 $this->title = 'Peserta BPJS Keluarga Tambahan';
 SvelteAsset::register($this);
 
-$initialRoute = $initialRoute ?? '/peserta';
+$initialRoute = $initialRoute ?? '/bpjs-peserta';
 ?>
 
 <div class="content-header">
