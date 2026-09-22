@@ -74,8 +74,11 @@ class SiteController extends Controller
             return 'guest';
             // return $this->redirect('http://simasganteng.brebeskab.go.id');
 
-        $sess = Yii::$app->session;    
+        // $sess = Yii::$app->session;    
         // if($sess['username'] == '198306292010011024') return Json::encode($sess['module']);
+
+        return Json::encode($sess, $asArray = true);
+
         if($sess['module'] == 12) return $this->redirect('/data-asn-opd');    
 
         Url::remember();
