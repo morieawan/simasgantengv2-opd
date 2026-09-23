@@ -15,119 +15,106 @@ $this->title = 'BPJS Anggota Keluarga Tambahan';
         <div class="card-header p-0 border-bottom-0">
             <ul class="nav nav-tabs" id="bpjs-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link" 
-                       :class="{ 'active': activeTab === 'peserta' }" 
-                       @click.prevent="loadTab('peserta', '<?= Url::to(['/bpjs/peserta']) ?>')" 
-                       href="#">
+                    <a class="nav-link" :class="{ 'active': currentTab === 'peserta' }" @click.prevent="switchTab('peserta')" href="#">
                         <i class="fas fa-users mr-1"></i> Data Peserta
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" 
-                       :class="{ 'active': activeTab === 'iuran' }" 
-                       @click.prevent="loadTab('iuran', '<?= Url::to(['/bpjs/iuran']) ?>')" 
-                       href="#">
-                        <i class="fas fa-file-invoice-dollar mr-1"></i> Iuran BPJS
+                    <a class="nav-link" :class="{ 'active': currentTab === 'pengajuan' }" @click.prevent="switchTab('pengajuan')" href="#">
+                        <i class="fas fa-file-invoice mr-1"></i> Pengajuan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" :class="{ 'active': currentTab === 'riwayat' }" @click.prevent="switchTab('riwayat')" href="#">
+                        <i class="fas fa-history mr-1"></i> Riwayat Status
                     </a>
                 </li>
             </ul>
         </div>
-
+        
         <div class="card-body">
-            <!-- Indikator Loading -->
-            <div x-show="loading" class="text-center py-5">
-                <div class="spinner-border text-primary" role="status"></div>
-                <p class="mt-2 text-muted">Memuat data...</p>
+            <div class="tab-content">
+                <!-- Indikator Loading Loading -->
+                <div x-show="loading" class="text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Memuat...</span>
+                    </div>
+                    <p class="mt-2 text-muted">Memuat data tab...</p>
+                </div>
+
+                <!-- Kontainer Dinamis Partial Views -->
+                <div x-show="!loading" x-html="tabContent"></div>
             </div>
-
-            <!-- Pesan Kesalahan -->
-            <div x-show="errorMessage" class="alert alert-danger" x-text="errorMessage"></div>
-
-            <!-- Tempat Konten Partial View -->
-            <div x-show="!loading && !errorMessage" x-html="tabContent"></div>
         </div>
     </div>
-
 </div>
 
+<!-- Modal Global Modul BPJS -->
+<?php
+Modal::begin([
+    'id' => 'modal-global-bpjs',
+    'title' => '<span id="modal-global-title">Modal BPJS</span>',
+    'headerOptions' => ['class' => 'bg-primary text-white'],
+    'size' => Modal::SIZE_LARGE,
+    'clientOptions' => ['backdrop' => 'static', 'keyboard' => false],
+]);
+
+echo "<div id='modalGlobalContent'></div>";
+
+Modal::end();
+?>
+
+<!-- Logic SPA via Alpine.js & JavaScript Global Helper -->
 <script>
-    
-function bpjsModule() {
-    
-    return {
-        activeTab: 'peserta',
-        tabContent: '',
-        loading: false,
-        errorMessage: '',
-        tabCache: {},
+    function bpjsModule() {
+        return {
+            currentTab: 'peserta',
+            loading: false,
+            tabContent: '',
 
-        initApp() {
-            this.loadTab('peserta', '<?= Url::to(['/bpjs/peserta']) ?>');
-        },
+            initApp() {
+                this.loadTabContent(this.currentTab);
+            },
 
-        async loadTab(tabName, url, forceRefresh = false) {
-            this.activeTab = tabName;
-            this.errorMessage = '';
-
-            // Cek Cache
-            if (this.tabCache[tabName] && !forceRefresh) {
-                this.tabContent = this.tabCache[tabName];
-                return;
-            }
-
-            this.loading = true;
-
-            // Ambil CSRF Token dari Meta Tag Layout AdminLTE
-            const csrfMeta = document.querySelector('meta[name="csrf-token"]');
-            const csrfToken = csrfMeta ? csrfMeta.content : '';
-
-            try {
-                let response = await fetch(url, {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRF-Token': csrfToken // Header Keamanan Tambahan
-                    }
-                });
-
-                if (response.ok) {
-                    let htmlData = await response.text();
-                    this.tabCache[tabName] = htmlData;
-                    this.tabContent = htmlData;
-                } else {
-                    this.errorMessage = `Gagal memuat konten (Error ${response.status})`;
+            switchTab(tabName) {
+                if (this.currentTab !== tabName) {
+                    this.currentTab = tabName;
+                    this.loadTabContent(tabName);
                 }
-            } catch (error) {
-                this.errorMessage = 'Terjadi kesalahan jaringan.';
-            } finally {
-                this.loading = false;
-            }
-        },
-        
-        refreshCurrentTab() {
-            let url = this.activeTab === 'peserta' 
-                ? '<?= Url::to(['/bpjs/peserta']) ?>' 
-                : '<?= Url::to(['/bpjs/iuran']) ?>';
+            },
 
-            this.loadTab(this.activeTab, url, true); 
+            loadTabContent(tabName) {
+                this.loading = true;
+                let url = '/bpjs/' + tabName; 
+                
+                fetch(url, {
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Gagal memuat tab');
+                    return response.text();
+                })
+                .then(html => {
+                    this.tabContent = html;
+                    this.loading = false;
+                })
+                .catch(error => {
+                    console.error(error);
+                    this.tabContent = '<div class="alert alert-danger">Gagal memuat konten.</div>';
+                    this.loading = false;
+                });
+            },
+
+            refreshCurrentTab() {
+                this.loadTabContent(this.currentTab);
+            }
         }
     }
-}
 </script>
 
 <?php
-    Modal::begin([
-        'id' => 'modal-global-bpjs',
-        'title' => '<span id="modal-global-title">Modal BPJS</span>',
-        'headerOptions' => ['class' => 'bg-primary text-white'],
-        'size' => Modal::SIZE_LARGE,
-        'clientOptions' => ['backdrop' => 'static', 'keyboard' => false],
-    ]);
-
-    echo "<div id='modalGlobalContent'></div>";
-
-    Modal::end();
-
-    $script = <<< JS
+// Mendaftarkan Skrip Helper Modal via registerJs dengan Indentasi 4 Spasi (Aman dari Linter Error)
+$script = <<< JS
     window.openBpjsModal = function(title, url) {
         $('#modal-global-title').html(title);
         $('#modalGlobalContent').html('<div class="text-center p-4"><i class="fas fa-spinner fa-spin fa-2x"></i> Memuat data...</div>');
@@ -142,13 +129,12 @@ function bpjsModule() {
         }
     };
 
-    // Reset konten saat modal ditutup
     $('#modal-global-bpjs').on('hidden.bs.modal', function () {
         $('#modalGlobalContent').empty();
         $('.modal-backdrop').remove();
         $('body').removeClass('modal-open');
     });
+JS;
 
-    JS;
-    $this->registerJs($script);
+$this->registerJs($script);
 ?>
