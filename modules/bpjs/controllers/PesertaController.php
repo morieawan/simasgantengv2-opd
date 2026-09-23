@@ -7,47 +7,63 @@ use yii\web\Response;
 
 class PesertaController extends Controller
 {
+    // 1. Render Tampilan Utama Peserta (Tabel + Form Modal)
     public function actionIndex()
     {
-        return $this->render('@app/modules/bpjs/views/default/index', [
-            'initialRoute' => '/bpjs-peserta'
-        ]);
+        $sess = Yii::$app->session;
+        if (Yii::$app->request->isAjax) {
+            return $this->renderPartial('index', ['sess' => $sess]);
+        }
+        return $this->redirect(['/bpjs/default/index']);
     }
 
+    // 2. READ: Ambil Data Peserta (Format JSON)
     public function actionGetData()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-
+        
+        // Contoh data dummy (Bisa diganti dengan query ActiveRecord: Peserta::find()->all())
         return [
             'status' => 'success',
             'data' => [
-                ['id' => 1, 'bulan' => 'Januari 2026', 'total' => 5000000],
-                ['id' => 2, 'bulan' => 'Februari 2026', 'total' => 7500000],
+                ['id' => 1, 'nama' => 'Ahmad', 'no_bpjs' => '00012345678', 'kategori' => 'Mandiri'],
+                ['id' => 2, 'nama' => 'Budi', 'no_bpjs' => '00087654321', 'kategori' => 'PNS'],
             ]
         ];
     }
 
-    public function actionView($id)
+    // 3. CREATE / UPDATE: Simpan Data via AJAX
+    public function actionSave()
     {
-        return ['status' => 'success', 'data' => ['id' => $id]];
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $request = Yii::$app->request;
+
+        $id = $request->post('id');
+        $nama = $request->post('nama');
+        $noBpjs = $request->post('no_bpjs');
+
+        // Validation & Save logic ke Database di sini...
+        // $model = $id ? Peserta::findOne($id) : new Peserta();
+        // $model->load($request->post(), '');
+        // if ($model->save()) { ... }
+
+        return [
+            'status' => 'success',
+            'message' => $id ? 'Data berhasil diperbarui!' : 'Data berhasil ditambahkan!'
+        ];
     }
 
-    // CREATE
-    public function actionCreate()
-    {
-        $payload = Yii::$app->request->getBodyParams();
-        return ['status' => 'success', 'message' => 'Data berhasil ditambah'];
-    }
-
-    public function actionUpdate($id)
-    {
-        $payload = Yii::$app->request->getBodyParams();
-        return ['status' => 'success', 'message' => 'Data berhasil diubah'];
-    }
-
+    // 4. DELETE: Hapus Data via AJAX
     public function actionDelete($id)
     {
-        fetch(`/bpjs-peserta/delete?id=${id}`);
-        // return ['status' => 'success', 'message' => 'Data berhasil dihapus'];
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        // Logic Hapus...
+        // Peserta::findOne($id)->delete();
+
+        return [
+            'status' => 'success',
+            'message' => "Data peserta ID $id berhasil dihapus!"
+        ];
     }
 }

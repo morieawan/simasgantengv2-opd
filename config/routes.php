@@ -49,6 +49,8 @@ return [
     'data-view' => '/integrasi/kepegawaian/view',
     'data-profil' => '/integrasi/kepegawaian/profil',
 
+    'bpjs-keluarga' => 'bpjs/default/index',
+
     'bpjs-peserta' => 'bpjs/peserta/index',
     'bpjs-peserta/<action:\w+>' => 'bpjs/peserta/<action>',
     

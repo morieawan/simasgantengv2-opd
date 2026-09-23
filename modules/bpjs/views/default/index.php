@@ -1,12 +1,114 @@
-<div class="bpjs-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+<?php
+use yii\helpers\Url;
+
+$this->title = 'BPJS Anggota Keluarga Tambahan';
+?>
+
+<!-- Load Alpine.js -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<div x-data="bpjsModule()" x-init="initApp()" class="container-fluid pt-3">
+
+    <!-- Card AdminLTE dengan Tab Menu -->
+    <div class="card card-primary card-outline card-outline-tabs">
+        <div class="card-header p-0 border-bottom-0">
+            <ul class="nav nav-tabs" id="bpjs-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" 
+                       :class="{ 'active': activeTab === 'peserta' }" 
+                       @click.prevent="loadTab('peserta', '<?= Url::to(['/bpjs/peserta']) ?>')" 
+                       href="#">
+                        <i class="fas fa-users mr-1"></i> Data Peserta
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" 
+                       :class="{ 'active': activeTab === 'iuran' }" 
+                       @click.prevent="loadTab('iuran', '<?= Url::to(['/bpjs/iuran']) ?>')" 
+                       href="#">
+                        <i class="fas fa-file-invoice-dollar mr-1"></i> Iuran BPJS
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-body">
+            <!-- Indikator Loading -->
+            <div x-show="loading" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status"></div>
+                <p class="mt-2 text-muted">Memuat data...</p>
+            </div>
+
+            <!-- Pesan Kesalahan -->
+            <div x-show="errorMessage" class="alert alert-danger" x-text="errorMessage"></div>
+
+            <!-- Tempat Konten Partial View -->
+            <div x-show="!loading && !errorMessage" x-html="tabContent"></div>
+        </div>
+    </div>
+
 </div>
+
+<script>
+    
+function bpjsModule() {
+    
+    return {
+        activeTab: 'peserta',
+        tabContent: '',
+        loading: false,
+        errorMessage: '',
+        tabCache: {},
+
+        initApp() {
+            this.loadTab('peserta', '<?= Url::to(['/bpjs/peserta']) ?>');
+        },
+
+        async loadTab(tabName, url, forceRefresh = false) {
+            this.activeTab = tabName;
+            this.errorMessage = '';
+
+            // Cek Cache
+            if (this.tabCache[tabName] && !forceRefresh) {
+                this.tabContent = this.tabCache[tabName];
+                return;
+            }
+
+            this.loading = true;
+
+            // Ambil CSRF Token dari Meta Tag Layout AdminLTE
+            const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+            const csrfToken = csrfMeta ? csrfMeta.content : '';
+
+            try {
+                let response = await fetch(url, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-Token': csrfToken // Header Keamanan Tambahan
+                    }
+                });
+
+                if (response.ok) {
+                    let htmlData = await response.text();
+                    this.tabCache[tabName] = htmlData;
+                    this.tabContent = htmlData;
+                } else {
+                    this.errorMessage = `Gagal memuat konten (Error ${response.status})`;
+                }
+            } catch (error) {
+                this.errorMessage = 'Terjadi kesalahan jaringan.';
+            } finally {
+                this.loading = false;
+            }
+        },
+        
+        refreshCurrentTab() {
+            let url = this.activeTab === 'peserta' 
+                ? '<?= Url::to(['/bpjs/peserta']) ?>' 
+                : '<?= Url::to(['/bpjs/iuran']) ?>';
+
+            this.loadTab(this.activeTab, url, true); 
+        }
+    }
+}
+</script>
