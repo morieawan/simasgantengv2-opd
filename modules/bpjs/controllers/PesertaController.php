@@ -7,14 +7,25 @@ use yii\web\Response;
 
 class PesertaController extends Controller
 {
-    // 1. Render Tampilan Utama Peserta (Tabel + Form Modal)
     public function actionIndex()
     {
-        $sess = Yii::$app->session;
+        // $searchModel = new PesertaSearch();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        // Jika dipanggil via AJAX (oleh Alpine.js fetch), kembalikan partial view saja
         if (Yii::$app->request->isAjax) {
-            return $this->renderPartial('index', ['sess' => $sess]);
+            return $this->renderPartial('index', [
+                // 'searchModel' => $searchModel,
+                // 'dataProvider' => $dataProvider,
+                'sess' => Yii::$app->session,
+            ]);
         }
-        return $this->redirect(['/bpjs/default/index']);
+
+        return $this->render('index', [
+            // 'searchModel' => $searchModel,
+            // 'dataProvider' => $dataProvider,
+            'sess' => Yii::$app->session,
+        ]);
     }
 
     // 2. READ: Ambil Data Peserta (Format JSON)

@@ -44,7 +44,11 @@ if($sess['module'] == 1){
       ['label' => 'Coretax', 'url' => Url::to(['/coretax-search']), 'icon' => 'fas fa-money-bill-wave'],
       ['label' => 'Coretax Akhir', 'url' => Url::to(['/coretax-akhir-search']), 'icon' => 'fas fa-money-bill-wave'],
     ]], 
-     ['label' => 'BPJS Tambahan', 'url' => Url::to(['/bpjs-peserta']), 'icon' => 'fas fa-stethoscope'],   
+    ['label' => 'BPJS Tambahan', 'url' => Url::to(['/bpjs-keluarga']), 'icon' => 'fas fa-stethoscope'],  
+    // ['label' => 'BPJS Tambahan', 'icon' => 'fas fa-stethoscope', 'items' => [
+    //   ['label' => 'Data Keluarga', 'url' => Url::to(['/bpjs-peserta']), 'icon' => 'fas fa-users'],
+    //   ['label' => 'Iuran Peserta', 'url' => Url::to(['/bpjs-iuran']), 'icon' => 'fas fa-file-invoice-dollar'],
+    // ]],   
     //['label' => 'Anomali Data', 'url' => Url::to(['/anomali']), 'icon' => 'fas fa-times-circle'],
   ];
 }else if($sess['module'] == 8){

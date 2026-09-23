@@ -2,7 +2,8 @@
 use yii\bootstrap4\Modal;
 use yii\helpers\Url;
 
-$this->title = 'BPJS Anggota Keluarga Tambahan';
+$this->title = 'BPJS Keluarga Tambahan';
+
 ?>
 
 <!-- Load Alpine.js -->
@@ -20,13 +21,8 @@ $this->title = 'BPJS Anggota Keluarga Tambahan';
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" :class="{ 'active': currentTab === 'pengajuan' }" @click.prevent="switchTab('pengajuan')" href="#">
-                        <i class="fas fa-file-invoice mr-1"></i> Pengajuan
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" :class="{ 'active': currentTab === 'riwayat' }" @click.prevent="switchTab('riwayat')" href="#">
-                        <i class="fas fa-history mr-1"></i> Riwayat Status
+                    <a class="nav-link" :class="{ 'active': currentTab === 'iuran' }" @click.prevent="switchTab('iuran')" href="#">
+                        <i class="fas fa-file-invoice mr-1"></i> Iuran BPJS
                     </a>
                 </li>
             </ul>
@@ -34,7 +30,7 @@ $this->title = 'BPJS Anggota Keluarga Tambahan';
         
         <div class="card-body">
             <div class="tab-content">
-                <!-- Indikator Loading Loading -->
+                <!-- Indikator Loading -->
                 <div x-show="loading" class="text-center py-5">
                     <div class="spinner-border text-primary" role="status">
                         <span class="sr-only">Memuat...</span>
@@ -85,13 +81,14 @@ Modal::end();
 
             loadTabContent(tabName) {
                 this.loading = true;
-                let url = '/bpjs/' + tabName; 
+                // Menggunakan endpoint index masing-masing controller
+                let url = '/bpjs/' + tabName + '/index'; 
                 
                 fetch(url, {
                     headers: { 'X-Requested-With': 'XMLHttpRequest' }
                 })
                 .then(response => {
-                    if (!response.ok) throw new Error('Gagal memuat tab');
+                    if (!response.ok) throw new Error('HTTP status ' + response.status);
                     return response.text();
                 })
                 .then(html => {
@@ -99,8 +96,8 @@ Modal::end();
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.error(error);
-                    this.tabContent = '<div class="alert alert-danger">Gagal memuat konten.</div>';
+                    console.error('AJAX Load Error:', error);
+                    this.tabContent = '<div class="alert alert-danger"><i class="fas fa-exclamation-triangle mr-1"></i> Gagal memuat konten. Pastikan URL endpoint sesuai.</div>';
                     this.loading = false;
                 });
             },
@@ -113,7 +110,7 @@ Modal::end();
 </script>
 
 <?php
-// Mendaftarkan Skrip Helper Modal via registerJs dengan Indentasi 4 Spasi (Aman dari Linter Error)
+// Skrip Helper Modal Global
 $script = <<< JS
     window.openBpjsModal = function(title, url) {
         $('#modal-global-title').html(title);
@@ -124,7 +121,7 @@ $script = <<< JS
             $.get(url, function(data) {
                 $('#modalGlobalContent').html(data);
             }).fail(function() {
-                $('#modalGlobalContent').html('<div class="alert alert-danger">Gagal memuat halaman.</div>');
+                $('#modalGlobalContent').html('<div class="alert alert-danger">Gagal memuat halaman form.</div>');
             });
         }
     };

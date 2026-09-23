@@ -1,3 +1,7 @@
+<?php
+use yii\helpers\Url;
+?>
+
 <div class="card">
     <div class="card-body">
         <table class="table detail-view mb-0">
@@ -9,21 +13,22 @@
             <tr>
                 <td>Nama ASN</td>
                 <td>:</td>
-                <td></td>
+                <td><?= $sess['namapengguna'] ?></td>
             </tr>
             <tr>
                 <td>Unor</td>
                 <td>:</td>
-                <td></td>
+                <td><?= $sess['tablok'] ?></td>
             </tr>
         </table>
     </div>
 </div>
 
 <div class="card card-outline card-primary">
+
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title"><i class="fas fa-users mr-1"></i> Data Peserta BPJS</h3>
-        <button type="button" class="btn btn-sm btn-success" id="btn-tambah-peserta">
+        <button type="button" class="btn btn-sm btn-success ml-auto" id="btn-tambah-peserta">
             <i class="fas fa-plus mr-1"></i> Tambah Peserta
         </button>
     </div>
