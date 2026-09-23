@@ -23,7 +23,7 @@
 <div class="card card-outline card-primary">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title"><i class="fas fa-users mr-1"></i> Data Peserta BPJS</h3>
-        <button class="btn btn-sm btn-success ml-auto" onclick="openFormModal()">
+        <button type="button" class="btn btn-sm btn-success" id="btn-tambah-peserta">
             <i class="fas fa-plus mr-1"></i> Tambah Peserta
         </button>
     </div>
@@ -158,51 +158,24 @@
 </div>
 
 <script>
-$(document).ready(function() {
-    loadPesertaData();
+// 1. DAFTARKAN FUNGSI KE GLOBAL WINDOW SECARA EKSPLISIT
+window.openFormModal = function() {
+    if ($('#form-peserta').length) {
+        $('#form-peserta')[0].reset();
+    }
+    $('#id_peserta').val('');
+    $('#modal-title').text('Tambah Peserta Baru');
+    
+    // Pindahkan elemen modal ke body dokumen agar terbebas dari rantai DOM AJAX/Alpine
+    $('#modal-peserta').appendTo("body").modal('show');
+};
 
-    // Submit Form Tambah/Edit via AJAX
-    $('#form-peserta').on('submit', function(e) {
-        e.preventDefault();
-        
-        let formData = $(this).serialize();
-        let csrfToken = $('meta[name="csrf-token"]').attr('content');
+window.editPeserta = function(idPeserta) {
+    $('#modal-title').text('Edit Data Peserta');
+    $('#modal-peserta').appendTo("body").modal('show');
+};
 
-        $.ajax({
-            url: '/bpjs/peserta/save',
-            type: 'POST',
-            data: formData,
-            headers: { 'X-CSRF-Token': csrfToken },
-            dataType: 'json',
-            beforeSend: function() {
-                $('#btn-save').prop('disabled', true).text('Menyimpan...');
-            },
-            success: function(res) {
-                if (res.status === 'success') {
-                    alert(res.message);
-                    $('#modal-peserta').modal('hide');
-                    loadPesertaData();
-                    
-                    // Reset cache tab Alpine
-                    if (window.Alpine) {
-                        document.querySelector('[x-data]')._x_dataStack[0].refreshCurrentTab();
-                    }
-                } else {
-                    alert('Validasi Gagal: ' + JSON.stringify(res.errors));
-                }
-            },
-            error: function() {
-                alert('Terjadi kesalahan sistem.');
-            },
-            complete: function() {
-                $('#btn-save').prop('disabled', false).text('Simpan Data');
-            }
-        });
-    });
-});
-
-// Load Data
-function loadPesertaData() {
+window.loadPesertaData = function() {
     $.ajax({
         url: '/bpjs/peserta/get-data',
         type: 'GET',
@@ -222,8 +195,8 @@ function loadPesertaData() {
                             <td>${item.hubkel}</td>
                             <td>${badgeAktif}</td>
                             <td class="text-center">
-                                <button class="btn btn-xs btn-warning" onclick="editPeserta('${item.id_peserta}')"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger" onclick="deletePeserta('${item.id_peserta}')"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-xs btn-warning" onclick="window.editPeserta('${item.id_peserta}')"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-xs btn-danger" onclick="window.deletePeserta('${item.id_peserta}')"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     `;
@@ -232,12 +205,64 @@ function loadPesertaData() {
             }
         }
     });
-}
+};
 
-function openFormModal() {
-    $('#form-peserta')[0].reset();
-    $('#id_peserta').val('');
-    $('#modal-title').text('Tambah Peserta Baru');
-    $('#modal-peserta').modal('show');
-}
+// 2. EVENT DELEGATION UNTUK TOMBOL & FORM SUBMIT
+$(document).off('click', '#btn-tambah-peserta').on('click', '#btn-tambah-peserta', function(e) {
+    e.preventDefault();
+    window.openFormModal();
+});
+
+$(document).ready(function() {
+    window.loadPesertaData();
+
+    // Reset backdrop & state saat modal ditutup
+    $(document).off('hidden.bs.modal', '#modal-peserta').on('hidden.bs.modal', '#modal-peserta', function () {
+        $('.modal-backdrop').remove();$('body').removeClass('modal-open');
+    });
+
+    // Submit Form via AJAX
+    $(document).off('submit', '#form-peserta').on('submit', '#form-peserta', function(e) {
+        e.preventDefault();
+        
+        let formData = $(this).serialize();
+        let csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '/bpjs/peserta/save',
+            type: 'POST',
+            data: formData,
+            headers: { 'X-CSRF-Token': csrfToken },
+            dataType: 'json',
+            beforeSend: function() {
+                $('#btn-save').prop('disabled', true).text('Menyimpan...');
+            },
+            success: function(res) {
+                if (res.status === 'success') {
+                    alert(res.message);
+                    $('#modal-peserta').modal('hide');
+                    window.loadPesertaData();
+                } else {
+                    alert('Validasi Gagal: ' + JSON.stringify(res.errors));
+                }
+            },
+            error: function() {
+                alert('Terjadi kesalahan sistem.');
+            },
+            complete: function() {
+                $('#btn-save').prop('disabled', false).text('Simpan Data');
+            }
+        });
+    });
+});
 </script>
+
+<?php
+    $formUrl = Url::to(['/bpjs/peserta/create']); // Controller action yang me-render _form
+    $js = <<< JS
+    $(document).off('click', '#btn-tambah-peserta').on('click', '#btn-tambah-peserta', function() {
+        window.openBpjsModal('Tambah Peserta Baru', '{$formUrl}');
+    });
+    JS;
+    $this->registerJs($js);
+?>

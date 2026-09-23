@@ -1,4 +1,5 @@
 <?php
+use yii\bootstrap4\Modal;
 use yii\helpers\Url;
 
 $this->title = 'BPJS Anggota Keluarga Tambahan';
@@ -112,3 +113,42 @@ function bpjsModule() {
     }
 }
 </script>
+
+<?php
+    Modal::begin([
+        'id' => 'modal-global-bpjs',
+        'title' => '<span id="modal-global-title">Modal BPJS</span>',
+        'headerOptions' => ['class' => 'bg-primary text-white'],
+        'size' => Modal::SIZE_LARGE,
+        'clientOptions' => ['backdrop' => 'static', 'keyboard' => false],
+    ]);
+
+    echo "<div id='modalGlobalContent'></div>";
+
+    Modal::end();
+
+    $script = <<< JS
+    window.openBpjsModal = function(title, url) {
+        $('#modal-global-title').html(title);
+        $('#modalGlobalContent').html('<div class="text-center p-4"><i class="fas fa-spinner fa-spin fa-2x"></i> Memuat data...</div>');
+        $('#modal-global-bpjs').modal('show');
+
+        if (url) {
+            $.get(url, function(data) {
+                $('#modalGlobalContent').html(data);
+            }).fail(function() {
+                $('#modalGlobalContent').html('<div class="alert alert-danger">Gagal memuat halaman.</div>');
+            });
+        }
+    };
+
+    // Reset konten saat modal ditutup
+    $('#modal-global-bpjs').on('hidden.bs.modal', function () {
+        $('#modalGlobalContent').empty();
+        $('.modal-backdrop').remove();
+        $('body').removeClass('modal-open');
+    });
+
+    JS;
+    $this->registerJs($script);
+?>
