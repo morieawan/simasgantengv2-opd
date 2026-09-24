@@ -1,80 +1,179 @@
 <?php
+
 namespace app\modules\bpjs\controllers;
 
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\httpclient\Client;
 
 class PesertaController extends Controller
 {
+    // Point ke server Go (Localhost:8080)
+    private $apiBaseUrl = 'http://localhost:9090/v1';
+
     public function actionIndex()
     {
-        // $searchModel = new PesertaSearch();
-        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $sess = [
+            'tablok' => Yii::$app->session->get('tablok', '31000000'),
+            'nip' => Yii::$app->session->get('nip'),
+            'namapengguna' => Yii::$app->session->get('namapengguna'),
+        ];
 
-        // Jika dipanggil via AJAX (oleh Alpine.js fetch), kembalikan partial view saja
-        if (Yii::$app->request->isAjax) {
-            return $this->renderPartial('index', [
-                // 'searchModel' => $searchModel,
-                // 'dataProvider' => $dataProvider,
-                'sess' => Yii::$app->session,
-            ]);
-        }
-
-        return $this->render('index', [
-            // 'searchModel' => $searchModel,
-            // 'dataProvider' => $dataProvider,
-            'sess' => Yii::$app->session,
+        return $this->renderPartial('index', [
+            'sess' => $sess,
         ]);
     }
 
-    // 2. READ: Ambil Data Peserta (Format JSON)
+    /**
+     * BFF Action: Forward Request Pencarian Pegawai ke Go Backend
+     */
+    public function actionSearchPegawai()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $request = Yii::$app->request;
+        $params = [
+            'keyword'     => $request->get('keyword'),
+            'sub_lokasi'  => $request->get('sub_lokasi'),
+            'kode_lokasi' => $request->get('kode_lokasi', '31000000'),
+        ];
+
+        try {
+            $client = new Client();
+            $response = $client->createRequest()
+                ->setMethod('GET')
+                ->setUrl($this->apiBaseUrl . '/pegawai/search')
+                ->setData($params)
+                ->send();
+
+            return $response->data;
+        } catch (\Exception $e) {
+            Yii::error('BFF Error [SearchPegawai]: ' . $e->getMessage(), __METHOD__);
+            return [
+                'status'  => 'error',
+                'message' => 'Gagal terhubung ke Go Service (localhost:9090).',
+            ];
+        }
+    }
+
+    /**
+     * BFF Action: Ambil Data Peserta BPJS berdasarkan NIP Terpilih
+     */
     public function actionGetData()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-        
-        // Contoh data dummy (Bisa diganti dengan query ActiveRecord: Peserta::find()->all())
-        return [
-            'status' => 'success',
-            'data' => [
-                ['id' => 1, 'nama' => 'Ahmad', 'no_bpjs' => '00012345678', 'kategori' => 'Mandiri'],
-                ['id' => 2, 'nama' => 'Budi', 'no_bpjs' => '00087654321', 'kategori' => 'PNS'],
-            ]
-        ];
+
+        $nip = Yii::$app->request->get('nip');
+
+        if (empty($nip)) {
+            return [
+                'status' => 'error',
+                'message' => 'NIP Pegawai wajib diisi.',
+            ];
+        }
+
+        try {
+            $client = new Client();
+            $response = $client->createRequest()
+                ->setMethod('GET')
+                ->setUrl($this->apiBaseUrl . '/bpjs/peserta')
+                ->setData(['nip' => $nip])
+                ->addHeaders([
+                    'Authorization' => 'Bearer ' . Yii::$app->session->get('token'),
+                ])
+                ->send();
+
+            if ($response->isOk) {
+                return $response->data;
+            }
+
+            return [
+                'status' => 'error',
+                'message' => 'Gagal mengambil data BPJS.',
+            ];
+
+        } catch (\Exception $e) {
+            Yii::error('BFF Error [GetDataBPJS]: ' . $e->getMessage(), __METHOD__);
+            return [
+                'status' => 'error',
+                'message' => 'Gagal terhubung ke layanan BPJS.',
+            ];
+        }
     }
 
-    // 3. CREATE / UPDATE: Simpan Data via AJAX
+    /**
+     * Action Render Modal Form Tambah Peserta
+     */
+    public function actionCreate()
+    {
+        $nip = Yii::$app->request->get('nip');
+
+        // Minta data template/default dari API jika diperlukan
+        $model = (object) [
+            'id_peserta' => null,
+            'nip' => $nip,
+            'nama_peserta' => '',
+            'hubkel' => '',
+            'nik' => '',
+            'no_kk' => '',
+            'opd' => '',
+            'tgl_lahir' => '',
+            'jk' => '1',
+            'aktif' => '1',
+            'alamat' => '',
+            'kd_prov' => '',
+            'kd_kab' => '',
+            'kd_kec' => '',
+            'kd_desa' => '',
+        ];
+
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('_form', [
+                'model' => $model,
+            ]);
+        }
+
+        return $this->render('_form', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * BFF Action: Simpan Data Peserta (Forward POST ke Microservice)
+     */
     public function actionSave()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $request = Yii::$app->request;
 
-        $id = $request->post('id');
-        $nama = $request->post('nama');
-        $noBpjs = $request->post('no_bpjs');
+        $postData = Yii::$app->request->post('PesertaForm', []);
 
-        // Validation & Save logic ke Database di sini...
-        // $model = $id ? Peserta::findOne($id) : new Peserta();
-        // $model->load($request->post(), '');
-        // if ($model->save()) { ... }
+        try {
+            $client = new Client();
+            $response = $client->createRequest()
+                ->setMethod('POST')
+                ->setUrl($this->apiBaseUrl . '/bpjs/peserta/store')
+                ->setData($postData)
+                ->addHeaders([
+                    'Authorization' => 'Bearer ' . Yii::$app->session->get('token'),
+                ])
+                ->send();
 
-        return [
-            'status' => 'success',
-            'message' => $id ? 'Data berhasil diperbarui!' : 'Data berhasil ditambahkan!'
-        ];
-    }
+            if ($response->isOk) {
+                return $response->data;
+            }
 
-    // 4. DELETE: Hapus Data via AJAX
-    public function actionDelete($id)
-    {
-        Yii::$app->response->format = Response::FORMAT_JSON;
+            return [
+                'status' => 'error',
+                'errors' => $response->data['errors'] ?? 'Gagal menyimpan data.',
+            ];
 
-        // Logic Hapus...
-        // Peserta::findOne($id)->delete();
-
-        return [
-            'status' => 'success',
-            'message' => "Data peserta ID $id berhasil dihapus!"
-        ];
+        } catch (\Exception $e) {
+            Yii::error('BFF Error [SaveBPJS]: ' . $e->getMessage(), __METHOD__);
+            return [
+                'status' => 'error',
+                'message' => 'Terjadi kesalahan sistem saat menyimpan data.',
+            ];
+        }
     }
 }

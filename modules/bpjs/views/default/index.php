@@ -2,8 +2,7 @@
 use yii\bootstrap4\Modal;
 use yii\helpers\Url;
 
-$this->title = 'BPJS Keluarga Tambahan';
-
+$this->title = 'BPJS Anggota Keluarga Tambahan';
 ?>
 
 <!-- Load Alpine.js -->
@@ -11,7 +10,7 @@ $this->title = 'BPJS Keluarga Tambahan';
 
 <div x-data="bpjsModule()" x-init="initApp()" class="container-fluid pt-3">
 
-    <!-- Card AdminLTE dengan Tab Menu -->
+    <!-- Card AdminLTE dengan 2 Tab Menu -->
     <div class="card card-primary card-outline card-outline-tabs">
         <div class="card-header p-0 border-bottom-0">
             <ul class="nav nav-tabs" id="bpjs-tabs" role="tablist">
@@ -22,7 +21,7 @@ $this->title = 'BPJS Keluarga Tambahan';
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" :class="{ 'active': currentTab === 'iuran' }" @click.prevent="switchTab('iuran')" href="#">
-                        <i class="fas fa-file-invoice mr-1"></i> Iuran BPJS
+                        <i class="fas fa-file-invoice-dollar mr-1"></i> Iuran BPJS
                     </a>
                 </li>
             </ul>
@@ -49,7 +48,7 @@ $this->title = 'BPJS Keluarga Tambahan';
 <?php
 Modal::begin([
     'id' => 'modal-global-bpjs',
-    'title' => '<span id="modal-global-title">Modal BPJS</span>',
+    'title' => '<span id="modal-global-title">Form Data BPJS</span>',
     'headerOptions' => ['class' => 'bg-primary text-white'],
     'size' => Modal::SIZE_LARGE,
     'clientOptions' => ['backdrop' => 'static', 'keyboard' => false],
@@ -60,7 +59,7 @@ echo "<div id='modalGlobalContent'></div>";
 Modal::end();
 ?>
 
-<!-- Logic SPA via Alpine.js & JavaScript Global Helper -->
+<!-- Logic SPA via Alpine.js -->
 <script>
     function bpjsModule() {
         return {
@@ -81,7 +80,6 @@ Modal::end();
 
             loadTabContent(tabName) {
                 this.loading = true;
-                // Menggunakan endpoint index masing-masing controller
                 let url = '/bpjs/' + tabName + '/index'; 
                 
                 fetch(url, {
@@ -97,7 +95,7 @@ Modal::end();
                 })
                 .catch(error => {
                     console.error('AJAX Load Error:', error);
-                    this.tabContent = '<div class="alert alert-danger"><i class="fas fa-exclamation-triangle mr-1"></i> Gagal memuat konten. Pastikan URL endpoint sesuai.</div>';
+                    this.tabContent = '<div class="alert alert-danger"><i class="fas fa-exclamation-triangle mr-1"></i> Gagal memuat konten tab.</div>';
                     this.loading = false;
                 });
             },
@@ -110,11 +108,12 @@ Modal::end();
 </script>
 
 <?php
-// Skrip Helper Modal Global
+// Mendaftarkan Skrip Helper Modal & Event Listener Delegation (Global)
 $script = <<< JS
+    // Fungsi Global Buka Modal
     window.openBpjsModal = function(title, url) {
         $('#modal-global-title').html(title);
-        $('#modalGlobalContent').html('<div class="text-center p-4"><i class="fas fa-spinner fa-spin fa-2x"></i> Memuat data...</div>');
+        $('#modalGlobalContent').html('<div class="text-center p-4"><i class="fas fa-spinner fa-spin fa-2x"></i> Memuat form...</div>');
         $('#modal-global-bpjs').modal('show');
 
         if (url) {
@@ -126,6 +125,13 @@ $script = <<< JS
         }
     };
 
+    // Event Listener Delegation untuk Tombol Tambah Peserta
+    $(document).off('click', '#btn-tambah-peserta').on('click', '#btn-tambah-peserta', function(e) {
+        e.preventDefault();
+        window.openBpjsModal('Tambah Peserta Baru', '/bpjs/peserta/create');
+    });
+
+    // Reset Modal saat Ditutup
     $('#modal-global-bpjs').on('hidden.bs.modal', function () {
         $('#modalGlobalContent').empty();
         $('.modal-backdrop').remove();

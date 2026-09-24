@@ -1,40 +1,68 @@
 <?php
 use yii\helpers\Url;
+
+$this->title = 'BPJS Anggota Keluarga Tambahan';
 ?>
 
-<div class="card">
+<!-- Panel Filter / Pencarian Pegawai (Admin OPD) -->
+<div class="card card-outline card-info">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-search mr-1"></i> Cari Pegawai (SKPD: <?= $sess['tablok'] ?? '31000000' ?>)</h3>
+    </div>
     <div class="card-body">
+        <form id="form-search-pegawai" class="row">
+            <!-- Hidden Filter Kunci SKPD Admin -->
+            <input type="hidden" name="kode_lokasi" value="<?= $sess['tablok'] ?? '31000000' ?>">
+
+            <div class="col-md-4 form-group mb-2">
+                <label class="sr-only">NIP / Nama</label>
+                <input type="text" class="form-control" id="search_keyword" name="keyword" placeholder="Ketik NIP atau Nama Pegawai...">
+            </div>
+            <div class="col-md-4 form-group mb-2">
+                <label class="sr-only">Sub Lokasi</label>
+                <select class="form-control" id="search_sub_lokasi" name="sub_lokasi">
+                    <option value="">-- Semua Sub Lokasi --</option>
+                    <!-- Option sub lokasi di-load via AJAX atau dari Controller -->
+                </select>
+            </div>
+            <div class="col-md-4 form-group mb-2">
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-search mr-1"></i> Cari Pegawai
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Informasi Ringkas Pegawai Terpilih -->
+<div class="card card-outline card-secondary" id="card-detail-pegawai" style="display: none;">
+    <div class="card-body p-0">
         <table class="table detail-view mb-0">
             <tr>
-                <td width="20%">NIP</td>
-                <td width="5%">:</td>
-                <td><?= $sess['nip'] ?></td>
+                <th width="15%" class="bg-light">NIP</th>
+                <td width="35%" id="lbl-nip">-</td>
+                <th width="15%" class="bg-light">Status Pegawai</th>
+                <td width="35%" id="lbl-status-pegawai">-</td>
             </tr>
             <tr>
-                <td>Nama ASN</td>
-                <td>:</td>
-                <td><?= $sess['namapengguna'] ?></td>
-            </tr>
-            <tr>
-                <td>Unor</td>
-                <td>:</td>
-                <td><?= $sess['tablok'] ?></td>
+                <th class="bg-light">Nama ASN</th>
+                <td id="lbl-nama-asn">-</td>
+                <th class="bg-light">Sub Lokasi / Unit</th>
+                <td id="lbl-sub-lokasi">-</td>
             </tr>
         </table>
     </div>
 </div>
 
-<div class="card card-outline card-primary">
-
+<!-- Tabel Data Peserta BPJS Anggota Keluarga -->
+<div class="card card-outline card-primary" id="card-data-bpjs" style="display: none;">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h3 class="card-title"><i class="fas fa-users mr-1"></i> Data Peserta BPJS</h3>
+        <h3 class="card-title"><i class="fas fa-users mr-1"></i> Data Peserta BPJS Keluarga Tambahan</h3>
         <button type="button" class="btn btn-sm btn-success ml-auto" id="btn-tambah-peserta">
             <i class="fas fa-plus mr-1"></i> Tambah Peserta
         </button>
     </div>
-
     <div class="card-body">
-        <!-- Tabel Data -->
         <div class="table-responsive">
             <table class="table table-bordered table-striped" id="table-peserta">
                 <thead>
@@ -47,227 +75,101 @@ use yii\helpers\Url;
                     </tr>
                 </thead>
                 <tbody id="tbody-peserta">
-                    <!-- Data dari Controller via AJAX -->
+                    <!-- Loaded via AJAX -->
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-<!-- Modal Form Input Peserta -->
-<div class="modal fade" id="modal-peserta" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="modal-title">Form Data Peserta</h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="form-peserta">
-                <div class="modal-body">
-                    <input type="hidden" id="id_peserta" name="PesertaForm[id_peserta]">
-                    
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>NIP <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="nip" name="PesertaForm[nip]" maxlength="18" required>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Hubungan Keluarga <span class="text-danger">*</span></label>
-                            <select class="form-control" id="hubkel" name="PesertaForm[hubkel]" required>
-                                <option value="">-- Pilih Hubkel --</option>
-                                <option value="00">00 - Kepala Keluarga</option>
-                                <option value="01">01 - Suami/Istri</option>
-                                <option value="02">02 - Anak</option>
-                            </select>
-                        </div>
-                    </div>
+<?php
+$searchPegawaiUrl = Url::to(['/bpjs/peserta/search-pegawai']);
+$getBpjsUrl = Url::to(['/bpjs/peserta/get-data']);
 
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>NIK <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="nik" name="PesertaForm[nik]" maxlength="20" required>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>No. KK <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="no_kk" name="PesertaForm[no_kk]" maxlength="20" required>
-                        </div>
-                    </div>
+$createUrl = Url::to(['/bpjs/peserta/create']);
 
-                    <div class="row">
-                        <div class="col-md-8 form-group">
-                            <label>Nama Peserta <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="nama_peserta" name="PesertaForm[nama_peserta]" maxlength="150" required>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>OPD</label>
-                            <input type="text" class="form-control" id="opd" name="PesertaForm[opd]" maxlength="10">
-                        </div>
-                    </div>
+$script = <<< JS
+    let selectedNip = '';
 
-                    <div class="row">
-                        <div class="col-md-4 form-group">
-                            <label>Tanggal Lahir</label>
-                            <input type="date" class="form-control" id="tgl_lahir" name="PesertaForm[tgl_lahir]">
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>Jenis Kelamin</label>
-                            <select class="form-control" id="jk" name="PesertaForm[jk]">
-                                <option value="1">Laki-laki</option>
-                                <option value="0">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>Status Aktif</label>
-                            <select class="form-control" id="aktif" name="PesertaForm[aktif]">
-                                <option value="1">Aktif</option>
-                                <option value="0">Tidak Aktif</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Alamat</label>
-                        <textarea class="form-control" id="alamat" name="PesertaForm[alamat]" rows="2"></textarea>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 form-group">
-                            <label>Kelurahan</label>
-                            <input type="text" class="form-control" id="kelurahan" name="PesertaForm[kelurahan]">
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>Kecamatan</label>
-                            <input type="text" class="form-control" id="kecamatan" name="PesertaForm[kecamatan]">
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>Kabupaten</label>
-                            <input type="text" class="form-control" id="kabupaten" name="PesertaForm[kabupaten]">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Sumber Pembiayaan</label>
-                        <input type="text" class="form-control" id="sumber_pembiayaan" name="PesertaForm[sumber_pembiayaan]">
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary" id="btn-save">Simpan Data</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script>
-// 1. DAFTARKAN FUNGSI KE GLOBAL WINDOW SECARA EKSPLISIT
-window.openFormModal = function() {
-    if ($('#form-peserta').length) {
-        $('#form-peserta')[0].reset();
-    }
-    $('#id_peserta').val('');
-    $('#modal-title').text('Tambah Peserta Baru');
-    
-    // Pindahkan elemen modal ke body dokumen agar terbebas dari rantai DOM AJAX/Alpine
-    $('#modal-peserta').appendTo("body").modal('show');
-};
-
-window.editPeserta = function(idPeserta) {
-    $('#modal-title').text('Edit Data Peserta');
-    $('#modal-peserta').appendTo("body").modal('show');
-};
-
-window.loadPesertaData = function() {
-    $.ajax({
-        url: '/bpjs/peserta/get-data',
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-            if (res.status === 'success') {
-                let html = '';
-                res.data.forEach(item => {
-                    let badgeAktif = item.aktif == 1 
-                        ? '<span class="badge badge-success">Aktif</span>' 
-                        : '<span class="badge badge-danger">Non-Aktif</span>';
-
-                    html += `
-                        <tr>
-                            <td>${item.nik}</td>
-                            <td>${item.nama_peserta}</td>
-                            <td>${item.hubkel}</td>
-                            <td>${badgeAktif}</td>
-                            <td class="text-center">
-                                <button class="btn btn-xs btn-warning" onclick="window.editPeserta('${item.id_peserta}')"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger" onclick="window.deletePeserta('${item.id_peserta}')"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr>
-                    `;
-                });
-                $('#tbody-peserta').html(html);
-            }
-        }
-    });
-};
-
-// 2. EVENT DELEGATION UNTUK TOMBOL & FORM SUBMIT
-$(document).off('click', '#btn-tambah-peserta').on('click', '#btn-tambah-peserta', function(e) {
-    e.preventDefault();
-    window.openFormModal();
-});
-
-$(document).ready(function() {
-    window.loadPesertaData();
-
-    // Reset backdrop & state saat modal ditutup
-    $(document).off('hidden.bs.modal', '#modal-peserta').on('hidden.bs.modal', '#modal-peserta', function () {
-        $('.modal-backdrop').remove();$('body').removeClass('modal-open');
-    });
-
-    // Submit Form via AJAX
-    $(document).off('submit', '#form-peserta').on('submit', '#form-peserta', function(e) {
+    $('#form-search-pegawai').off('submit').on('submit', function(e) {
         e.preventDefault();
-        
         let formData = $(this).serialize();
-        let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
-            url: '/bpjs/peserta/save',
-            type: 'POST',
+            url: '<?= $searchPegawaiUrl ?>', 
+            type: 'GET',
             data: formData,
-            headers: { 'X-CSRF-Token': csrfToken },
             dataType: 'json',
-            beforeSend: function() {
-                $('#btn-save').prop('disabled', true).text('Menyimpan...');
-            },
             success: function(res) {
-                if (res.status === 'success') {
-                    alert(res.message);
-                    $('#modal-peserta').modal('hide');
-                    window.loadPesertaData();
+                if (res.status === 'success' && res.data) {
+                    selectedNip = res.data.nip;
+                    $('#lbl-nip').text(res.data.nip);
+                    $('#lbl-nama-asn').text(res.data.nama);
+                    $('#lbl-status-pegawai').text(res.data.status_pegawai || '-');
+                    $('#lbl-sub-lokasi').text(res.data.nama_unor || res.data.tablokb || '-');
+
+                    $('#card-detail-pegawai, #card-data-bpjs').slideDown();
+                    loadBpjsData(selectedNip);
                 } else {
-                    alert('Validasi Gagal: ' + JSON.stringify(res.errors));
+                    alert(res.message || 'Data pegawai tidak ditemukan pada lokasi ini.');
+                    $('#card-detail-pegawai, #card-data-bpjs').slideUp();
                 }
             },
             error: function() {
-                alert('Terjadi kesalahan sistem.');
-            },
-            complete: function() {
-                $('#btn-save').prop('disabled', false).text('Simpan Data');
+                alert('Gagal menghubungi server BFF Yii2.');
             }
         });
     });
-});
-</script>
+    
 
-<?php
-    $formUrl = Url::to(['/bpjs/peserta/create']); // Controller action yang me-render _form
-    $js = <<< JS
-    $(document).off('click', '#btn-tambah-peserta').on('click', '#btn-tambah-peserta', function() {
-        window.openBpjsModal('Tambah Peserta Baru', '{$formUrl}');
+    // 2. Load Data Peserta BPJS
+    window.loadBpjsData = function(nip) {
+        $.ajax({
+            url: '{$getBpjsUrl}',
+            type: 'GET',
+            data: { nip: nip },
+            dataType: 'json',
+            success: function(res) {
+                if (res.status === 'success') {
+                    let html = '';
+                    if (res.data.length === 0) {
+                        html = '<tr><td colspan="5" class="text-center text-muted">Belum ada data anggota keluarga tambahan.</td></tr>';
+                    } else {
+                        res.data.forEach(item => {
+                            let badgeAktif = item.aktif == 1 
+                                ? '<span class="badge badge-success">Aktif</span>' 
+                                : '<span class="badge badge-danger">Non-Aktif</span>';
+
+                            html += `
+                                <tr>
+                                    <td>\${item.nik}</td>
+                                    <td>\${item.nama_peserta}</td>
+                                    <td>\${item.hubkel}</td>
+                                    <td>\${badgeAktif}</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-xs btn-warning" onclick="editPeserta('\${item.id_peserta}')"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-xs btn-danger" onclick="deletePeserta('\${item.id_peserta}')"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            `;
+                        });
+                    }
+                    $('#tbody-peserta').html(html);
+                }
+            }
+        });
+    };
+
+    // 3. Trigger Modal Tambah Peserta (Membawa NIP Terpilih)
+    $(document).off('click', '#btn-tambah-peserta').on('click', '#btn-tambah-peserta', function(e) {
+        e.preventDefault();
+        if (!selectedNip) {
+            alert('Pilih pegawai terlebih dahulu.');
+            return;
+        }
+        window.openBpjsModal('Tambah Peserta Baru', '{$createUrl}?nip=' + selectedNip);
     });
-    JS;
-    $this->registerJs($js);
+JS;
+
+$this->registerJs($script);
 ?>
