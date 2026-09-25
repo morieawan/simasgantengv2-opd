@@ -16,7 +16,7 @@ $tabPesertaUrl   = Url::to(['/bpjs/peserta/tab-peserta']);
                 <input type="text" class="form-control" id="search_keyword" name="keyword" placeholder="Ketik NIP atau Nama Pegawai..." required>
             </div>
             <div class="col-md-4 form-group mb-2">
-                <input type="text" class="form-control" id="search_sub_lokasi" name="sub_lokasi" placeholder="Sub Lokasi (opsional)">
+                <input type="text" class="form-control" id="search_sub_lokasi" name="sub_lokasi" placeholder="Unor (opsional)">
             </div>
             <div class="col-md-4 form-group mb-2">
                 <button type="submit" class="btn btn-primary btn-block">
@@ -40,7 +40,7 @@ $tabPesertaUrl   = Url::to(['/bpjs/peserta/tab-peserta']);
                         <th width="5%" class="text-center">No</th>
                         <th width="20%">NIP</th>
                         <th width="30%">Nama ASN</th>
-                        <th width="30%">Sub Lokasi / Unit</th>
+                        <th width="30%">Unor</th>
                         <th width="15%" class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -94,7 +94,7 @@ $(document).ready(function() {
                     Swal.fire({
                         icon: 'success',
                         title: 'Pencarian Berhasil',
-                        text: 'Ditemukan \${listPegawai.length} data pegawai.',
+                        text: `Ditemukan ${listPegawai.length} data pegawai.`,
                         timer: 1500,
                         showConfirmButton: false
                     });
@@ -137,19 +137,18 @@ $(document).ready(function() {
 
             html += `
                 <tr>
-                    <td class="text-center" align="center">\${index + 1}</td>
-                    <td><strong>\${item.nip}</strong></td>
-                    <td>\${item.nama}</td>
-                    <td>\${unit}</td>
+                    <td class="text-center" align="center">${index + 1}</td>
+                    <td>${item.nip}</td>
+                    <td>${item.nama}</td>
+                    <td>${unit}</td>
                     <td class="text-center" align="center">
-                        <button type="button" class="btn btn-xs btn-success btn-pilih-pegawai" data-pegawai='\${jsonString}'>
-                            Kelola Data Peserta <i class="fas fa-arrow-right ml-1"></i>
+                        <button type="button" class="btn btn-xs btn-success btn-pilih-pegawai" data-pegawai='${jsonString}'>
+                            Kelola Data <i class="fas fa-arrow-right ml-1"></i>
                         </button>
                     </td>
                 </tr>
             `;
         });
-
         $('#tbody-hasil-pegawai').html(html);
         $('#card-hasil-pencarian').slideDown();
     }

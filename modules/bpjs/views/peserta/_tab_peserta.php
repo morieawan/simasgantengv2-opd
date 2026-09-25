@@ -1,7 +1,15 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Json;
+use yii\web\View;
 
-$getBpjsUrl = Url::to(['/bpjs/peserta/get-data']);$createUrl  = Url::to(['/bpjs/peserta/create']);
+$getBpjsUrl = Url::to(['/bpjs/peserta/get-data']);
+$createUrl  = Url::to(['/bpjs/peserta/create']);$searchTabUrl = Url::to(['/bpjs/peserta/tab-search']);
+
+// Encode URL PHP ke format JSON string agar aman di-inject ke JS
+$getBpjsUrlJson  = Json::encode($getBpjsUrl);
+$createUrlJson   = Json::encode($createUrl);
+$searchTabUrlJson = Json::encode($searchTabUrl);
 ?>
 
 <div class="card card-outline card-primary">
@@ -33,8 +41,8 @@ $getBpjsUrl = Url::to(['/bpjs/peserta/get-data']);$createUrl  = Url::to(['/bpjs/
     </div>
 </div>
 
-<script>
-$(document).ready(function() {
+<?php
+$script = <<< JS
     if (!window.selectedPegawai) {
         Swal.fire({
             icon: 'info',
@@ -43,16 +51,19 @@ $(document).ready(function() {
             confirmButtonColor: '#3085d6'
         }).then(() => {
             $('#btn-tab-search').tab('show');
-            window.loadTabContent('search', '<?= Url::to(['/bpjs/peserta/tab-search']) ?>');
+            if (typeof window.loadTabContent === 'function') {
+                window.loadTabContent('search', {$searchTabUrlJson});
+            }
         });
         return;
     }
 
+    // Tampilkan Nama & NIP Pegawai Aktif
     $('#target-nama-pegawai').text(window.selectedPegawai.nama + ' (' + window.selectedPegawai.nip + ')');
 
-    // Load Data BPJS
+    // 1. Load Data Peserta BPJS
     $.ajax({
-        url: '<?= $getBpjsUrl ?>',
+        url: {$getBpjsUrlJson},
         type: 'GET',
         data: { nip: window.selectedPegawai.nip },
         dataType: 'json',
@@ -74,16 +85,46 @@ $(document).ready(function() {
                                 <td>\${item.hubkel}</td>
                                 <td>\${badgeAktif}</td>
                                 <td class="text-center">
-                                    <button class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-xs btn-danger"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-xs btn-warning btn-edit-peserta" data-id="\${item.id_peserta}"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-xs btn-danger btn-delete-peserta" data-id="\${item.id_peserta}"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                         `;
                     });
                 }
                 $('#tbody-peserta').html(html);
+            } else {
+                $('#tbody-peserta').html('<tr><td colspan="5" class="text-center text-danger">Gagal memuat data BPJS.</td></tr>');
             }
+        },
+        error: function() {
+            $('#tbody-peserta').html('<tr><td colspan="5" class="text-center text-danger">Terjadi kesalahan koneksi ke server.</td></tr>');
         }
     });
-});
-</script>
+
+    // 2. Event Handler Tombol Tambah Peserta
+    $('#btn-tambah-peserta').off('click').on('click', function(e) {
+        e.preventDefault();
+        
+        $.ajax({
+            url: {$createUrlJson},
+            type: 'GET',
+            data: { nip: window.selectedPegawai.nip },
+            success: function(response) {
+                $('#modal-default .modal-content').html(response);
+                $('#modal-default').modal('show');
+            },
+            error: function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Tidak dapat memuat form tambah peserta.'
+                });
+            }
+        });
+    });
+JS;
+
+// Mendaftarkan script ke lifecycle View Yii2 pada posisi POS_READY (DOM/jQuery siap)
+$this->registerJs($script, View::POS_READY);
+?>
