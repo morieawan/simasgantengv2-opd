@@ -9,57 +9,102 @@ use yii\httpclient\Client;
 
 class PesertaController extends Controller
 {
-    // Point ke server Go (Localhost:8080)
     private $apiBaseUrl = 'http://localhost:9090/v1';
 
+    /**
+     * Main SPA Shell (Disajikan 1x saat pertama membuka halaman)
+     */
     public function actionIndex()
     {
+        
         $sess = [
-            'tablok' => Yii::$app->session->get('tablok', '31000000'),
+            'tablok' => Yii::$app->session->get('tablok', ''),
             'nip' => Yii::$app->session->get('nip'),
             'namapengguna' => Yii::$app->session->get('namapengguna'),
         ];
 
-        return $this->renderPartial('index', [
+        return $this->render('index', [
             'sess' => $sess,
         ]);
     }
 
-    /**
-     * BFF Action: Forward Request Pencarian Pegawai ke Go Backend
-     */
+    // ==========================================
+    // PARTIAL VIEW LOADERS (SPA TABS)
+    // ==========================================
+
+    public function actionTabSearch()
+    {
+        
+        $sess = [
+            'tablok' => Yii::$app->session->get('tablok', ''),
+        ];
+        return $this->renderPartial('_tab_search', ['sess' => $sess]);
+    }
+
+    public function actionTabPeserta()
+    {
+        return $this->renderPartial('_tab_peserta');
+    }
+
+    public function actionTabIuran()
+    {
+        return $this->renderPartial('_tab_iuran');
+    }
+
+    // ==========================================
+    // BFF ACTION (FORWARD REQUEST TO GO BACKEND)
+    // ==========================================
+
     public function actionSearchPegawai()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
 
         $request = Yii::$app->request;
-        $params = [
-            'keyword'     => $request->get('keyword'),
-            'sub_lokasi'  => $request->get('sub_lokasi'),
-            'kode_lokasi' => $request->get('kode_lokasi', '31000000'),
-        ];
+        $keyword    = $request->get('keyword');
+        $subLokasi  = $request->get('sub_lokasi');
+        $kodeLokasi = $request->get('kode_lokasi', '');
+
+        // Buat URL lengkap beserta Query Params
+        $queryParams = http_build_query([
+            'kode_lokasi' => $kodeLokasi,
+            'keyword'     => $keyword,
+            'sub_lokasi'  => $subLokasi,
+        ]);
+
+        // Gunakan 127.0.0.1 untuk menghindari isu IP resolution IPv6 (::1) pada Windows
+        $fullUrl = 'http://localhost:9090/v1/pegawai/search?' . $queryParams;
 
         try {
-            $client = new Client();
+            $client = new Client([
+                'transport' => 'yii\httpclient\CurlTransport' // Pakai cURL transport agar lebih stabil
+            ]);
+            
             $response = $client->createRequest()
                 ->setMethod('GET')
-                ->setUrl($this->apiBaseUrl . '/pegawai/search')
-                ->setData($params)
+                ->setUrl($fullUrl)
                 ->send();
 
-            return $response->data;
-        } catch (\Exception $e) {
-            Yii::error('BFF Error [SearchPegawai]: ' . $e->getMessage(), __METHOD__);
+            if ($response->isOk) {
+                return $response->data;
+            }
+
+            // Jika Go Backend merespons selain status HTTP 200 (misal 400/500)
             return [
                 'status'  => 'error',
-                'message' => 'Gagal terhubung ke Go Service (localhost:9090).',
+                'message' => $response->data['message'] ?? 'Response error dari Go Backend.',
+            ];
+
+        } catch (\Exception $e) {
+            // Catat pesan error asli PHP/cURL ke runtime/logs/app.log
+            Yii::error('BFF Error [SearchPegawai]: ' . $e->getMessage(), __METHOD__);
+            
+            return [
+                'status'  => 'error',
+                'message' => 'Detail Error: ' . $e->getMessage(), // Tampilkan pesan error asli untuk debugging
             ];
         }
     }
 
-    /**
-     * BFF Action: Ambil Data Peserta BPJS berdasarkan NIP Terpilih
-     */
     public function actionGetData()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;

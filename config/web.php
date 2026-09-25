@@ -84,35 +84,35 @@ $config = [
         ],
     ],
     'params' => $params,
-    // 'as beforeRequest' => [  //if guest user access site so, redirect to login page.
-    //     'class' => 'yii\filters\AccessControl',
-    //     'rules' => [
-    //         [
-    //             'actions' => ['login', 'captcha'],
-    //             'allow' => true,
-    //             'roles' => ['?'],
-    //         ],
-    //         [
-    //             'actions' => ['update-password'],
-    //             'allow' => true,
-    //             'roles' => ['@'],
-    //             'matchCallback'=>function(){
-    //                 return (
-    //                     Yii::$app->user->identity->flag==0
-    //                 );
-    //             },
-    //         ],
-    //         [
-    //             'allow' => true,
-    //             'roles' => ['@'],
-    //             /*'matchCallback'=>function(){
-    //                 return (
-    //                     Yii::$app->user->identity->flag==1
-    //                 );
-    //             },*/
-    //         ],            
-    //     ],
-    // ],
+    'as beforeRequest' => [  
+        'class' => 'yii\filters\AccessControl',
+        'rules' => [
+            [
+                'actions' => ['login', 'captcha'],
+                'allow' => true,
+                'roles' => ['?'],
+            ],
+            [
+                'actions' => ['update-password'],
+                'allow' => true,
+                'roles' => ['@'],
+                'matchCallback'=>function(){
+                    return (
+                        Yii::$app->user->identity->flag==0
+                    );
+                },
+            ],
+            [
+                'allow' => true,
+                'roles' => ['@'],
+                /*'matchCallback'=>function(){
+                    return (
+                        Yii::$app->user->identity->flag==1
+                    );
+                },*/
+            ],            
+        ],
+    ],    
     'modules' => [
         'generator' => [
             'class' => 'app\modules\gen\Module',

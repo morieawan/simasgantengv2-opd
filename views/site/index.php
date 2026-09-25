@@ -9,5 +9,7 @@ $this->title = 'Beranda';
 ?>
 <div class="site-index">
   
+<?= yii\helpers\Json::encode($sess, $asArray = true);?>
   &nbsp;
+
 </div>
