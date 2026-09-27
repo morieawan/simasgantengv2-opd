@@ -1,17 +1,16 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Json;
 
 $searchPegawaiUrl = Url::to(['/bpjs/peserta/search-pegawai']);
-$tabPesertaUrl   = Url::to(['/bpjs/peserta/tab-peserta']);
+$tabPesertaUrl    = Url::to(['/bpjs/peserta/tab-peserta']);
 ?>
 
 <!-- Form Filter Pencarian -->
 <div class="card card-outline card-info">
-    
     <div class="card-body">
         <form id="form-search-pegawai" class="row">
             <input type="hidden" name="kode_lokasi" value="<?= $sess['tablok'] ?? '' ?>">
-            
             <div class="col-md-4 form-group mb-2">
                 <input type="text" class="form-control" id="search_keyword" name="keyword" placeholder="Ketik NIP atau Nama Pegawai..." required>
             </div>
@@ -54,27 +53,29 @@ $tabPesertaUrl   = Url::to(['/bpjs/peserta/tab-peserta']);
 
 <script>
 $(document).ready(function() {
-    // 1. Mempertahankan input pencarian jika sudah pernah dicari sebelumnya
+    var searchPegawaiUrl = <?= \yii\helpers\Json::encode($searchPegawaiUrl) ?>;
+    var tabPesertaUrl    = <?= \yii\helpers\Json::encode($tabPesertaUrl) ?>;
+
+    // Restore jika sudah ada data pencarian
     if (window.lastSearchParams) {
         $('#search_keyword').val(window.lastSearchParams.keyword);
         $('#search_sub_lokasi').val(window.lastSearchParams.sub_lokasi);
     }
-
-    // Restore hasil pencarian jika sebelumnya sudah ada data pencarian di memori SPA
     if (window.lastSearchResults && window.lastSearchResults.length > 0) {
         renderTabelPegawai(window.lastSearchResults);
     }
 
-    // 2. Handler Submit Form Pencarian
+    // Handler Submit Form Pencarian
     $('#form-search-pegawai').off('submit').on('submit', function(e) {
         e.preventDefault();
         let formData = $(this).serialize();
 
+        if (!window.lastSearchParams) window.lastSearchParams = {};
         window.lastSearchParams.keyword = $('#search_keyword').val();
         window.lastSearchParams.sub_lokasi = $('#search_sub_lokasi').val();
 
         $.ajax({
-            url: '<?= $searchPegawaiUrl ?>',
+            url: searchPegawaiUrl,
             type: 'GET',
             data: formData,
             dataType: 'json',
@@ -85,27 +86,24 @@ $(document).ready(function() {
             },
             success: function(res) {
                 if (res.status === 'success' && res.data && res.data.length > 0) {
-                    // Pastikan data dipastikan dalam bentuk Array (bisa 1 atau banyak record)
                     let listPegawai = Array.isArray(res.data) ? res.data : [res.data];
-                    
                     window.lastSearchResults = listPegawai;
                     renderTabelPegawai(listPegawai);
 
                     Swal.fire({
                         icon: 'success',
                         title: 'Pencarian Berhasil',
-                        text: `Ditemukan ${listPegawai.length} data pegawai.`,
-                        timer: 1500,
+                        text: 'Ditemukan ' + listPegawai.length + ' data pegawai.',
+                        timer: 1200,
                         showConfirmButton: false
                     });
                 } else {
                     $('#card-hasil-pencarian').slideUp();
                     window.lastSearchResults = null;
-
                     Swal.fire({
                         icon: 'warning',
                         title: 'Data Tidak Ditemukan',
-                        text: res.message || 'Tidak ada data pegawai yang sesuai dengan kata kunci tersebut.',
+                        text: res.message || 'Data pegawai tidak ditemukan.',
                         confirmButtonColor: '#3085d6'
                     });
                 }
@@ -113,9 +111,8 @@ $(document).ready(function() {
             error: function() {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Koneksi Error',
-                    text: 'Gagal terhubung ke server BFF Yii2.',
-                    confirmButtonColor: '#d33'
+                    title: 'Error',
+                    text: 'Gagal terhubung ke server BFF Yii2.'
                 });
             },
             complete: function() {
@@ -126,41 +123,50 @@ $(document).ready(function() {
         });
     });
 
-    // 3. Fungsi Render Baris Tabel Hasil Pencarian
+    // Render Baris Tabel Hasil Pencarian (Gunakan Index Array sebagai Data Identifikasi)
     function renderTabelPegawai(dataList) {
         let html = '';
         dataList.forEach((item, index) => {
             let unit = item.nama_unor || item.tablokb || item.nama_opd || '-';
-            
-            // Encode data pegawai ke JSON String agar aman dikirim via atribut HTML
-            let jsonString = JSON.stringify(item).replace(/'/g, "&apos;");
 
-            html += `
-                <tr>
-                    <td class="text-center" align="center">${index + 1}</td>
-                    <td>${item.nip}</td>
-                    <td>${item.nama}</td>
-                    <td>${unit}</td>
-                    <td class="text-center" align="center">
-                        <button type="button" class="btn btn-xs btn-success btn-pilih-pegawai" data-pegawai='${jsonString}'>
-                            Kelola Data <i class="fas fa-arrow-right ml-1"></i>
-                        </button>
-                    </td>
-                </tr>
-            `;
+            html += '<tr>' +
+                '<td class="text-center" align="center">' + (index + 1) + '</td>' +
+                '<td>' + item.nip + '</td>' +
+                '<td>' + item.nama + '</td>' +
+                '<td>' + unit + '</td>' +
+                '<td class="text-center" align="center">' +
+                    '<button type="button" class="btn btn-xs btn-success btn-pilih-pegawai" data-index="' + index + '">' +
+                        'Kelola Data <i class="fas fa-arrow-right ml-1"></i>' +
+                    '</button>' +
+                '</td>' +
+            '</tr>';
         });
         $('#tbody-hasil-pegawai').html(html);
         $('#card-hasil-pencarian').slideDown();
     }
 
-    // 4. Handler Klik Tombol "Kelola Data Peserta" di Kolom Aksi
+    // Handler Klik Tombol "Kelola Data"
     $(document).off('click', '.btn-pilih-pegawai').on('click', '.btn-pilih-pegawai', function() {
-        let pegawaiData = $(this).data('pegawai');
+        let idx = $(this).data('index');
+        let pegawaiData = window.lastSearchResults[idx];
 
-        // Buka akses & arahkan langsung ke Tab Data Peserta
-        window.enableBpjsTabs(pegawaiData);
+        if (!pegawaiData) {
+            Swal.fire({ icon: 'error', title: 'Gagal', text: 'Data pegawai tidak ditemukan di memori.' });
+            return;
+        }
+
+        // Set variabel global pegawai aktif
+        window.selectedPegawai = pegawaiData;
+
+        if (typeof window.enableBpjsTabs === 'function') {
+            window.enableBpjsTabs(pegawaiData);
+        }
+
+        // Pindah Tab dan Load Partial View _tab_peserta
         $('#btn-tab-peserta').tab('show');
-        window.loadTabContent('peserta', '<?= $tabPesertaUrl ?>');
+        if (typeof window.loadTabContent === 'function') {
+            window.loadTabContent('peserta', tabPesertaUrl);
+        }
     });
 });
 </script>

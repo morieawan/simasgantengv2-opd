@@ -41,9 +41,46 @@ class PesertaController extends Controller
         return $this->renderPartial('_tab_search', ['sess' => $sess]);
     }
 
+    /**
+     * Partial View Loader untuk Tab Peserta
+     */
     public function actionTabPeserta()
     {
-        return $this->renderPartial('_tab_peserta');
+        $nip = Yii::$app->request->get('nip') ?? Yii::$app->session->get('nip');
+        
+        $pesertaUtama = [];
+        $pesertaTambahan = [];
+        $pegawai = [];
+
+        if ($nip) {
+            $client = new Client(['baseUrl' => $apiBaseUrl]); 
+
+            // 1. Ambil Data Peserta Utama (Simgaji - DB5)
+            try {
+                $responseUtama = $client->get('simgaji/keluarga', ['nip' => $nip])->send();
+                if ($responseUtama->isOk) {
+                    $pesertaUtama = $responseUtama->data['data'] ?? [];
+                }
+            } catch (\Exception $e) {
+                Yii::error("Gagal mengambil data peserta utama: " . $e->getMessage());
+            }
+
+            // 2. Ambil Data Peserta BPJS Tambahan (DB21)
+            try {
+                $responseTambahan = $client->get('bpjs/peserta', ['nip' => $nip])->send();
+                if ($responseTambahan->isOk) {
+                    $pesertaTambahan = $responseTambahan->data['data'] ?? [];
+                }
+            } catch (\Exception $e) {
+                Yii::error("Gagal mengambil data peserta tambahan: " . $e->getMessage());
+            }
+        }
+
+        return $this->renderPartial('_tab_peserta', [
+            'pegawai' => $pegawai,
+            'pesertaUtama' => $pesertaUtama,
+            'pesertaTambahan' => $pesertaTambahan,
+        ]);
     }
 
     public function actionTabIuran()

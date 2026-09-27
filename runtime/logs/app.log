@@ -168275,3 +168275,1551 @@ $_SERVER = [
     'DB_USER7' => 'postgres'
     'DB_PASS7' => 'sinka-admin@3329'
 ]
+2026-09-25 08:14:45 [::1][8188][1mn3pae5h3advscteuliqjop44][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant index - assumed 'index' (this will throw an Error in a future version of PHP) in D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\views\peserta\_tab_search.php:144
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\views\peserta\_tab_search.php(144): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'D:\\xampp\\htdocs...', 144, Array)
+#1 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\View.php(348): require('D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('D:\\xampp\\htdocs...', Array)
+#3 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('D:\\xampp\\htdocs...', Array, Object(app\modules\bpjs\controllers\PesertaController))
+#4 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Controller.php(438): yii\base\View->render('_tab_search', Array, Object(app\modules\bpjs\controllers\PesertaController))
+#5 D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\controllers\PesertaController.php(41): yii\base\Controller->renderPartial('_tab_search', Array)
+#6 [internal function]: app\modules\bpjs\controllers\PesertaController->actionTabSearch()
+#7 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#9 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('tab-search', Array)
+#10 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('bpjs/peserta/ta...', Array)
+#11 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#13 {main}
+2026-09-25 08:14:45 [::1][8188][1mn3pae5h3advscteuliqjop44][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'oij2l79kegj9ciofc1bml2v9n0'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => '1mn3pae5h3advscteuliqjop44'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$OmPJIshiod/8TuJkQZ2KfuPY5wJT2Z5NRpcgDj5EfFz/X6nzgY59C'
+    'token_expired' => '2026-09-25 08:21:47'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790302485
+    '_csrf-app' => 'uUCqT6_4lU_QEXxWQ-z_eBOAoWIAGK2h'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => 'SOryVXBOZewW7DhwpDpxcb2QjfYoxTzcxpcUb0T8opw9v7EkJHg62Hq5ZyHhYgkm7L33qU2Hc52pwF0uA7eQ9A=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta?kode_lokasi=31000000&keyword=ade&sub_lokasi='
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=oij2l79kegj9ciofc1bml2v9n0; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=1mn3pae5h3advscteuliqjop44'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '23840'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/tab-search'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/tab-search'
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790298885.2988
+    'REQUEST_TIME' => 1790298885
+]
+2026-09-25 08:14:47 [::1][8188][1mn3pae5h3advscteuliqjop44][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant index - assumed 'index' (this will throw an Error in a future version of PHP) in D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\views\peserta\_tab_search.php:144
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\views\peserta\_tab_search.php(144): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'D:\\xampp\\htdocs...', 144, Array)
+#1 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\View.php(348): require('D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('D:\\xampp\\htdocs...', Array)
+#3 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('D:\\xampp\\htdocs...', Array, Object(app\modules\bpjs\controllers\PesertaController))
+#4 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Controller.php(438): yii\base\View->render('_tab_search', Array, Object(app\modules\bpjs\controllers\PesertaController))
+#5 D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\controllers\PesertaController.php(41): yii\base\Controller->renderPartial('_tab_search', Array)
+#6 [internal function]: app\modules\bpjs\controllers\PesertaController->actionTabSearch()
+#7 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#9 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('tab-search', Array)
+#10 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('bpjs/peserta/ta...', Array)
+#11 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#13 {main}
+2026-09-25 08:14:47 [::1][8188][1mn3pae5h3advscteuliqjop44][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'oij2l79kegj9ciofc1bml2v9n0'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => '1mn3pae5h3advscteuliqjop44'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$OmPJIshiod/8TuJkQZ2KfuPY5wJT2Z5NRpcgDj5EfFz/X6nzgY59C'
+    'token_expired' => '2026-09-25 08:21:47'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790302487
+    '_csrf-app' => 'uUCqT6_4lU_QEXxWQ-z_eBOAoWIAGK2h'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => 'W2hVsxH4WBfR2wtvqWPO8UCRfrX-7dzuOFHiFXvh3A4uPRbCRc4HI72OVD7sO7amEbwE6puvk69XBqtUPKruZg=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta?kode_lokasi=31000000&keyword=ade&sub_lokasi='
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=oij2l79kegj9ciofc1bml2v9n0; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=1mn3pae5h3advscteuliqjop44'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '50512'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/tab-search'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/tab-search'
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790298887.5455
+    'REQUEST_TIME' => 1790298887
+]
+2026-09-25 08:19:15 [::1][8188][1mn3pae5h3advscteuliqjop44][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined offset: 1 in D:\xampp\htdocs\simasgantengv2-opd\config\UrlRule.php:66
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\config\UrlRule.php(66): yii\base\ErrorHandler->handleError(8, 'Undefined offse...', 'D:\\xampp\\htdocs...', 66, Array)
+#1 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\UrlManager.php(325): app\config\UrlRule->parseRequest(Object(yii\web\UrlManager), Object(yii\web\Request))
+#2 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Request.php(287): yii\web\UrlManager->parseRequest(Object(yii\web\Request))
+#3 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
+#4 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#6 {main}
+2026-09-25 08:19:15 [::1][8188][1mn3pae5h3advscteuliqjop44][info][application] $_GET = [
+    'nip' => '199506142025041002'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'oij2l79kegj9ciofc1bml2v9n0'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => '1mn3pae5h3advscteuliqjop44'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$OmPJIshiod/8TuJkQZ2KfuPY5wJT2Z5NRpcgDj5EfFz/X6nzgY59C'
+    'token_expired' => '2026-09-25 08:21:47'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790302755
+    '_csrf-app' => 'uUCqT6_4lU_QEXxWQ-z_eBOAoWIAGK2h'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => 'lZcdRd_H944xNpT1mXPreo4hdvAznxkj8MwP2aDW91Dgwl40i_Goul1jy6TcK5Mt3wwMr1bdVmKfm0aY553FOA=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'application/json, text/javascript, */*; q=0.01'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta?kode_lokasi=31000000&keyword=ade&sub_lokasi='
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=oij2l79kegj9ciofc1bml2v9n0; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=1mn3pae5h3advscteuliqjop44'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '62674'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/get-data'
+    'REDIRECT_QUERY_STRING' => 'nip=199506142025041002'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'nip=199506142025041002'
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/get-data?nip=199506142025041002'
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790299155.7162
+    'REQUEST_TIME' => 1790299155
+    'APP_ENV' => 'dev'
+    'APP_DEBUG' => 'true'
+    'APP_KEY' => 'pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console'
+    'DB_HOST1' => 'localhost'
+    'DB_NAME1' => 'simasgantengv2_auth_bak'
+    'DB_PORT1' => '5432'
+    'DB_USER1' => 'postgres'
+    'DB_PASS1' => 'admin-123'
+    'DB_HOST2' => 'localhost'
+    'DB_NAME2' => 'simasgantengv2_bak'
+    'DB_PORT2' => '5432'
+    'DB_USER2' => 'postgres'
+    'DB_PASS2' => 'admin-123'
+    'DB_HOST3' => 'localhost'
+    'DB_NAME3' => 'simpeg'
+    'DB_PORT3' => '3000'
+    'DB_USER3' => 'taspen'
+    'DB_PASS3' => 'taspen'
+    'DB_HOST4' => '192.168.4.3'
+    'DB_NAME4' => 'sppd2024'
+    'DB_PORT4' => '3306'
+    'DB_USER4' => 'binpeg'
+    'DB_PASS4' => 'binpegbekade01012017'
+    'DB_HOST5' => 'localhost'
+    'DB_NAME5' => 'gaji'
+    'DB_PORT5' => '3000'
+    'DB_USER5' => 'taspen'
+    'DB_PASS5' => 'taspen'
+    'DB_HOST6' => '192.168.2.6'
+    'DB_NAME6' => 'adms_db'
+    'DB_PORT6' => '3306'
+    'DB_USER6' => 'binpeg'
+    'DB_PASS6' => 'binpegbekade01012017'
+    'DB_HOST7' => '192.168.4.3'
+    'DB_NAME7' => 'fingerprint'
+    'DB_PORT7' => '5432'
+    'DB_USER7' => 'postgres'
+    'DB_PASS7' => 'sinka-admin@3329'
+]
+2026-09-27 19:54:50 [::1][8188][-][error][app\modules\bpjs\controllers\PesertaController::actionSearchPegawai] BFF Error [SearchPegawai]: Curl error: #7 - Failed to connect to localhost port 9090: Connection refused
+    in D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\controllers\PesertaController.php:99
+2026-09-27 19:54:47 [::1][8188][-][info][application] $_GET = [
+    'kode_lokasi' => '31000000'
+    'keyword' => 'ade'
+    'sub_lokasi' => ''
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'ulf7vues3v16mbik30nq5de6jv'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => 'tvbht2getciv7uqdi84o6rtr4n'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790517288
+    '_csrf-app' => 'kll-yS5-xAESuzF-cqG0FK22E8p24_GJ'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$0lR4aqtZEcujcG5s.m.r4ebPw.JyEYvubVzwS5rbvgZ3Ek1MMYVgW'
+    'token_expired' => '2026-09-27 22:54:14'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+    '__returnUrl' => '/simasgantengv2-opd/web/'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => '8Kw1gP6J-UmMxNR_h2NEJh4hF_SQnHz014ZkHEVxwzabwFmth9rMZPSFkSzyGQILfVBQxNbXTsaSvhQucS6EfA=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'application/json, text/javascript, */*; q=0.01'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=ulf7vues3v16mbik30nq5de6jv; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=tvbht2getciv7uqdi84o6rtr4n'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '21300'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/search-pegawai'
+    'REDIRECT_QUERY_STRING' => 'kode_lokasi=31000000&keyword=ade&sub_lokasi='
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'kode_lokasi=31000000&keyword=ade&sub_lokasi='
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/search-pegawai?kode_lokasi=31000000&keyword=ade&sub_lokasi='
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790513687.9235
+    'REQUEST_TIME' => 1790513687
+    'APP_ENV' => 'dev'
+    'APP_DEBUG' => 'true'
+    'APP_KEY' => 'pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console'
+    'DB_HOST1' => 'localhost'
+    'DB_NAME1' => 'simasgantengv2_auth_bak'
+    'DB_PORT1' => '5432'
+    'DB_USER1' => 'postgres'
+    'DB_PASS1' => 'admin-123'
+    'DB_HOST2' => 'localhost'
+    'DB_NAME2' => 'simasgantengv2_bak'
+    'DB_PORT2' => '5432'
+    'DB_USER2' => 'postgres'
+    'DB_PASS2' => 'admin-123'
+    'DB_HOST3' => 'localhost'
+    'DB_NAME3' => 'simpeg'
+    'DB_PORT3' => '3000'
+    'DB_USER3' => 'taspen'
+    'DB_PASS3' => 'taspen'
+    'DB_HOST4' => '192.168.4.3'
+    'DB_NAME4' => 'sppd2024'
+    'DB_PORT4' => '3306'
+    'DB_USER4' => 'binpeg'
+    'DB_PASS4' => 'binpegbekade01012017'
+    'DB_HOST5' => 'localhost'
+    'DB_NAME5' => 'gaji'
+    'DB_PORT5' => '3000'
+    'DB_USER5' => 'taspen'
+    'DB_PASS5' => 'taspen'
+    'DB_HOST6' => '192.168.2.6'
+    'DB_NAME6' => 'adms_db'
+    'DB_PORT6' => '3306'
+    'DB_USER6' => 'binpeg'
+    'DB_PASS6' => 'binpegbekade01012017'
+    'DB_HOST7' => '192.168.4.3'
+    'DB_NAME7' => 'fingerprint'
+    'DB_PORT7' => '5432'
+    'DB_USER7' => 'postgres'
+    'DB_PASS7' => 'sinka-admin@3329'
+]
+2026-09-27 20:05:33 [::1][8188][-][error][app\modules\bpjs\controllers\PesertaController::actionSearchPegawai] BFF Error [SearchPegawai]: Curl error: #7 - Failed to connect to localhost port 9090: Connection refused
+    in D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\controllers\PesertaController.php:99
+2026-09-27 20:05:30 [::1][8188][-][info][application] $_GET = [
+    'kode_lokasi' => '31000000'
+    'keyword' => 'ade'
+    'sub_lokasi' => ''
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'ulf7vues3v16mbik30nq5de6jv'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => 'm9ul75s2mif6vr11v7n7b99b5q'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790517930
+    '_csrf-app' => 'E9ERps4Kw2hlT1GDv1w-q9j0hAecWiAy'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$0lR4aqtZEcujcG5s.m.r4ebPw.JyEYvubVzwS5rbvgZ3Ek1MMYVgW'
+    'token_expired' => '2026-09-27 22:54:14'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+    '__returnUrl' => '/simasgantengv2-opd/web/'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => '44b_7p4HdLwf9uNUFf43SiPAOapIItL1WnQ2Bvlr332mv7q87nRA92jEizhBz3AOVfFOhzkbuMUyNVNlrgKeBA=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'application/json, text/javascript, */*; q=0.01'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=ulf7vues3v16mbik30nq5de6jv; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=m9ul75s2mif6vr11v7n7b99b5q'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '40129'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/search-pegawai'
+    'REDIRECT_QUERY_STRING' => 'kode_lokasi=31000000&keyword=ade&sub_lokasi='
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'kode_lokasi=31000000&keyword=ade&sub_lokasi='
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/search-pegawai?kode_lokasi=31000000&keyword=ade&sub_lokasi='
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790514330.5671
+    'REQUEST_TIME' => 1790514330
+    'APP_ENV' => 'dev'
+    'APP_DEBUG' => 'true'
+    'APP_KEY' => 'pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console'
+    'DB_HOST1' => 'localhost'
+    'DB_NAME1' => 'simasgantengv2_auth_bak'
+    'DB_PORT1' => '5432'
+    'DB_USER1' => 'postgres'
+    'DB_PASS1' => 'admin-123'
+    'DB_HOST2' => 'localhost'
+    'DB_NAME2' => 'simasgantengv2_bak'
+    'DB_PORT2' => '5432'
+    'DB_USER2' => 'postgres'
+    'DB_PASS2' => 'admin-123'
+    'DB_HOST3' => 'localhost'
+    'DB_NAME3' => 'simpeg'
+    'DB_PORT3' => '3000'
+    'DB_USER3' => 'taspen'
+    'DB_PASS3' => 'taspen'
+    'DB_HOST4' => '192.168.4.3'
+    'DB_NAME4' => 'sppd2024'
+    'DB_PORT4' => '3306'
+    'DB_USER4' => 'binpeg'
+    'DB_PASS4' => 'binpegbekade01012017'
+    'DB_HOST5' => 'localhost'
+    'DB_NAME5' => 'gaji'
+    'DB_PORT5' => '3000'
+    'DB_USER5' => 'taspen'
+    'DB_PASS5' => 'taspen'
+    'DB_HOST6' => '192.168.2.6'
+    'DB_NAME6' => 'adms_db'
+    'DB_PORT6' => '3306'
+    'DB_USER6' => 'binpeg'
+    'DB_PASS6' => 'binpegbekade01012017'
+    'DB_HOST7' => '192.168.4.3'
+    'DB_NAME7' => 'fingerprint'
+    'DB_PORT7' => '5432'
+    'DB_USER7' => 'postgres'
+    'DB_PASS7' => 'sinka-admin@3329'
+]
+2026-09-27 20:10:20 [::1][8188][m9ul75s2mif6vr11v7n7b99b5q][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined offset: 1 in D:\xampp\htdocs\simasgantengv2-opd\config\UrlRule.php:66
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\config\UrlRule.php(66): yii\base\ErrorHandler->handleError(8, 'Undefined offse...', 'D:\\xampp\\htdocs...', 66, Array)
+#1 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\UrlManager.php(325): app\config\UrlRule->parseRequest(Object(yii\web\UrlManager), Object(yii\web\Request))
+#2 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Request.php(287): yii\web\UrlManager->parseRequest(Object(yii\web\Request))
+#3 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
+#4 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#6 {main}
+2026-09-27 20:10:20 [::1][8188][m9ul75s2mif6vr11v7n7b99b5q][info][application] $_GET = [
+    'nip' => '197606122014091001'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'ulf7vues3v16mbik30nq5de6jv'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => 'm9ul75s2mif6vr11v7n7b99b5q'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790518220
+    '_csrf-app' => 'E9ERps4Kw2hlT1GDv1w-q9j0hAecWiAy'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$0lR4aqtZEcujcG5s.m.r4ebPw.JyEYvubVzwS5rbvgZ3Ek1MMYVgW'
+    'token_expired' => '2026-09-27 22:54:14'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+    '__returnUrl' => '/simasgantengv2-opd/web/'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => '44b_7p4HdLwf9uNUFf43SiPAOapIItL1WnQ2Bvlr332mv7q87nRA92jEizhBz3AOVfFOhzkbuMUyNVNlrgKeBA=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'application/json, text/javascript, */*; q=0.01'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=ulf7vues3v16mbik30nq5de6jv; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=m9ul75s2mif6vr11v7n7b99b5q'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '15614'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/get-data'
+    'REDIRECT_QUERY_STRING' => 'nip=197606122014091001'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'nip=197606122014091001'
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/get-data?nip=197606122014091001'
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790514620.4962
+    'REQUEST_TIME' => 1790514620
+    'APP_ENV' => 'dev'
+    'APP_DEBUG' => 'true'
+    'APP_KEY' => 'pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console'
+    'DB_HOST1' => 'localhost'
+    'DB_NAME1' => 'simasgantengv2_auth_bak'
+    'DB_PORT1' => '5432'
+    'DB_USER1' => 'postgres'
+    'DB_PASS1' => 'admin-123'
+    'DB_HOST2' => 'localhost'
+    'DB_NAME2' => 'simasgantengv2_bak'
+    'DB_PORT2' => '5432'
+    'DB_USER2' => 'postgres'
+    'DB_PASS2' => 'admin-123'
+    'DB_HOST3' => 'localhost'
+    'DB_NAME3' => 'simpeg'
+    'DB_PORT3' => '3000'
+    'DB_USER3' => 'taspen'
+    'DB_PASS3' => 'taspen'
+    'DB_HOST4' => '192.168.4.3'
+    'DB_NAME4' => 'sppd2024'
+    'DB_PORT4' => '3306'
+    'DB_USER4' => 'binpeg'
+    'DB_PASS4' => 'binpegbekade01012017'
+    'DB_HOST5' => 'localhost'
+    'DB_NAME5' => 'gaji'
+    'DB_PORT5' => '3000'
+    'DB_USER5' => 'taspen'
+    'DB_PASS5' => 'taspen'
+    'DB_HOST6' => '192.168.2.6'
+    'DB_NAME6' => 'adms_db'
+    'DB_PORT6' => '3306'
+    'DB_USER6' => 'binpeg'
+    'DB_PASS6' => 'binpegbekade01012017'
+    'DB_HOST7' => '192.168.4.3'
+    'DB_NAME7' => 'fingerprint'
+    'DB_PORT7' => '5432'
+    'DB_USER7' => 'postgres'
+    'DB_PASS7' => 'sinka-admin@3329'
+]
+2026-09-27 20:16:52 [::1][8188][m9ul75s2mif6vr11v7n7b99b5q][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined offset: 1 in D:\xampp\htdocs\simasgantengv2-opd\config\UrlRule.php:66
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\config\UrlRule.php(66): yii\base\ErrorHandler->handleError(8, 'Undefined offse...', 'D:\\xampp\\htdocs...', 66, Array)
+#1 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\UrlManager.php(325): app\config\UrlRule->parseRequest(Object(yii\web\UrlManager), Object(yii\web\Request))
+#2 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Request.php(287): yii\web\UrlManager->parseRequest(Object(yii\web\Request))
+#3 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
+#4 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#6 {main}
+2026-09-27 20:16:52 [::1][8188][m9ul75s2mif6vr11v7n7b99b5q][info][application] $_GET = [
+    'nip' => '197606122014091001'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'ulf7vues3v16mbik30nq5de6jv'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => 'm9ul75s2mif6vr11v7n7b99b5q'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790518612
+    '_csrf-app' => 'E9ERps4Kw2hlT1GDv1w-q9j0hAecWiAy'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$0lR4aqtZEcujcG5s.m.r4ebPw.JyEYvubVzwS5rbvgZ3Ek1MMYVgW'
+    'token_expired' => '2026-09-27 22:54:14'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+    '__returnUrl' => '/simasgantengv2-opd/web/'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => 'xMJSQeWcTzA6LzxfDDZ2vzZ570NjXYdeaQe5ec-cYFSB-xcTle97e00dVDNYBzH7QEiYbhJk7W4BRtwamPUhLQ=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'application/json, text/javascript, */*; q=0.01'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=ulf7vues3v16mbik30nq5de6jv; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=m9ul75s2mif6vr11v7n7b99b5q'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '53936'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/get-data'
+    'REDIRECT_QUERY_STRING' => 'nip=197606122014091001'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'nip=197606122014091001'
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/get-data?nip=197606122014091001'
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790515012.7349
+    'REQUEST_TIME' => 1790515012
+    'APP_ENV' => 'dev'
+    'APP_DEBUG' => 'true'
+    'APP_KEY' => 'pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console'
+    'DB_HOST1' => 'localhost'
+    'DB_NAME1' => 'simasgantengv2_auth_bak'
+    'DB_PORT1' => '5432'
+    'DB_USER1' => 'postgres'
+    'DB_PASS1' => 'admin-123'
+    'DB_HOST2' => 'localhost'
+    'DB_NAME2' => 'simasgantengv2_bak'
+    'DB_PORT2' => '5432'
+    'DB_USER2' => 'postgres'
+    'DB_PASS2' => 'admin-123'
+    'DB_HOST3' => 'localhost'
+    'DB_NAME3' => 'simpeg'
+    'DB_PORT3' => '3000'
+    'DB_USER3' => 'taspen'
+    'DB_PASS3' => 'taspen'
+    'DB_HOST4' => '192.168.4.3'
+    'DB_NAME4' => 'sppd2024'
+    'DB_PORT4' => '3306'
+    'DB_USER4' => 'binpeg'
+    'DB_PASS4' => 'binpegbekade01012017'
+    'DB_HOST5' => 'localhost'
+    'DB_NAME5' => 'gaji'
+    'DB_PORT5' => '3000'
+    'DB_USER5' => 'taspen'
+    'DB_PASS5' => 'taspen'
+    'DB_HOST6' => '192.168.2.6'
+    'DB_NAME6' => 'adms_db'
+    'DB_PORT6' => '3306'
+    'DB_USER6' => 'binpeg'
+    'DB_PASS6' => 'binpegbekade01012017'
+    'DB_HOST7' => '192.168.4.3'
+    'DB_NAME7' => 'fingerprint'
+    'DB_PORT7' => '5432'
+    'DB_USER7' => 'postgres'
+    'DB_PASS7' => 'sinka-admin@3329'
+]
+2026-09-27 20:19:06 [::1][8188][m9ul75s2mif6vr11v7n7b99b5q][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined offset: 1 in D:\xampp\htdocs\simasgantengv2-opd\config\UrlRule.php:66
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\config\UrlRule.php(66): yii\base\ErrorHandler->handleError(8, 'Undefined offse...', 'D:\\xampp\\htdocs...', 66, Array)
+#1 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\UrlManager.php(325): app\config\UrlRule->parseRequest(Object(yii\web\UrlManager), Object(yii\web\Request))
+#2 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Request.php(287): yii\web\UrlManager->parseRequest(Object(yii\web\Request))
+#3 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
+#4 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#6 {main}
+2026-09-27 20:19:06 [::1][8188][m9ul75s2mif6vr11v7n7b99b5q][info][application] $_GET = [
+    'nip' => '197606122014091001'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'ulf7vues3v16mbik30nq5de6jv'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => 'm9ul75s2mif6vr11v7n7b99b5q'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790518746
+    '_csrf-app' => 'E9ERps4Kw2hlT1GDv1w-q9j0hAecWiAy'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$0lR4aqtZEcujcG5s.m.r4ebPw.JyEYvubVzwS5rbvgZ3Ek1MMYVgW'
+    'token_expired' => '2026-09-27 22:54:14'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+    '__returnUrl' => '/simasgantengv2-opd/web/'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => 'oSZsYxT7xcLIkCdAiEFYj3EJOjpw6_ltlIoPKDQu2sLkHykxZIjxib-iTyzccB_LBzhNFwHSk138y2pLY0ebuw=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'application/json, text/javascript, */*; q=0.01'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=ulf7vues3v16mbik30nq5de6jv; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=m9ul75s2mif6vr11v7n7b99b5q'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '45824'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/get-data'
+    'REDIRECT_QUERY_STRING' => 'nip=197606122014091001'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'nip=197606122014091001'
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/get-data?nip=197606122014091001'
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790515146.5844
+    'REQUEST_TIME' => 1790515146
+    'APP_ENV' => 'dev'
+    'APP_DEBUG' => 'true'
+    'APP_KEY' => 'pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console'
+    'DB_HOST1' => 'localhost'
+    'DB_NAME1' => 'simasgantengv2_auth_bak'
+    'DB_PORT1' => '5432'
+    'DB_USER1' => 'postgres'
+    'DB_PASS1' => 'admin-123'
+    'DB_HOST2' => 'localhost'
+    'DB_NAME2' => 'simasgantengv2_bak'
+    'DB_PORT2' => '5432'
+    'DB_USER2' => 'postgres'
+    'DB_PASS2' => 'admin-123'
+    'DB_HOST3' => 'localhost'
+    'DB_NAME3' => 'simpeg'
+    'DB_PORT3' => '3000'
+    'DB_USER3' => 'taspen'
+    'DB_PASS3' => 'taspen'
+    'DB_HOST4' => '192.168.4.3'
+    'DB_NAME4' => 'sppd2024'
+    'DB_PORT4' => '3306'
+    'DB_USER4' => 'binpeg'
+    'DB_PASS4' => 'binpegbekade01012017'
+    'DB_HOST5' => 'localhost'
+    'DB_NAME5' => 'gaji'
+    'DB_PORT5' => '3000'
+    'DB_USER5' => 'taspen'
+    'DB_PASS5' => 'taspen'
+    'DB_HOST6' => '192.168.2.6'
+    'DB_NAME6' => 'adms_db'
+    'DB_PORT6' => '3306'
+    'DB_USER6' => 'binpeg'
+    'DB_PASS6' => 'binpegbekade01012017'
+    'DB_HOST7' => '192.168.4.3'
+    'DB_NAME7' => 'fingerprint'
+    'DB_PORT7' => '5432'
+    'DB_USER7' => 'postgres'
+    'DB_PASS7' => 'sinka-admin@3329'
+]
+2026-09-27 20:20:20 [::1][8188][m9ul75s2mif6vr11v7n7b99b5q][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined offset: 1 in D:\xampp\htdocs\simasgantengv2-opd\config\UrlRule.php:66
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\config\UrlRule.php(66): yii\base\ErrorHandler->handleError(8, 'Undefined offse...', 'D:\\xampp\\htdocs...', 66, Array)
+#1 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\UrlManager.php(325): app\config\UrlRule->parseRequest(Object(yii\web\UrlManager), Object(yii\web\Request))
+#2 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Request.php(287): yii\web\UrlManager->parseRequest(Object(yii\web\Request))
+#3 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
+#4 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#6 {main}
+2026-09-27 20:20:20 [::1][8188][m9ul75s2mif6vr11v7n7b99b5q][info][application] $_GET = [
+    'nip' => '197606122014091001'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'ulf7vues3v16mbik30nq5de6jv'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => 'm9ul75s2mif6vr11v7n7b99b5q'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790518820
+    '_csrf-app' => 'E9ERps4Kw2hlT1GDv1w-q9j0hAecWiAy'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$0lR4aqtZEcujcG5s.m.r4ebPw.JyEYvubVzwS5rbvgZ3Ek1MMYVgW'
+    'token_expired' => '2026-09-27 22:54:14'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+    '__returnUrl' => '/simasgantengv2-opd/web/'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => 'WU5JdcSP1LjeB0MXOIpVRkR4vQ3QmTbTk-YV7562pQQcdwwntPzg86k1K3tsuxICMknKIKGgXOP7p3CMyd_kfQ=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'application/json, text/javascript, */*; q=0.01'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=ulf7vues3v16mbik30nq5de6jv; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=m9ul75s2mif6vr11v7n7b99b5q'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '5981'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/get-data'
+    'REDIRECT_QUERY_STRING' => 'nip=197606122014091001'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'nip=197606122014091001'
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/get-data?nip=197606122014091001'
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790515220.8321
+    'REQUEST_TIME' => 1790515220
+    'APP_ENV' => 'dev'
+    'APP_DEBUG' => 'true'
+    'APP_KEY' => 'pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console'
+    'DB_HOST1' => 'localhost'
+    'DB_NAME1' => 'simasgantengv2_auth_bak'
+    'DB_PORT1' => '5432'
+    'DB_USER1' => 'postgres'
+    'DB_PASS1' => 'admin-123'
+    'DB_HOST2' => 'localhost'
+    'DB_NAME2' => 'simasgantengv2_bak'
+    'DB_PORT2' => '5432'
+    'DB_USER2' => 'postgres'
+    'DB_PASS2' => 'admin-123'
+    'DB_HOST3' => 'localhost'
+    'DB_NAME3' => 'simpeg'
+    'DB_PORT3' => '3000'
+    'DB_USER3' => 'taspen'
+    'DB_PASS3' => 'taspen'
+    'DB_HOST4' => '192.168.4.3'
+    'DB_NAME4' => 'sppd2024'
+    'DB_PORT4' => '3306'
+    'DB_USER4' => 'binpeg'
+    'DB_PASS4' => 'binpegbekade01012017'
+    'DB_HOST5' => 'localhost'
+    'DB_NAME5' => 'gaji'
+    'DB_PORT5' => '3000'
+    'DB_USER5' => 'taspen'
+    'DB_PASS5' => 'taspen'
+    'DB_HOST6' => '192.168.2.6'
+    'DB_NAME6' => 'adms_db'
+    'DB_PORT6' => '3306'
+    'DB_USER6' => 'binpeg'
+    'DB_PASS6' => 'binpegbekade01012017'
+    'DB_HOST7' => '192.168.4.3'
+    'DB_NAME7' => 'fingerprint'
+    'DB_PORT7' => '5432'
+    'DB_USER7' => 'postgres'
+    'DB_PASS7' => 'sinka-admin@3329'
+]
+2026-09-27 21:50:15 [::1][8188][89qa0o81nrajul54jf9dqieg15][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined variable: apiBaseUrl in D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\controllers\PesertaController.php:56
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\controllers\PesertaController.php(56): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', 'D:\\xampp\\htdocs...', 56, Array)
+#1 [internal function]: app\modules\bpjs\controllers\PesertaController->actionTabPeserta()
+#2 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#4 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('tab-peserta', Array)
+#5 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('bpjs/peserta/ta...', Array)
+#6 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#8 {main}
+2026-09-27 21:50:15 [::1][8188][89qa0o81nrajul54jf9dqieg15][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'ulf7vues3v16mbik30nq5de6jv'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => '89qa0o81nrajul54jf9dqieg15'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790524215
+    '_csrf-app' => 'DfKp8ZMTB5vWQD7nuOQ_9J702I4L4wS3'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$0lR4aqtZEcujcG5s.m.r4ebPw.JyEYvubVzwS5rbvgZ3Ek1MMYVgW'
+    'token_expired' => '2026-09-27 22:54:14'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => 'R0UK2evFsB0LPgszCT-W-mvSR-7mAItrzKZy71sRS5gDI0Gp05_9SUkLfWRYe6GUHp0Wsd9KvFv-70ajb2YYqw=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=ulf7vues3v16mbik30nq5de6jv; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=89qa0o81nrajul54jf9dqieg15'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '3572'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/tab-peserta'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/tab-peserta'
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790520615.3078
+    'REQUEST_TIME' => 1790520615
+    'APP_ENV' => 'dev'
+    'APP_DEBUG' => 'true'
+    'APP_KEY' => 'pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console'
+    'DB_HOST1' => 'localhost'
+    'DB_NAME1' => 'simasgantengv2_auth_bak'
+    'DB_PORT1' => '5432'
+    'DB_USER1' => 'postgres'
+    'DB_PASS1' => 'admin-123'
+    'DB_HOST2' => 'localhost'
+    'DB_NAME2' => 'simasgantengv2_bak'
+    'DB_PORT2' => '5432'
+    'DB_USER2' => 'postgres'
+    'DB_PASS2' => 'admin-123'
+    'DB_HOST3' => 'localhost'
+    'DB_NAME3' => 'simpeg'
+    'DB_PORT3' => '3000'
+    'DB_USER3' => 'taspen'
+    'DB_PASS3' => 'taspen'
+    'DB_HOST4' => '192.168.4.3'
+    'DB_NAME4' => 'sppd2024'
+    'DB_PORT4' => '3306'
+    'DB_USER4' => 'binpeg'
+    'DB_PASS4' => 'binpegbekade01012017'
+    'DB_HOST5' => 'localhost'
+    'DB_NAME5' => 'gaji'
+    'DB_PORT5' => '3000'
+    'DB_USER5' => 'taspen'
+    'DB_PASS5' => 'taspen'
+    'DB_HOST6' => '192.168.2.6'
+    'DB_NAME6' => 'adms_db'
+    'DB_PORT6' => '3306'
+    'DB_USER6' => 'binpeg'
+    'DB_PASS6' => 'binpegbekade01012017'
+    'DB_HOST7' => '192.168.4.3'
+    'DB_NAME7' => 'fingerprint'
+    'DB_PORT7' => '5432'
+    'DB_USER7' => 'postgres'
+    'DB_PASS7' => 'sinka-admin@3329'
+]
+2026-09-27 21:51:45 [::1][8188][89qa0o81nrajul54jf9dqieg15][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined variable: apiBaseUrl in D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\controllers\PesertaController.php:56
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\modules\bpjs\controllers\PesertaController.php(56): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', 'D:\\xampp\\htdocs...', 56, Array)
+#1 [internal function]: app\modules\bpjs\controllers\PesertaController->actionTabPeserta()
+#2 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#4 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('tab-peserta', Array)
+#5 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('bpjs/peserta/ta...', Array)
+#6 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#8 {main}
+2026-09-27 21:51:44 [::1][8188][89qa0o81nrajul54jf9dqieg15][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'bkpsdmd-brebeskab-app-auth' => 'ulf7vues3v16mbik30nq5de6jv'
+    '_identity-app' => 'b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:\"_identity-app\";i:1;s:47:\"[8188,\"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq\",10800]\";}'
+    'bkpsdmd-brebeskab-app' => '89qa0o81nrajul54jf9dqieg15'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    '__id' => 8188
+    '__authKey' => 'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'
+    '__expire' => 1790524304
+    '_csrf-app' => 'DfKp8ZMTB5vWQD7nuOQ_9J702I4L4wS3'
+    'password' => 'Xyzvyx11032012'
+    'username' => 'morieawan-administrator'
+    'nip' => '198306292010011024'
+    'pengguna' => 'A8ACA7C248C93912E040640A040269BB'
+    'namapengguna' => 'MOH. ARIEF KURNIAWAN'
+    'iduser' => 8188
+    'role' => '3'
+    'module' => '6'
+    'mod_name' => 'Presensi, Kinerja & TPP - Kepegawaian'
+    'roleadmin' => 1
+    'token_id' => '$2y$13$0lR4aqtZEcujcG5s.m.r4ebPw.JyEYvubVzwS5rbvgZ3Ek1MMYVgW'
+    'token_expired' => '2026-09-27 22:54:14'
+    'tablok' => '31000000'
+    'tablokb' => '31000400'
+    'group_user' => '31000000'
+    'group_cetak' => '31000000'
+    'groupview' => '31000000'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost:81'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_X_CSRF_TOKEN' => 'QPH7_DR9tfBu5UnJ72Qg0JTaI4jTc6EVVgA_VKaw030El7CMDCf4pCzQP56-IBe-4ZVy1-o5liVkSQsYkseATg=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"154\", \"Google Chrome\";v=\"154\", \"Not A(Brand\";v=\"99\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:81/simasgantengv2-opd/web/bpjs-peserta'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => 'bkpsdmd-brebeskab-app-auth=ulf7vues3v16mbik30nq5de6jv; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=89qa0o81nrajul54jf9dqieg15'
+    'PATH' => 'C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\AOMEI Backupper\\AOMEI Backupper 5.7.0;D:\\xampp\\php;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python39;E:\\iclockSvr\\Python26;C:\\Program Files\\dotnet\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files (x86)\\The Scripps Research Institute\\Vina;D:\\xampp\\composer;C:\\Program Files\\Git\\cmd;C:\\Program Files\\PuTTY\\;D:\\gradle\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Go\\bin;E:\\flutter\\bin;E:\\Android\\cmdline-tools\\latest\\bin;E:\\Android\\platform-tools;E:\\Android\\emulator;E:\\flutter_pub_cache\\bin;;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\binpeg\\AppData\\Roaming\\npm;C:\\Users\\binpeg\\go\\bin;C:\\Users\\binpeg\\AppData\\Local\\Microsoft\\WindowsApps;D:\\xampp82\\composer;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Windsurf\\bin;C:\\Users\\binpeg\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\binpeg\\AppData\\Local\\devin\\cli\\bin;E:\\bun\\.bun\\bin;E:\\bun\\.bun\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Win64) OpenSSL/1.1.1g'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '81'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/simasgantengv2-opd/web/index.php'
+    'REMOTE_PORT' => '21335'
+    'REDIRECT_URL' => '/simasgantengv2-opd/web/bpjs/peserta/tab-peserta'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/simasgantengv2-opd/web/bpjs/peserta/tab-peserta'
+    'SCRIPT_NAME' => '/simasgantengv2-opd/web/index.php'
+    'PHP_SELF' => '/simasgantengv2-opd/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1790520704.9068
+    'REQUEST_TIME' => 1790520704
+    'APP_ENV' => 'dev'
+    'APP_DEBUG' => 'true'
+    'APP_KEY' => 'pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console'
+    'DB_HOST1' => 'localhost'
+    'DB_NAME1' => 'simasgantengv2_auth_bak'
+    'DB_PORT1' => '5432'
+    'DB_USER1' => 'postgres'
+    'DB_PASS1' => 'admin-123'
+    'DB_HOST2' => 'localhost'
+    'DB_NAME2' => 'simasgantengv2_bak'
+    'DB_PORT2' => '5432'
+    'DB_USER2' => 'postgres'
+    'DB_PASS2' => 'admin-123'
+    'DB_HOST3' => 'localhost'
+    'DB_NAME3' => 'simpeg'
+    'DB_PORT3' => '3000'
+    'DB_USER3' => 'taspen'
+    'DB_PASS3' => 'taspen'
+    'DB_HOST4' => '192.168.4.3'
+    'DB_NAME4' => 'sppd2024'
+    'DB_PORT4' => '3306'
+    'DB_USER4' => 'binpeg'
+    'DB_PASS4' => 'binpegbekade01012017'
+    'DB_HOST5' => 'localhost'
+    'DB_NAME5' => 'gaji'
+    'DB_PORT5' => '3000'
+    'DB_USER5' => 'taspen'
+    'DB_PASS5' => 'taspen'
+    'DB_HOST6' => '192.168.2.6'
+    'DB_NAME6' => 'adms_db'
+    'DB_PORT6' => '3306'
+    'DB_USER6' => 'binpeg'
+    'DB_PASS6' => 'binpegbekade01012017'
+    'DB_HOST7' => '192.168.4.3'
+    'DB_NAME7' => 'fingerprint'
+    'DB_PORT7' => '5432'
+    'DB_USER7' => 'postgres'
+    'DB_PASS7' => 'sinka-admin@3329'
+]
