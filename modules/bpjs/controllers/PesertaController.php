@@ -53,11 +53,11 @@ class PesertaController extends Controller
         $pegawai = [];
 
         if ($nip) {
-            $client = new Client(['baseUrl' => $apiBaseUrl]); 
+            $client = new Client(['baseUrl' => $this->apiBaseUrl]); 
 
             // 1. Ambil Data Peserta Utama (Simgaji - DB5)
             try {
-                $responseUtama = $client->get('simgaji/keluarga', ['nip' => $nip])->send();
+                $responseUtama = $client->get('/simgaji/keluarga', ['nip' => $nip])->send();
                 if ($responseUtama->isOk) {
                     $pesertaUtama = $responseUtama->data['data'] ?? [];
                 }
@@ -67,7 +67,7 @@ class PesertaController extends Controller
 
             // 2. Ambil Data Peserta BPJS Tambahan (DB21)
             try {
-                $responseTambahan = $client->get('bpjs/peserta', ['nip' => $nip])->send();
+                $responseTambahan = $client->get('/bpjs/peserta', ['nip' => $nip])->send();
                 if ($responseTambahan->isOk) {
                     $pesertaTambahan = $responseTambahan->data['data'] ?? [];
                 }
@@ -109,7 +109,8 @@ class PesertaController extends Controller
         ]);
 
         // Gunakan 127.0.0.1 untuk menghindari isu IP resolution IPv6 (::1) pada Windows
-        $fullUrl = 'http://localhost:9090/v1/pegawai/search?' . $queryParams;
+        $fullUrl = $this->apiBaseUrl.'/pegawai/search?' . $queryParams;
+        // return $fullUrl;
 
         try {
             $client = new Client([
