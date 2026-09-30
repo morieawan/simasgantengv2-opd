@@ -16,10 +16,7 @@
         <div class="col-md-6 form-group">
             <label>Hubungan Keluarga <span class="text-danger">*</span></label>
             <select class="form-control" id="hubkel" name="PesertaForm[hubkel]" required>
-                <option value="">-- Pilih Hubkel --</option>
-                <option value="00">00 - Kepala Keluarga</option>
-                <option value="01">01 - Suami/Istri</option>
-                <option value="02">02 - Anak</option>
+                <option value="">-- Memuat Hubkel... --</option>
             </select>
         </div>
         <!--
@@ -92,92 +89,134 @@
 </form>
 
 <script>
-$(document).ready(function() {
+(function($) {
+    'use strict';
 
-    // -------------------------------------------------------------
-    // LOGIC DEPENDENT DROPDOWN (DEPDROP)
-    // -------------------------------------------------------------
+    $(document).ready(function() {
 
-    // 1. Load Data Provinsi awal
-    function loadProvinsi() {
-        // SISIPKAN API / CALL AJAX PROVINSI DI SINI KELAK
-        /*
-        $.get('/bpjs/wilayah/get-provinsi', function(res) {
-            let options = '<option value="">-- Pilih Provinsi --</option>';
-            res.forEach(item => {
-                options += `<option value="${item.id}">${item.nama}</option>`;
+        // 1. Ambil URL dan Token CSRF bawaan Yii2 secara aman
+        var getWilayahUrl = <?= \yii\helpers\Json::encode(\yii\helpers\Url::to(['/bpjs/peserta/get-wilayah'])) ?>;
+        var csrfParam = yii.getCsrfParam();
+        var csrfToken = yii.getCsrfToken();
+
+        // 2. Helper AJAX DepDrop Aman
+        function fetchAndPopulateWilayah(targetSelector, parentCode, placeholder, selectedVal = '') {
+            var $target = $(targetSelector);
+            $target.html('<option value="">-- Memuat ' + placeholder + '... --</option>').prop('disabled', true);
+
+            // Siapkan payload data + CSRF Token
+            var requestData = { parent: parentCode };
+            requestData[csrfParam] = csrfToken;
+
+            $.ajax({
+                url: getWilayahUrl,
+                type: 'GET',
+                data: requestData,
+                dataType: 'json',
+                cache: false, // Menghindari caching browser
+                success: function(res) {
+                    if (res.status === 'success' && res.data && res.data.length > 0) {
+                        var options = '<option value="">-- Pilih ' + placeholder + ' --</option>';
+                        
+                        $.each(res.data, function(idx, item) {
+                            var isSelected = (item.kode === selectedVal) ? 'selected' : '';
+                            options += '<option value="' + item.kode + '" ' + isSelected + '>' + item.nama + '</option>';
+                        });
+
+                        $target.html(options).prop('disabled', false);
+                    } else {
+                        $target.html('<option value="">-- Pilih ' + placeholder + ' --</option>').prop('disabled', false);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $target.html('<option value="">-- Gagal Memuat Data --</option>').prop('disabled', true);
+                }
             });
-            $('#kd_prov').html(options);
+        }
+
+        // 3. Initial Load Data saat Form Dibuka
+        var initProv = <?= \yii\helpers\Json::encode($model->kd_prov ?? '') ?>;
+        var initKab  = <?= \yii\helpers\Json::encode($model->kd_kab ?? '') ?>;
+        var initKec  = <?= \yii\helpers\Json::encode($model->kd_kec ?? '') ?>;
+        var initDesa = <?= \yii\helpers\Json::encode($model->kd_desa ?? '') ?>;
+
+        fetchAndPopulateWilayah('#kd_prov', '', 'Provinsi', initProv);
+
+        if (initProv) { fetchAndPopulateWilayah('#kd_kab', initProv, 'Kabupaten/Kota', initKab); }
+        if (initKab)  { fetchAndPopulateWilayah('#kd_kec', initKab, 'Kecamatan', initKec); }
+        if (initKec)  { fetchAndPopulateWilayah('#kd_desa', initKec, 'Desa/Kelurahan', initDesa); }
+
+        // 4. Change Event Listeners (dengan pembersihan .off() untuk keamanan event binding)
+        $('#kd_prov').off('change').on('change', function() {
+            var provKode = $(this).val();
+            $('#kd_kab, #kd_kec, #kd_desa').html('<option value="">-- Pilih --</option>').prop('disabled', true);
+
+            if (provKode) {
+                fetchAndPopulateWilayah('#kd_kab', provKode, 'Kabupaten/Kota');
+            }
         });
-        */
-    }
-    loadProvinsi();
 
-    // 2. Event Change Provinsi -> Enable & Load Kabupaten
-    $('#kd_prov').off('change').on('change', function() {
-        let provId = $(this).val();$('#kd_kab, #kd_kec, #kd_desa').html('<option value="">-- Pilih --</option>').prop('disabled', true);
+        $('#kd_kab').off('change').on('change', function() {
+            var kabKode = $(this).val();
+            $('#kd_kec, #kd_desa').html('<option value="">-- Pilih --</option>').prop('disabled', true);
 
-        if (provId) {
-            $('#kd_kab').prop('disabled', false);
-            // SISIPKAN CALL AJAX KABUPATEN BERDASARKAN provId DI SINI
-        }
+            if (kabKode) {
+                fetchAndPopulateWilayah('#kd_kec', kabKode, 'Kecamatan');
+            }
+        });
+
+        $('#kd_kec').off('change').on('change', function() {
+            var kecKode = $(this).val();
+            $('#kd_desa').html('<option value="">-- Pilih --</option>').prop('disabled', true);
+
+            if (kecKode) {
+                fetchAndPopulateWilayah('#kd_desa', kecKode, 'Desa/Kelurahan');
+            }
+        });
+
     });
 
-    // 3. Event Change Kabupaten -> Enable & Load Kecamatan
-    $('#kd_kab').off('change').on('change', function() {
-        let kabId = $(this).val();$('#kd_kec, #kd_desa').html('<option value="">-- Pilih --</option>').prop('disabled', true);
+    var getHubkelUrl = <?= \yii\helpers\Json::encode(\yii\helpers\Url::to(['/bpjs/peserta/get-hubkel'])) ?>;
+    var selectedHubkel = <?= \yii\helpers\Json::encode($model->hubkel ?? '') ?>;
 
-        if (kabId) {
-            $('#kd_kec').prop('disabled', false);
-            // SISIPKAN CALL AJAX KECAMATAN BERDASARKAN kabId DI SINI
-        }
-    });
+    function loadHubkelDropdown() {
+        var $hubkel = $('#hubkel');
+        $hubkel.html('<option value="">-- Memuat Hubkel... --</option>').prop('disabled', true);
 
-    // 4. Event Change Kecamatan -> Enable & Load Desa
-    $('#kd_kec').off('change').on('change', function() {
-        let kecId = $(this).val();$('#kd_desa').html('<option value="">-- Pilih --</option>').prop('disabled', true);
-
-        if (kecId) {
-            $('#kd_desa').prop('disabled', false);
-            // SISIPKAN CALL AJAX DESA BERDASARKAN kecId DI SINI
-        }
-    });
-
-    // -------------------------------------------------------------
-    // SUBMIT FORM AJAX
-    // -------------------------------------------------------------
-    $('#form-peserta').off('submit').on('submit', function(e) {
-        e.preventDefault();
-        let formData = $(this).serialize();
-        let csrfToken = $('meta[name="csrf-token"]').attr('content');
+        // Siapkan data request + token CSRF
+        var requestData = {};
+        requestData[csrfParam] = csrfToken;
 
         $.ajax({
-            url: '/bpjs/peserta/save',
-            type: 'POST',
-            data: formData,
-            headers: { 'X-CSRF-Token': csrfToken },
+            url: getHubkelUrl,
+            type: 'GET',
+            data: requestData,
             dataType: 'json',
-            beforeSend: function() {
-                $('#btn-save').prop('disabled', true).text('Menyimpan...');
-            },
+            cache: false, // Menghindari caching browser
             success: function(res) {
-                if (res.status === 'success') {
-                    alert(res.message);
-                    $('#modal-global-bpjs').modal('hide');
-                    if (typeof window.loadPesertaData === 'function') {
-                        window.loadPesertaData();
-                    }
+                if (res.status === 'success' && res.data && res.data.length > 0) {
+                    var options = '<option value="">-- Pilih Hubkel --</option>';
+
+                    $.each(res.data, function(idx, item) {
+                        // Pastikan mencocokkan property name (kd_hubkel & nm_hubkel)
+                        var isSelected = (item.kd_hubkel === selectedHubkel) ? 'selected' : '';
+                        options += '<option value="' + item.kd_hubkel + '" ' + isSelected + '>' + 
+                                   item.kd_hubkel + ' - ' + item.nm_hubkel + '</option>';
+                    });
+
+                    $hubkel.html(options).prop('disabled', false);
                 } else {
-                    alert('Validasi Gagal: ' + JSON.stringify(res.errors));
+                    $hubkel.html('<option value="">-- Gagal Memuat --</option>').prop('disabled', false);
                 }
             },
             error: function() {
-                alert('Terjadi kesalahan sistem.');
-            },
-            complete: function() {
-                $('#btn-save').prop('disabled', false).text('Simpan Data');
+                $hubkel.html('<option value="">-- Gagal Memuat --</option>').prop('disabled', false);
             }
         });
-    });
-});
+    }
+
+    // Jalankan fungsi load saat form dirender
+    loadHubkelDropdown();
+
+})(jQuery);
 </script>

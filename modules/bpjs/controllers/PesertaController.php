@@ -5,11 +5,28 @@ namespace app\modules\bpjs\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\web\NotFoundHttpException;
+use yii\web\BadRequestHttpException;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use yii\httpclient\Client;
+
 
 class PesertaController extends Controller
 {
     private $apiBaseUrl = 'http://localhost:9090/v1';
+
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(), [
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'get-wilayah' => ['GET'], // Membatasi hanya method GET
+                ],
+            ],
+        ]);
+    }
 
     /**
      * Main SPA Shell (Disajikan 1x saat pertama membuka halaman)
@@ -262,6 +279,70 @@ class PesertaController extends Controller
                 'status' => 'error',
                 'message' => 'Terjadi kesalahan sistem saat menyimpan data.',
             ];
+        }
+    }
+
+    public function actionGetWilayah($parent = '')
+    {
+        $request = Yii::$app->request;
+
+        // 1. Validasi HANYA menerima request AJAX
+        if (!$request->isAjax) {
+            throw new BadRequestHttpException('Request tidak valid.');
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        try {
+            $client = new Client(['baseUrl' => $this->apiBaseUrl]);
+            
+            // Send GET request ke Backend Go
+            $response = $client->get('/bpjs/wilayah', [
+                'parent' => $parent
+            ])->send();
+
+            if ($response->isOk && !empty($response->data['status'])) {
+                return [
+                    'status' => 'success',
+                    'data'   => $response->data['data'] ?? []
+                ];
+            }
+
+            return [
+                'status'  => 'error',
+                'message' => $response->data['message'] ?? 'Gagal mengambil data wilayah',
+                'data'    => []
+            ];
+        } catch (\Exception $e) {
+            return [
+                'status'  => 'error',
+                'message' => $e->getMessage(),
+                'data'    => []
+            ];
+        }
+    }
+
+    /**
+     * Action proxy untuk mengambil data dropdown Hubkel dari API Go Backend
+     */
+    public function actionGetHubkel()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        try {
+            $client = new \yii\httpclient\Client(['baseUrl' => $this->apiBaseUrl]);
+            $response = $client->get('/simgaji/hubkel')->send();
+
+            if ($response->isOk && !empty($response->data['status'])) {
+                return [
+                    'status' => 'success',
+                    'data'   => $response->data['data'] ?? []
+                ];
+            }
+
+            return ['status' => 'error', 'data' => []];
+        } catch (\Exception $e) {
+            return ['status' => 'error', 'message' => $e->getMessage(), 'data' => []];
         }
     }
 }
