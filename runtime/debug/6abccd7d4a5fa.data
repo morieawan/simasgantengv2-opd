@@ -1,0 +1,412 @@
+a:14:{s:6:"config";s:10687:"a:5:{s:10:"phpVersion";s:5:"7.4.9";s:10:"yiiVersion";s:6:"2.0.51";s:11:"application";a:8:{s:3:"yii";s:6:"2.0.51";s:4:"name";s:15:"simasganteng2.0";s:7:"version";s:3:"1.0";s:8:"language";s:5:"id-ID";s:14:"sourceLanguage";s:5:"en-US";s:7:"charset";s:5:"UTF-8";s:3:"env";s:3:"dev";s:5:"debug";s:4:"true";}s:3:"php";a:5:{s:7:"version";s:5:"7.4.9";s:6:"xdebug";b:0;s:3:"apc";b:0;s:8:"memcache";b:0;s:9:"memcached";b:0;}s:10:"extensions";a:44:{s:33:"dominus77/yii2-sweetalert2-widget";a:3:{s:4:"name";s:33:"dominus77/yii2-sweetalert2-widget";s:7:"version";s:7:"2.0.0.0";s:5:"alias";a:1:{s:22:"@dominus77/sweetalert2";s:79:"D:\xampp\htdocs\simasgantengv2-opd\vendor/dominus77/yii2-sweetalert2-widget/src";}}s:23:"yiisoft/yii2-bootstrap4";a:3:{s:4:"name";s:23:"yiisoft/yii2-bootstrap4";s:7:"version";s:8:"2.0.11.0";s:5:"alias";a:1:{s:15:"@yii/bootstrap4";s:69:"D:\xampp\htdocs\simasgantengv2-opd\vendor/yiisoft/yii2-bootstrap4/src";}}s:29:"hail812/yii2-adminlte-widgets";a:3:{s:4:"name";s:29:"hail812/yii2-adminlte-widgets";s:7:"version";s:7:"1.0.5.0";s:5:"alias";a:1:{s:25:"@hail812/adminlte/widgets";s:75:"D:\xampp\htdocs\simasgantengv2-opd\vendor/hail812/yii2-adminlte-widgets/src";}}s:22:"hail812/yii2-adminlte3";a:3:{s:4:"name";s:22:"hail812/yii2-adminlte3";s:7:"version";s:7:"1.1.9.0";s:5:"alias";a:1:{s:18:"@hail812/adminlte3";s:68:"D:\xampp\htdocs\simasgantengv2-opd\vendor/hail812/yii2-adminlte3/src";}}s:25:"kartik-v/yii2-krajee-base";a:3:{s:4:"name";s:25:"kartik-v/yii2-krajee-base";s:7:"version";s:7:"3.0.5.0";s:5:"alias";a:1:{s:12:"@kartik/base";s:71:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-krajee-base/src";}}s:25:"kartik-v/yii2-datecontrol";a:3:{s:4:"name";s:25:"kartik-v/yii2-datecontrol";s:7:"version";s:7:"1.9.9.0";s:5:"alias";a:1:{s:19:"@kartik/datecontrol";s:71:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-datecontrol/src";}}s:31:"kartik-v/yii2-widget-activeform";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-activeform";s:7:"version";s:7:"1.6.4.0";s:5:"alias";a:1:{s:12:"@kartik/form";s:77:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-activeform/src";}}s:20:"kartik-v/yii2-dialog";a:3:{s:4:"name";s:20:"kartik-v/yii2-dialog";s:7:"version";s:7:"1.0.6.0";s:5:"alias";a:1:{s:14:"@kartik/dialog";s:66:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-dialog/src";}}s:25:"kartik-v/yii2-detail-view";a:3:{s:4:"name";s:25:"kartik-v/yii2-detail-view";s:7:"version";s:7:"1.8.7.0";s:5:"alias";a:1:{s:14:"@kartik/detail";s:71:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-detail-view/src";}}s:18:"kartik-v/yii2-mpdf";a:3:{s:4:"name";s:18:"kartik-v/yii2-mpdf";s:7:"version";s:7:"1.0.6.0";s:5:"alias";a:1:{s:12:"@kartik/mpdf";s:64:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-mpdf/src";}}s:28:"kartik-v/yii2-widget-select2";a:3:{s:4:"name";s:28:"kartik-v/yii2-widget-select2";s:7:"version";s:7:"2.2.5.0";s:5:"alias";a:1:{s:15:"@kartik/select2";s:74:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-select2/src";}}s:22:"kartik-v/yii2-sortable";a:3:{s:4:"name";s:22:"kartik-v/yii2-sortable";s:7:"version";s:7:"1.2.2.0";s:5:"alias";a:1:{s:16:"@kartik/sortable";s:68:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-sortable/src";}}s:18:"kartik-v/yii2-grid";a:3:{s:4:"name";s:18:"kartik-v/yii2-grid";s:7:"version";s:7:"3.5.3.0";s:5:"alias";a:1:{s:12:"@kartik/grid";s:64:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-grid/src";}}s:22:"kartik-v/yii2-dynagrid";a:3:{s:4:"name";s:22:"kartik-v/yii2-dynagrid";s:7:"version";s:7:"1.5.5.0";s:5:"alias";a:1:{s:16:"@kartik/dynagrid";s:68:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-dynagrid/src";}}s:20:"kartik-v/yii2-export";a:3:{s:4:"name";s:20:"kartik-v/yii2-export";s:7:"version";s:7:"1.4.3.0";s:5:"alias";a:1:{s:14:"@kartik/export";s:66:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-export/src";}}s:20:"kartik-v/yii2-number";a:3:{s:4:"name";s:20:"kartik-v/yii2-number";s:7:"version";s:7:"1.0.5.0";s:5:"alias";a:1:{s:14:"@kartik/number";s:66:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-number/src";}}s:28:"kartik-v/yii2-sortable-input";a:3:{s:4:"name";s:28:"kartik-v/yii2-sortable-input";s:7:"version";s:7:"1.2.1.0";s:5:"alias";a:1:{s:17:"@kartik/sortinput";s:74:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-sortable-input/src";}}s:30:"kartik-v/yii2-widget-typeahead";a:3:{s:4:"name";s:30:"kartik-v/yii2-widget-typeahead";s:7:"version";s:7:"1.0.4.0";s:5:"alias";a:1:{s:17:"@kartik/typeahead";s:76:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-typeahead/src";}}s:30:"kartik-v/yii2-widget-touchspin";a:3:{s:4:"name";s:30:"kartik-v/yii2-widget-touchspin";s:7:"version";s:7:"1.2.4.0";s:5:"alias";a:1:{s:17:"@kartik/touchspin";s:76:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-touchspin/src";}}s:31:"kartik-v/yii2-widget-timepicker";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-timepicker";s:7:"version";s:7:"1.0.5.0";s:5:"alias";a:1:{s:12:"@kartik/time";s:77:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-timepicker/src";}}s:32:"kartik-v/yii2-widget-switchinput";a:3:{s:4:"name";s:32:"kartik-v/yii2-widget-switchinput";s:7:"version";s:7:"1.3.1.0";s:5:"alias";a:1:{s:19:"@kartik/switchinput";s:74:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-switchinput";}}s:28:"kartik-v/yii2-widget-spinner";a:3:{s:4:"name";s:28:"kartik-v/yii2-widget-spinner";s:7:"version";s:7:"1.0.1.0";s:5:"alias";a:1:{s:15:"@kartik/spinner";s:74:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-spinner/src";}}s:28:"kartik-v/yii2-widget-sidenav";a:3:{s:4:"name";s:28:"kartik-v/yii2-widget-sidenav";s:7:"version";s:7:"1.0.1.0";s:5:"alias";a:1:{s:15:"@kartik/sidenav";s:70:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-sidenav";}}s:27:"kartik-v/yii2-widget-rating";a:3:{s:4:"name";s:27:"kartik-v/yii2-widget-rating";s:7:"version";s:7:"1.0.5.0";s:5:"alias";a:1:{s:14:"@kartik/rating";s:73:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-rating/src";}}s:31:"kartik-v/yii2-widget-rangeinput";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-rangeinput";s:7:"version";s:7:"1.0.2.0";s:5:"alias";a:1:{s:13:"@kartik/range";s:77:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-rangeinput/src";}}s:26:"kartik-v/yii2-widget-growl";a:3:{s:4:"name";s:26:"kartik-v/yii2-widget-growl";s:7:"version";s:7:"1.1.2.0";s:5:"alias";a:1:{s:13:"@kartik/growl";s:72:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-growl/src";}}s:30:"kartik-v/yii2-widget-fileinput";a:3:{s:4:"name";s:30:"kartik-v/yii2-widget-fileinput";s:7:"version";s:7:"1.1.1.0";s:5:"alias";a:1:{s:12:"@kartik/file";s:76:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-fileinput/src";}}s:28:"kartik-v/yii2-widget-depdrop";a:3:{s:4:"name";s:28:"kartik-v/yii2-widget-depdrop";s:7:"version";s:7:"1.0.6.0";s:5:"alias";a:1:{s:15:"@kartik/depdrop";s:74:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-depdrop/src";}}s:35:"kartik-v/yii2-widget-datetimepicker";a:3:{s:4:"name";s:35:"kartik-v/yii2-widget-datetimepicker";s:7:"version";s:7:"1.5.1.0";s:5:"alias";a:1:{s:16:"@kartik/datetime";s:81:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-datetimepicker/src";}}s:31:"kartik-v/yii2-widget-datepicker";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-datepicker";s:7:"version";s:7:"1.4.8.0";s:5:"alias";a:1:{s:12:"@kartik/date";s:77:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-datepicker/src";}}s:31:"kartik-v/yii2-widget-colorinput";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-colorinput";s:7:"version";s:7:"1.0.6.0";s:5:"alias";a:1:{s:13:"@kartik/color";s:77:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-colorinput/src";}}s:26:"kartik-v/yii2-widget-alert";a:3:{s:4:"name";s:26:"kartik-v/yii2-widget-alert";s:7:"version";s:7:"1.1.5.0";s:5:"alias";a:1:{s:13:"@kartik/alert";s:72:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-alert/src";}}s:26:"kartik-v/yii2-widget-affix";a:3:{s:4:"name";s:26:"kartik-v/yii2-widget-affix";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:13:"@kartik/affix";s:68:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widget-affix";}}s:21:"kartik-v/yii2-widgets";a:3:{s:4:"name";s:21:"kartik-v/yii2-widgets";s:7:"version";s:7:"3.4.1.0";s:5:"alias";a:1:{s:15:"@kartik/widgets";s:67:"D:\xampp\htdocs\simasgantengv2-opd\vendor/kartik-v/yii2-widgets/src";}}s:23:"yiisoft/yii2-bootstrap5";a:4:{s:4:"name";s:23:"yiisoft/yii2-bootstrap5";s:7:"version";s:7:"2.0.4.0";s:5:"alias";a:1:{s:15:"@yii/bootstrap5";s:69:"D:\xampp\htdocs\simasgantengv2-opd\vendor/yiisoft/yii2-bootstrap5/src";}s:9:"bootstrap";s:40:"yii\bootstrap5\i18n\TranslationBootstrap";}s:18:"yiisoft/yii2-debug";a:3:{s:4:"name";s:18:"yiisoft/yii2-debug";s:7:"version";s:8:"2.1.25.0";s:5:"alias";a:1:{s:10:"@yii/debug";s:64:"D:\xampp\htdocs\simasgantengv2-opd\vendor/yiisoft/yii2-debug/src";}}s:18:"yiisoft/yii2-faker";a:3:{s:4:"name";s:18:"yiisoft/yii2-faker";s:7:"version";s:7:"2.0.5.0";s:5:"alias";a:1:{s:10:"@yii/faker";s:64:"D:\xampp\htdocs\simasgantengv2-opd\vendor/yiisoft/yii2-faker/src";}}s:16:"yiisoft/yii2-gii";a:3:{s:4:"name";s:16:"yiisoft/yii2-gii";s:7:"version";s:7:"2.2.6.0";s:5:"alias";a:1:{s:8:"@yii/gii";s:62:"D:\xampp\htdocs\simasgantengv2-opd\vendor/yiisoft/yii2-gii/src";}}s:26:"yiisoft/yii2-symfonymailer";a:3:{s:4:"name";s:26:"yiisoft/yii2-symfonymailer";s:7:"version";s:7:"3.0.0.0";s:5:"alias";a:1:{s:18:"@yii/symfonymailer";s:72:"D:\xampp\htdocs\simasgantengv2-opd\vendor/yiisoft/yii2-symfonymailer/src";}}s:21:"yiithings/yii2-dotenv";a:3:{s:4:"name";s:21:"yiithings/yii2-dotenv";s:7:"version";s:7:"1.0.2.0";s:5:"alias";a:1:{s:17:"@yiithings/dotenv";s:67:"D:\xampp\htdocs\simasgantengv2-opd\vendor/yiithings/yii2-dotenv/src";}}s:23:"yiisoft/yii2-httpclient";a:3:{s:4:"name";s:23:"yiisoft/yii2-httpclient";s:7:"version";s:8:"2.0.15.0";s:5:"alias";a:1:{s:15:"@yii/httpclient";s:69:"D:\xampp\htdocs\simasgantengv2-opd\vendor/yiisoft/yii2-httpclient/src";}}s:26:"wbraganca/yii2-dynamicform";a:3:{s:4:"name";s:26:"wbraganca/yii2-dynamicform";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:22:"@wbraganca/dynamicform";s:72:"D:\xampp\htdocs\simasgantengv2-opd\vendor/wbraganca/yii2-dynamicform/src";}}s:23:"yiisoft/yii2-authclient";a:3:{s:4:"name";s:23:"yiisoft/yii2-authclient";s:7:"version";s:8:"2.2.16.0";s:5:"alias";a:1:{s:15:"@yii/authclient";s:69:"D:\xampp\htdocs\simasgantengv2-opd\vendor/yiisoft/yii2-authclient/src";}}s:18:"yiisoft/yii2-redis";a:3:{s:4:"name";s:18:"yiisoft/yii2-redis";s:7:"version";s:8:"2.0.18.0";s:5:"alias";a:1:{s:10:"@yii/redis";s:64:"D:\xampp\htdocs\simasgantengv2-opd\vendor/yiisoft/yii2-redis/src";}}}}";s:3:"log";s:8581:"a:1:{s:8:"messages";a:21:{i:0;a:6:{i:0;s:68:"Bootstrap with yii\bootstrap5\i18n\TranslationBootstrap::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1790758269.231597;i:4;a:0:{}i:5;i:3264968;}i:1;a:6:{i:0;s:33:"Bootstrap with yii\log\Dispatcher";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1790758269.232607;i:4;a:0:{}i:5;i:3377592;}i:2;a:6:{i:0;s:21:"Loading module: debug";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1790758269.232618;i:4;a:0:{}i:5;i:3378392;}i:3;a:6:{i:0;s:15:"Session started";i:1;i:4;i:2;s:21:"yii\web\Session::open";i:3;d:1790758269.23836;i:4;a:0:{}i:5;i:4242728;}i:4;a:6:{i:0;s:84:"Opening DB connection: pgsql:host=localhost;dbname=simasgantengv2_auth_bak;port=5432";i:1;i:4;i:2;s:23:"yii\db\Connection::open";i:3;d:1790758269.249565;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5714032;}i:7;a:6:{i:0;s:2813:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) OR attidentity != '' AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'tbluser'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.282575;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5851496;}i:10;a:6:{i:0;s:875:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='tbluser'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.292048;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5903840;}i:13;a:6:{i:0;s:59:"SELECT * FROM "tbluser" WHERE ("id"=8188) AND ("status"=10)";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.30063;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6440368;}i:16;a:6:{i:0;s:44:"Bootstrap with yii\debug\Module::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1790758269.304233;i:4;a:0:{}i:5;i:6700072;}i:17;a:6:{i:0;s:19:"Loading module: gii";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1790758269.306457;i:4;a:0:{}i:5;i:7068136;}i:18;a:6:{i:0;s:42:"Bootstrap with yii\gii\Module::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1790758269.306732;i:4;a:0:{}i:5;i:7093152;}i:72;a:6:{i:0;s:43:"Route requested: 'bpjs/peserta/get-wilayah'";i:1;i:8;i:2;s:34:"yii\web\Application::handleRequest";i:3;d:1790758269.308117;i:4;a:0:{}i:5;i:7302768;}i:73;a:6:{i:0;s:20:"Loading module: bpjs";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1790758269.308122;i:4;a:0:{}i:5;i:7304400;}i:74;a:6:{i:0;s:38:"Route to run: bpjs/peserta/get-wilayah";i:1;i:8;i:2;s:30:"yii\base\Controller::runAction";i:3;d:1790758269.309255;i:4;a:0:{}i:5;i:7398504;}i:75;a:6:{i:0;s:82:"Running action: app\modules\bpjs\controllers\PesertaController::actionGetWilayah()";i:1;i:8;i:2;s:36:"yii\base\InlineAction::runWithParams";i:3;d:1790758269.31305;i:4;a:0:{}i:5;i:7630584;}i:76;a:6:{i:0;s:515:"yii\base\InvalidArgumentException: Response content must be a string or an object implementing __toString(). in D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Response.php:1127
+Stack trace:
+#0 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\web\Response.php(340): yii\web\Response->prepare()
+#1 D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2\base\Application.php(390): yii\web\Response->send()
+#2 D:\xampp\htdocs\simasgantengv2-opd\web\index.php(16): yii\base\Application->run()
+#3 {main}";i:1;i:1;i:2;s:33:"yii\base\InvalidArgumentException";i:3;d:1790758269.314303;i:4;a:0:{}i:5;i:7441544;}i:77;a:6:{i:0;s:108:"Rendering view file: D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2/views/errorHandler/exception.php";i:1;i:8;i:2;s:25:"yii\base\View::renderFile";i:3;d:1790758269.314754;i:4;a:0:{}i:5;i:7439416;}i:78;a:6:{i:0;s:112:"Rendering view file: D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2/views/errorHandler/callStackItem.php";i:1;i:8;i:2;s:25:"yii\base\View::renderFile";i:3;d:1790758269.315731;i:4;a:0:{}i:5;i:7697680;}i:79;a:6:{i:0;s:112:"Rendering view file: D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2/views/errorHandler/callStackItem.php";i:1;i:8;i:2;s:25:"yii\base\View::renderFile";i:3;d:1790758269.316364;i:4;a:0:{}i:5;i:8032088;}i:80;a:6:{i:0;s:112:"Rendering view file: D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2/views/errorHandler/callStackItem.php";i:1;i:8;i:2;s:25:"yii\base\View::renderFile";i:3;d:1790758269.316872;i:4;a:0:{}i:5;i:7970840;}i:81;a:6:{i:0;s:112:"Rendering view file: D:\xampp\htdocs\simasgantengv2-opd\vendor\yiisoft\yii2/views/errorHandler/callStackItem.php";i:1;i:8;i:2;s:25:"yii\base\View::renderFile";i:3;d:1790758269.317259;i:4;a:0:{}i:5;i:7891864;}}}";s:9:"profiling";s:10150:"a:3:{s:6:"memory";i:8610672;s:4:"time";d:0.12320995330810547;s:8:"messages";a:8:{i:5;a:6:{i:0;s:84:"Opening DB connection: pgsql:host=localhost;dbname=simasgantengv2_auth_bak;port=5432";i:1;i:80;i:2;s:23:"yii\db\Connection::open";i:3;d:1790758269.249583;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5715160;}i:6;a:6:{i:0;s:84:"Opening DB connection: pgsql:host=localhost;dbname=simasgantengv2_auth_bak;port=5432";i:1;i:96;i:2;s:23:"yii\db\Connection::open";i:3;d:1790758269.28156;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5717104;}i:8;a:6:{i:0;s:2813:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) OR attidentity != '' AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'tbluser'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.282628;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5862288;}i:9;a:6:{i:0;s:2813:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) OR attidentity != '' AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'tbluser'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.291081;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5894768;}i:11;a:6:{i:0;s:875:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='tbluser'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.292073;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5908144;}i:12;a:6:{i:0;s:875:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='tbluser'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.294669;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5909712;}i:14;a:6:{i:0;s:59:"SELECT * FROM "tbluser" WHERE ("id"=8188) AND ("status"=10)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.300659;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6441400;}i:15;a:6:{i:0;s:59:"SELECT * FROM "tbluser" WHERE ("id"=8188) AND ("status"=10)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.301721;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6446216;}}}";s:2:"db";s:9325:"a:1:{s:8:"messages";a:6:{i:8;a:6:{i:0;s:2813:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) OR attidentity != '' AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'tbluser'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.282628;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5862288;}i:9;a:6:{i:0;s:2813:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    COALESCE(td.typname, tb.typname, t.typname) AS data_type,
+    COALESCE(td.typtype, tb.typtype, t.typtype) AS type_type,
+    (SELECT nspname FROM pg_namespace WHERE oid = COALESCE(td.typnamespace, tb.typnamespace, t.typnamespace)) AS type_scheme,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) OR attidentity != '' AS is_autoinc,
+    pg_get_serial_sequence(quote_ident(d.nspname) || '.' || quote_ident(c.relname), a.attname) AS sequence_name,
+    CASE WHEN COALESCE(td.typtype, tb.typtype, t.typtype) = 'e'::char
+        THEN array_to_string((SELECT array_agg(enumlabel) FROM pg_enum WHERE enumtypid = COALESCE(td.oid, tb.oid, a.atttypid))::varchar[], ',')
+        ELSE NULL
+    END AS enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey,
+    COALESCE(NULLIF(a.attndims, 0), NULLIF(t.typndims, 0), (t.typcategory='A')::int) AS dimension
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_type tb ON (a.attndims > 0 OR t.typcategory='A') AND t.typelem > 0 AND t.typelem = tb.oid OR t.typbasetype > 0 AND t.typbasetype = tb.oid
+    LEFT JOIN pg_type td ON t.typndims > 0 AND t.typbasetype > 0 AND tb.typelem = td.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT JOIN pg_constraint ct ON ct.conrelid = c.oid AND ct.contype = 'p'
+WHERE
+    a.attnum > 0 AND t.typname != '' AND NOT a.attisdropped
+    AND c.relname = 'tbluser'
+    AND d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.291081;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5894768;}i:11;a:6:{i:0;s:875:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='tbluser'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.292073;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5908144;}i:12;a:6:{i:0;s:875:"select
+    ct.conname as constraint_name,
+    a.attname as column_name,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    fa.attname as foreign_column_name
+from
+    (SELECT ct.conname, ct.conrelid, ct.confrelid, ct.conkey, ct.contype, ct.confkey, generate_subscripts(ct.conkey, 1) AS s
+       FROM pg_constraint ct
+    ) AS ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    inner join pg_attribute a on a.attrelid=ct.conrelid and a.attnum = ct.conkey[ct.s]
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+    left join pg_attribute fa on fa.attrelid=ct.confrelid and fa.attnum = ct.confkey[ct.s]
+where
+    ct.contype='f'
+    and c.relname='tbluser'
+    and ns.nspname='public'
+order by
+    fns.nspname, fc.relname, a.attnum";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.294669;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:5909712;}i:14;a:6:{i:0;s:59:"SELECT * FROM "tbluser" WHERE ("id"=8188) AND ("status"=10)";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.300659;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6441400;}i:15;a:6:{i:0;s:59:"SELECT * FROM "tbluser" WHERE ("id"=8188) AND ("status"=10)";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1790758269.301721;i:4;a:1:{i:0;a:5:{s:4:"file";s:50:"D:\xampp\htdocs\simasgantengv2-opd\models\User.php";s:4:"line";i:76;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6446216;}}}";s:5:"event";s:6667:"a:37:{i:0;a:5:{s:4:"time";d:1790758269.245458;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"yii\db\ActiveQuery";}i:1;a:5:{s:4:"time";d:1790758269.281539;s:4:"name";s:9:"afterOpen";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:17:"yii\db\Connection";}i:2;a:5:{s:4:"time";d:1790758269.301885;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:15:"app\models\User";}i:3;a:5:{s:4:"time";d:1790758269.301925;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:15:"app\models\User";}i:4;a:5:{s:4:"time";d:1790758269.302467;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:15:"app\models\User";}i:5;a:5:{s:4:"time";d:1790758269.307741;s:4:"name";s:13:"beforeRequest";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:6;a:5:{s:4:"time";d:1790758269.312077;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:7;a:5:{s:4:"time";d:1790758269.312118;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:8;a:5:{s:4:"time";d:1790758269.312133;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:9;a:5:{s:4:"time";d:1790758269.312146;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:10;a:5:{s:4:"time";d:1790758269.312157;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:11;a:5:{s:4:"time";d:1790758269.312166;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:12;a:5:{s:4:"time";d:1790758269.312176;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:13;a:5:{s:4:"time";d:1790758269.312253;s:4:"name";s:12:"beforeAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:14;a:5:{s:4:"time";d:1790758269.312269;s:4:"name";s:12:"beforeAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:21:"app\modules\bpjs\Bpjs";}i:15;a:5:{s:4:"time";d:1790758269.313002;s:4:"name";s:12:"beforeAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:46:"app\modules\bpjs\controllers\PesertaController";}i:16;a:5:{s:4:"time";d:1790758269.313069;s:4:"name";s:11:"afterAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:46:"app\modules\bpjs\controllers\PesertaController";}i:17;a:5:{s:4:"time";d:1790758269.313077;s:4:"name";s:11:"afterAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:21:"app\modules\bpjs\Bpjs";}i:18;a:5:{s:4:"time";d:1790758269.313089;s:4:"name";s:11:"afterAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:19;a:5:{s:4:"time";d:1790758269.313097;s:4:"name";s:12:"afterRequest";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:20;a:5:{s:4:"time";d:1790758269.313103;s:4:"name";s:10:"beforeSend";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:16:"yii\web\Response";}i:21;a:5:{s:4:"time";d:1790758269.314748;s:4:"name";s:12:"beforeRender";s:5:"class";s:18:"yii\base\ViewEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:22;a:5:{s:4:"time";d:1790758269.315114;s:4:"name";s:9:"beginPage";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:23;a:5:{s:4:"time";d:1790758269.315725;s:4:"name";s:12:"beforeRender";s:5:"class";s:18:"yii\base\ViewEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:24;a:5:{s:4:"time";d:1790758269.316075;s:4:"name";s:11:"afterRender";s:5:"class";s:18:"yii\base\ViewEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:25;a:5:{s:4:"time";d:1790758269.31636;s:4:"name";s:12:"beforeRender";s:5:"class";s:18:"yii\base\ViewEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:26;a:5:{s:4:"time";d:1790758269.316596;s:4:"name";s:11:"afterRender";s:5:"class";s:18:"yii\base\ViewEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:27;a:5:{s:4:"time";d:1790758269.316868;s:4:"name";s:12:"beforeRender";s:5:"class";s:18:"yii\base\ViewEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:28;a:5:{s:4:"time";d:1790758269.31707;s:4:"name";s:11:"afterRender";s:5:"class";s:18:"yii\base\ViewEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:29;a:5:{s:4:"time";d:1790758269.317256;s:4:"name";s:12:"beforeRender";s:5:"class";s:18:"yii\base\ViewEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:30;a:5:{s:4:"time";d:1790758269.317442;s:4:"name";s:11:"afterRender";s:5:"class";s:18:"yii\base\ViewEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:31;a:5:{s:4:"time";d:1790758269.320228;s:4:"name";s:7:"endBody";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:32;a:5:{s:4:"time";d:1790758269.320238;s:4:"name";s:7:"endPage";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:33;a:5:{s:4:"time";d:1790758269.320398;s:4:"name";s:11:"afterRender";s:5:"class";s:18:"yii\base\ViewEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\View";}i:34;a:5:{s:4:"time";d:1790758269.320405;s:4:"name";s:10:"beforeSend";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:16:"yii\web\Response";}i:35;a:5:{s:4:"time";d:1790758269.320452;s:4:"name";s:12:"afterPrepare";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:16:"yii\web\Response";}i:36;a:5:{s:4:"time";d:1790758269.320968;s:4:"name";s:9:"afterSend";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:16:"yii\web\Response";}}";s:4:"mail";s:6:"a:0:{}";s:8:"timeline";s:90:"a:3:{s:5:"start";d:1790758269.221744;s:3:"end";d:1790758269.34512;s:6:"memory";i:8610672;}";s:4:"dump";s:6:"a:0:{}";s:6:"router";s:9958:"a:3:{s:8:"messages";a:53:{i:19;a:6:{i:0;a:3:{s:4:"rule";s:3:"gii";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.307982;i:4;a:0:{}i:5;i:7257048;}i:20;a:6:{i:0;a:3:{s:4:"rule";s:12:"gii/<id:\w+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.307989;i:4;a:0:{}i:5;i:7257800;}i:21;a:6:{i:0;a:3:{s:4:"rule";s:41:"gii/<controller:[\w\-]+>/<action:[\w\-]+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.307993;i:4;a:0:{}i:5;i:7258552;}i:22;a:6:{i:0;a:3:{s:4:"rule";s:5:"debug";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.307996;i:4;a:0:{}i:5;i:7259304;}i:23;a:6:{i:0;a:3:{s:4:"rule";s:43:"debug/<controller:[\w\-]+>/<action:[\w\-]+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.307999;i:4;a:0:{}i:5;i:7260056;}i:24;a:6:{i:0;a:3:{s:4:"rule";s:5:"login";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308001;i:4;a:0:{}i:5;i:7260808;}i:25;a:6:{i:0;a:3:{s:4:"rule";s:1:"/";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308004;i:4;a:0:{}i:5;i:7261560;}i:26;a:6:{i:0;a:3:{s:4:"rule";s:11:"data-asn-pd";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308007;i:4;a:0:{}i:5;i:7262312;}i:27;a:6:{i:0;a:3:{s:4:"rule";s:9:"jadwal-pd";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308009;i:4;a:0:{}i:5;i:7263064;}i:28;a:6:{i:0;a:3:{s:4:"rule";s:8:"presensi";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308012;i:4;a:0:{}i:5;i:7263816;}i:29;a:6:{i:0;a:3:{s:4:"rule";s:11:"presensi-pd";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308014;i:4;a:0:{}i:5;i:7264568;}i:30;a:6:{i:0;a:3:{s:4:"rule";s:14:"target-kinerja";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308016;i:4;a:0:{}i:5;i:7265320;}i:31;a:6:{i:0;a:3:{s:4:"rule";s:17:"realisasi-kinerja";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308019;i:4;a:0:{}i:5;i:7266072;}i:32;a:6:{i:0;a:3:{s:4:"rule";s:17:"penilaian-bawahan";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308021;i:4;a:0:{}i:5;i:7266824;}i:33;a:6:{i:0;a:3:{s:4:"rule";s:15:"kinerja-bawahan";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308024;i:4;a:0:{}i:5;i:7268856;}i:34;a:6:{i:0;a:3:{s:4:"rule";s:9:"ket-absen";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308026;i:4;a:0:{}i:5;i:7269608;}i:35;a:6:{i:0;a:3:{s:4:"rule";s:12:"penerima-tpp";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308028;i:4;a:0:{}i:5;i:7270360;}i:36;a:6:{i:0;a:3:{s:4:"rule";s:9:"cetak-tpp";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308031;i:4;a:0:{}i:5;i:7271112;}i:37;a:6:{i:0;a:3:{s:4:"rule";s:8:"tppcetak";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308033;i:4;a:0:{}i:5;i:7271864;}i:38;a:6:{i:0;a:3:{s:4:"rule";s:24:"tpp-final-perbendaharaan";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308035;i:4;a:0:{}i:5;i:7272616;}i:39;a:6:{i:0;a:3:{s:4:"rule";s:22:"coretax-perbendaharaan";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308038;i:4;a:0:{}i:5;i:7273368;}i:40;a:6:{i:0;a:3:{s:4:"rule";s:28:"coretax-akhir-perbendaharaan";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.30804;i:4;a:0:{}i:5;i:7274120;}i:41;a:6:{i:0;a:3:{s:4:"rule";s:34:"coretax-akhir-perbendaharaan-cetak";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308042;i:4;a:0:{}i:5;i:7274872;}i:42;a:6:{i:0;a:3:{s:4:"rule";s:12:"data-asn-upt";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308045;i:4;a:0:{}i:5;i:7275624;}i:43;a:6:{i:0;a:3:{s:4:"rule";s:12:"presensi-upt";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308047;i:4;a:0:{}i:5;i:7276376;}i:44;a:6:{i:0;a:3:{s:4:"rule";s:11:"kinerja-upt";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308049;i:4;a:0:{}i:5;i:7277128;}i:45;a:6:{i:0;a:3:{s:4:"rule";s:16:"penerima-tpp-upt";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308051;i:4;a:0:{}i:5;i:7277880;}i:46;a:6:{i:0;a:3:{s:4:"rule";s:13:"cetak-tpp-upt";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308054;i:4;a:0:{}i:5;i:7278632;}i:47;a:6:{i:0;a:3:{s:4:"rule";s:14:"coretax-search";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308056;i:4;a:0:{}i:5;i:7279384;}i:48;a:6:{i:0;a:3:{s:4:"rule";s:7:"coretax";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308058;i:4;a:0:{}i:5;i:7280136;}i:49;a:6:{i:0;a:3:{s:4:"rule";s:7:"kinerja";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.30806;i:4;a:0:{}i:5;i:7280888;}i:50;a:6:{i:0;a:3:{s:4:"rule";s:11:"kinerja-asn";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308063;i:4;a:0:{}i:5;i:7281640;}i:51;a:6:{i:0;a:3:{s:4:"rule";s:14:"kinerja-detail";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308065;i:4;a:0:{}i:5;i:7282392;}i:52;a:6:{i:0;a:3:{s:4:"rule";s:7:"asn-wfh";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308067;i:4;a:0:{}i:5;i:7283144;}i:53;a:6:{i:0;a:3:{s:4:"rule";s:12:"data-asn-wfh";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308069;i:4;a:0:{}i:5;i:7283896;}i:54;a:6:{i:0;a:3:{s:4:"rule";s:10:"delete-tgl";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308071;i:4;a:0:{}i:5;i:7284648;}i:55;a:6:{i:0;a:3:{s:4:"rule";s:9:"hasil-wfh";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308074;i:4;a:0:{}i:5;i:7285400;}i:56;a:6:{i:0;a:3:{s:4:"rule";s:9:"rekap-wfh";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308076;i:4;a:0:{}i:5;i:7286152;}i:57;a:6:{i:0;a:3:{s:4:"rule";s:20:"coretax-akhir-search";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308078;i:4;a:0:{}i:5;i:7286904;}i:58;a:6:{i:0;a:3:{s:4:"rule";s:13:"coretax-akhir";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308081;i:4;a:0:{}i:5;i:7287656;}i:59;a:6:{i:0;a:3:{s:4:"rule";s:19:"coretax-akhir-excel";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308083;i:4;a:0:{}i:5;i:7288408;}i:60;a:6:{i:0;a:3:{s:4:"rule";s:19:"coretax-akhir-cetak";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308086;i:4;a:0:{}i:5;i:7289160;}i:61;a:6:{i:0;a:3:{s:4:"rule";s:7:"anomali";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308088;i:4;a:0:{}i:5;i:7289912;}i:62;a:6:{i:0;a:3:{s:4:"rule";s:12:"data-asn-opd";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.30809;i:4;a:0:{}i:5;i:7290664;}i:63;a:6:{i:0;a:3:{s:4:"rule";s:9:"data-view";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308092;i:4;a:0:{}i:5;i:7291416;}i:64;a:6:{i:0;a:3:{s:4:"rule";s:11:"data-profil";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308094;i:4;a:0:{}i:5;i:7292168;}i:65;a:6:{i:0;a:3:{s:4:"rule";s:12:"bpjs-peserta";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308097;i:4;a:0:{}i:5;i:7298552;}i:66;a:6:{i:0;a:3:{s:4:"rule";s:25:"bpjs-peserta/<action:\w+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308099;i:4;a:0:{}i:5;i:7299304;}i:67;a:6:{i:0;a:3:{s:4:"rule";s:10:"bpjs-iuran";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308102;i:4;a:0:{}i:5;i:7300056;}i:68;a:6:{i:0;a:3:{s:4:"rule";s:23:"bpjs-iuran/<action:\w+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308104;i:4;a:0:{}i:5;i:7300808;}i:69;a:6:{i:0;a:3:{s:4:"rule";s:29:"<controller:\w+>/<action:\w+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308107;i:4;a:0:{}i:5;i:7301560;}i:70;a:6:{i:0;a:3:{s:4:"rule";s:18:"app\config\UrlRule";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.30811;i:4;a:0:{}i:5;i:7302312;}i:71;a:6:{i:0;s:55:"No matching URL rules. Using default URL parsing logic.";i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1790758269.308111;i:4;a:0:{}i:5;i:7302688;}}s:5:"route";s:24:"bpjs/peserta/get-wilayah";s:6:"action";s:66:"app\modules\bpjs\controllers\PesertaController::actionGetWilayah()";}";s:7:"request";s:9679:"a:15:{s:7:"flashes";a:0:{}s:10:"statusCode";i:500;s:14:"requestHeaders";a:16:{s:4:"host";s:12:"localhost:81";s:10:"connection";s:10:"keep-alive";s:13:"cache-control";s:9:"max-age=0";s:9:"sec-ch-ua";s:65:""Chromium";v="154", "Google Chrome";v="154", "Not A(Brand";v="99"";s:16:"sec-ch-ua-mobile";s:2:"?0";s:18:"sec-ch-ua-platform";s:9:""Windows"";s:25:"upgrade-insecure-requests";s:1:"1";s:10:"user-agent";s:111:"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36";s:6:"accept";s:135:"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7";s:14:"sec-fetch-site";s:4:"none";s:14:"sec-fetch-mode";s:8:"navigate";s:14:"sec-fetch-user";s:2:"?1";s:14:"sec-fetch-dest";s:8:"document";s:15:"accept-encoding";s:23:"gzip, deflate, br, zstd";s:15:"accept-language";s:14:"en-US,en;q=0.9";s:6:"cookie";s:321:"bkpsdmd-brebeskab-app-auth=6v5j43ngk3h19hhtatgl83usl0; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=1mgc1uod25pl8ri6chssdc7q04";}s:15:"responseHeaders";a:7:{s:7:"Expires";s:29:"Thu, 19 Nov 1981 08:52:00 GMT";s:13:"Cache-Control";s:35:"no-store, no-cache, must-revalidate";s:6:"Pragma";s:8:"no-cache";s:12:"Content-Type";s:24:"text/html; charset=UTF-8";s:11:"X-Debug-Tag";s:13:"6abccd7d4a5fa";s:16:"X-Debug-Duration";s:3:"100";s:12:"X-Debug-Link";s:60:"/simasgantengv2-opd/web/debug/default/view?tag=6abccd7d4a5fa";}s:5:"route";s:24:"bpjs/peserta/get-wilayah";s:6:"action";s:66:"app\modules\bpjs\controllers\PesertaController::actionGetWilayah()";s:12:"actionParams";a:1:{s:6:"parent";s:0:"";}s:7:"general";a:5:{s:6:"method";s:3:"GET";s:6:"isAjax";b:0;s:6:"isPjax";b:0;s:7:"isFlash";b:0;s:18:"isSecureConnection";b:0;}s:11:"requestBody";a:0:{}s:6:"SERVER";a:96:{s:16:"REDIRECT_MIBDIRS";s:24:"D:/xampp/php/extras/mibs";s:19:"REDIRECT_MYSQL_HOME";s:16:"\xampp\mysql\bin";s:21:"REDIRECT_OPENSSL_CONF";s:31:"D:/xampp/apache/bin/openssl.cnf";s:29:"REDIRECT_PHP_PEAR_SYSCONF_DIR";s:10:"\xampp\php";s:14:"REDIRECT_PHPRC";s:10:"\xampp\php";s:12:"REDIRECT_TMP";s:10:"\xampp\tmp";s:15:"REDIRECT_STATUS";s:3:"200";s:7:"MIBDIRS";s:24:"D:/xampp/php/extras/mibs";s:10:"MYSQL_HOME";s:16:"\xampp\mysql\bin";s:12:"OPENSSL_CONF";s:31:"D:/xampp/apache/bin/openssl.cnf";s:20:"PHP_PEAR_SYSCONF_DIR";s:10:"\xampp\php";s:5:"PHPRC";s:10:"\xampp\php";s:3:"TMP";s:10:"\xampp\tmp";s:9:"HTTP_HOST";s:12:"localhost:81";s:15:"HTTP_CONNECTION";s:10:"keep-alive";s:18:"HTTP_CACHE_CONTROL";s:9:"max-age=0";s:14:"HTTP_SEC_CH_UA";s:65:""Chromium";v="154", "Google Chrome";v="154", "Not A(Brand";v="99"";s:21:"HTTP_SEC_CH_UA_MOBILE";s:2:"?0";s:23:"HTTP_SEC_CH_UA_PLATFORM";s:9:""Windows"";s:30:"HTTP_UPGRADE_INSECURE_REQUESTS";s:1:"1";s:15:"HTTP_USER_AGENT";s:111:"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36";s:11:"HTTP_ACCEPT";s:135:"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7";s:19:"HTTP_SEC_FETCH_SITE";s:4:"none";s:19:"HTTP_SEC_FETCH_MODE";s:8:"navigate";s:19:"HTTP_SEC_FETCH_USER";s:2:"?1";s:19:"HTTP_SEC_FETCH_DEST";s:8:"document";s:20:"HTTP_ACCEPT_ENCODING";s:23:"gzip, deflate, br, zstd";s:20:"HTTP_ACCEPT_LANGUAGE";s:14:"en-US,en;q=0.9";s:11:"HTTP_COOKIE";s:321:"bkpsdmd-brebeskab-app-auth=6v5j43ngk3h19hhtatgl83usl0; _identity-app=b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-app%22%3Bi%3A1%3Bs%3A47%3A%22%5B8188%2C%22oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq%22%2C10800%5D%22%3B%7D; bkpsdmd-brebeskab-app=1mgc1uod25pl8ri6chssdc7q04";s:4:"PATH";s:1404:"C:\Program Files\Eclipse Adoptium\jdk-17.0.19.10-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\AOMEI Backupper\AOMEI Backupper 5.7.0;D:\xampp\php;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Users\binpeg\AppData\Local\Programs\Python\Python39;E:\iclockSvr\Python26;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\The Scripps Research Institute\Vina;D:\xampp\composer;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;D:\gradle\bin;C:\Program Files\nodejs\;C:\Program Files\Go\bin;E:\flutter\bin;E:\Android\cmdline-tools\latest\bin;E:\Android\platform-tools;E:\Android\emulator;E:\flutter_pub_cache\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\Users\binpeg\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\binpeg\AppData\Local\Programs\Python\Python313\;C:\Users\binpeg\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\binpeg\AppData\Roaming\npm;C:\Users\binpeg\go\bin;C:\Users\binpeg\AppData\Local\Microsoft\WindowsApps;D:\xampp82\composer;C:\Users\binpeg\AppData\Local\Programs\Windsurf\bin;C:\Users\binpeg\AppData\Local\Programs\Antigravity IDE\bin;C:\Users\binpeg\AppData\Local\devin\cli\bin;E:\bun\.bun\bin;E:\bun\.bun\bin";s:10:"SystemRoot";s:10:"C:\WINDOWS";s:7:"COMSPEC";s:27:"C:\WINDOWS\system32\cmd.exe";s:7:"PATHEXT";s:59:".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHAR";s:6:"WINDIR";s:10:"C:\WINDOWS";s:16:"SERVER_SIGNATURE";s:84:"<address>Apache/2.4.46 (Win64) OpenSSL/1.1.1g Server at localhost Port 81</address>
+";s:15:"SERVER_SOFTWARE";s:36:"Apache/2.4.46 (Win64) OpenSSL/1.1.1g";s:11:"SERVER_NAME";s:9:"localhost";s:11:"SERVER_ADDR";s:3:"::1";s:11:"SERVER_PORT";s:2:"81";s:11:"REMOTE_ADDR";s:3:"::1";s:13:"DOCUMENT_ROOT";s:15:"D:/xampp/htdocs";s:14:"REQUEST_SCHEME";s:4:"http";s:14:"CONTEXT_PREFIX";s:0:"";s:21:"CONTEXT_DOCUMENT_ROOT";s:15:"D:/xampp/htdocs";s:12:"SERVER_ADMIN";s:20:"postmaster@localhost";s:15:"SCRIPT_FILENAME";s:48:"D:/xampp/htdocs/simasgantengv2-opd/web/index.php";s:11:"REMOTE_PORT";s:5:"33105";s:12:"REDIRECT_URL";s:48:"/simasgantengv2-opd/web/bpjs/peserta/get-wilayah";s:21:"REDIRECT_QUERY_STRING";s:126:"parent=&_csrf-app=J_EKM79zAxPgqUvRaH3Xkk0GdMTS_Ekey1wfauFxO58XsFxHzgNgK6eeJKMOE6frPFk1guTNCyagOlkTr0B9yQ%3D%3D&_=1790754296165";s:17:"GATEWAY_INTERFACE";s:7:"CGI/1.1";s:15:"SERVER_PROTOCOL";s:8:"HTTP/1.1";s:14:"REQUEST_METHOD";s:3:"GET";s:12:"QUERY_STRING";s:126:"parent=&_csrf-app=J_EKM79zAxPgqUvRaH3Xkk0GdMTS_Ekey1wfauFxO58XsFxHzgNgK6eeJKMOE6frPFk1guTNCyagOlkTr0B9yQ%3D%3D&_=1790754296165";s:11:"REQUEST_URI";s:175:"/simasgantengv2-opd/web/bpjs/peserta/get-wilayah?parent=&_csrf-app=J_EKM79zAxPgqUvRaH3Xkk0GdMTS_Ekey1wfauFxO58XsFxHzgNgK6eeJKMOE6frPFk1guTNCyagOlkTr0B9yQ%3D%3D&_=1790754296165";s:11:"SCRIPT_NAME";s:33:"/simasgantengv2-opd/web/index.php";s:8:"PHP_SELF";s:33:"/simasgantengv2-opd/web/index.php";s:18:"REQUEST_TIME_FLOAT";d:1790758269.205097;s:12:"REQUEST_TIME";i:1790758269;s:7:"APP_ENV";s:3:"dev";s:9:"APP_DEBUG";s:4:"true";s:7:"APP_KEY";s:44:"pvFYW2hBpYgHxi8lijXWxQeMrNkixxvZ9912-console";s:8:"DB_HOST1";s:9:"localhost";s:8:"DB_NAME1";s:23:"simasgantengv2_auth_bak";s:8:"DB_PORT1";s:4:"5432";s:8:"DB_USER1";s:8:"postgres";s:8:"DB_PASS1";s:9:"admin-123";s:8:"DB_HOST2";s:9:"localhost";s:8:"DB_NAME2";s:18:"simasgantengv2_bak";s:8:"DB_PORT2";s:4:"5432";s:8:"DB_USER2";s:8:"postgres";s:8:"DB_PASS2";s:9:"admin-123";s:8:"DB_HOST3";s:9:"localhost";s:8:"DB_NAME3";s:6:"simpeg";s:8:"DB_PORT3";s:4:"3000";s:8:"DB_USER3";s:6:"taspen";s:8:"DB_PASS3";s:6:"taspen";s:8:"DB_HOST4";s:11:"192.168.4.3";s:8:"DB_NAME4";s:8:"sppd2024";s:8:"DB_PORT4";s:4:"3306";s:8:"DB_USER4";s:6:"binpeg";s:8:"DB_PASS4";s:20:"binpegbekade01012017";s:8:"DB_HOST5";s:9:"localhost";s:8:"DB_NAME5";s:4:"gaji";s:8:"DB_PORT5";s:4:"3000";s:8:"DB_USER5";s:6:"taspen";s:8:"DB_PASS5";s:6:"taspen";s:8:"DB_HOST6";s:11:"192.168.2.6";s:8:"DB_NAME6";s:7:"adms_db";s:8:"DB_PORT6";s:4:"3306";s:8:"DB_USER6";s:6:"binpeg";s:8:"DB_PASS6";s:20:"binpegbekade01012017";s:8:"DB_HOST7";s:11:"192.168.4.3";s:8:"DB_NAME7";s:11:"fingerprint";s:8:"DB_PORT7";s:4:"5432";s:8:"DB_USER7";s:8:"postgres";s:8:"DB_PASS7";s:16:"sinka-admin@3329";}s:3:"GET";a:3:{s:6:"parent";s:0:"";s:9:"_csrf-app";s:88:"J_EKM79zAxPgqUvRaH3Xkk0GdMTS_Ekey1wfauFxO58XsFxHzgNgK6eeJKMOE6frPFk1guTNCyagOlkTr0B9yQ==";s:1:"_";s:13:"1790754296165";}s:4:"POST";a:0:{}s:6:"COOKIE";a:3:{s:26:"bkpsdmd-brebeskab-app-auth";s:26:"6v5j43ngk3h19hhtatgl83usl0";s:13:"_identity-app";s:154:"b799f2c2e780365228511e6c6b73cea56392c3ce427d0b5e0f284ffde895a4b4a:2:{i:0;s:13:"_identity-app";i:1;s:47:"[8188,"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq",10800]";}";s:21:"bkpsdmd-brebeskab-app";s:26:"1mgc1uod25pl8ri6chssdc7q04";}s:5:"FILES";a:0:{}s:7:"SESSION";a:23:{s:7:"__flash";a:0:{}s:11:"__returnUrl";s:55:"http://localhost:81/simasgantengv2-opd/web/bpjs-peserta";s:4:"__id";i:8188;s:9:"__authKey";s:32:"oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq";s:8:"__expire";i:1790761869;s:9:"_csrf-app";s:32:"WyTazqg4eSuQi25GQuX7wgW8Hu2HHUt0";s:8:"password";s:14:"Xyzvyx11032012";s:8:"username";s:23:"morieawan-administrator";s:3:"nip";s:18:"198306292010011024";s:8:"pengguna";s:32:"A8ACA7C248C93912E040640A040269BB";s:12:"namapengguna";s:20:"MOH. ARIEF KURNIAWAN";s:6:"iduser";i:8188;s:4:"role";s:1:"3";s:6:"module";s:1:"6";s:8:"mod_name";s:37:"Presensi, Kinerja & TPP - Kepegawaian";s:9:"roleadmin";i:1;s:8:"token_id";s:60:"$2y$13$.rF4kdda4vbSGaiw7Ve83.iamBxGKBjxgDScHCD6sUSNmriZv6Gi2";s:13:"token_expired";s:19:"2026-09-30 17:41:32";s:6:"tablok";s:8:"31000000";s:7:"tablokb";s:8:"31000400";s:10:"group_user";s:8:"31000000";s:11:"group_cetak";s:8:"31000000";s:9:"groupview";s:8:"31000000";}}";s:4:"user";s:2249:"a:5:{s:2:"id";i:8188;s:8:"identity";a:18:{s:2:"id";s:4:"8188";s:8:"username";s:25:"'morieawan-administrator'";s:8:"auth_key";s:34:"'oQhSk-3ejS9HonNWH9yd8SZ6sy96cwiq'";s:13:"password_hash";s:62:"'$2y$13$SczKb4gsF1Naa.dIECJIb.Az1YsAbA3roG.Rr8rCo8NO1IzCCLu7e'";s:6:"status";s:2:"10";s:8:"pengguna";s:34:"'A8ACA7C248C93912E040640A040269BB'";s:7:"nipBaru";s:20:"'198306292010011024'";s:12:"namapengguna";s:22:"'MOH. ARIEF KURNIAWAN'";s:6:"tablok";s:10:"'31000400'";s:7:"namaopd";s:63:"'BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA DAERAH'";s:4:"role";s:26:"'2,3,5,6,8,18,19,20,22,23'";s:4:"foto";s:33:"'198306292010011024-pas_foto.jpg'";s:7:"created";s:21:"'2020-08-14 23:01:21'";s:8:"modified";s:21:"'2021-07-07 05:22:03'";s:8:"updateby";s:41:"'198306292010011024 MOH. ARIEF KURNIAWAN'";s:4:"flag";s:1:"1";s:8:"token_id";s:62:"'$2y$13$.rF4kdda4vbSGaiw7Ve83.iamBxGKBjxgDScHCD6sUSNmriZv6Gi2'";s:13:"token_expired";s:21:"'2026-09-30 17:41:32'";}s:10:"attributes";a:18:{i:0;a:2:{s:9:"attribute";s:2:"id";s:5:"label";s:2:"ID";}i:1;a:2:{s:9:"attribute";s:8:"username";s:5:"label";s:8:"Username";}i:2;a:2:{s:9:"attribute";s:8:"auth_key";s:5:"label";s:8:"Auth Key";}i:3;a:2:{s:9:"attribute";s:13:"password_hash";s:5:"label";s:13:"Password Hash";}i:4;a:2:{s:9:"attribute";s:6:"status";s:5:"label";s:6:"Status";}i:5;a:2:{s:9:"attribute";s:8:"pengguna";s:5:"label";s:13:"Nama Pengguna";}i:6;a:2:{s:9:"attribute";s:7:"nipBaru";s:5:"label";s:3:"NIP";}i:7;a:2:{s:9:"attribute";s:12:"namapengguna";s:5:"label";s:4:"Nama";}i:8;a:2:{s:9:"attribute";s:6:"tablok";s:5:"label";s:6:"Tablok";}i:9;a:2:{s:9:"attribute";s:7:"namaopd";s:5:"label";s:8:"Nama OPD";}i:10;a:2:{s:9:"attribute";s:4:"role";s:5:"label";s:5:"Roles";}i:11;a:2:{s:9:"attribute";s:4:"foto";s:5:"label";s:11:"Foto Profil";}i:12;a:2:{s:9:"attribute";s:7:"created";s:5:"label";s:7:"Created";}i:13;a:2:{s:9:"attribute";s:8:"modified";s:5:"label";s:8:"Modified";}i:14;a:2:{s:9:"attribute";s:8:"updateby";s:5:"label";s:11:"Diubah Oleh";}i:15;a:2:{s:9:"attribute";s:4:"flag";s:5:"label";s:4:"Flag";}i:16;a:2:{s:9:"attribute";s:8:"token_id";s:5:"label";s:8:"Token Id";}i:17;a:2:{s:9:"attribute";s:13:"token_expired";s:5:"label";s:13:"Token Expired";}}s:13:"rolesProvider";N;s:19:"permissionsProvider";N;}";s:5:"asset";s:6:"a:0:{}";s:7:"summary";a:13:{s:3:"tag";s:13:"6abccd7d4a5fa";s:3:"url";s:194:"http://localhost:81/simasgantengv2-opd/web/bpjs/peserta/get-wilayah?parent=&_csrf-app=J_EKM79zAxPgqUvRaH3Xkk0GdMTS_Ekey1wfauFxO58XsFxHzgNgK6eeJKMOE6frPFk1guTNCyagOlkTr0B9yQ%3D%3D&_=1790754296165";s:4:"ajax";i:0;s:6:"method";s:3:"GET";s:2:"ip";s:3:"::1";s:4:"time";d:1790758269.205097;s:10:"statusCode";i:500;s:8:"sqlCount";i:3;s:21:"excessiveCallersCount";i:0;s:9:"mailCount";i:0;s:9:"mailFiles";a:0:{}s:10:"peakMemory";i:8610672;s:14:"processingTime";d:0.12320995330810547;}s:10:"exceptions";a:0:{}}

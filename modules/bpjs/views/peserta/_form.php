@@ -93,18 +93,19 @@
     'use strict';
 
     $(document).ready(function() {
-
-        // 1. Ambil URL dan Token CSRF bawaan Yii2 secara aman
-        var getWilayahUrl = <?= \yii\helpers\Json::encode(\yii\helpers\Url::to(['/bpjs/peserta/get-wilayah'])) ?>;
+        // 1. Inisialisasi CSRF Token Yii2 secara Global di Scope Form
         var csrfParam = yii.getCsrfParam();
         var csrfToken = yii.getCsrfToken();
 
-        // 2. Helper AJAX DepDrop Aman
+        // =========================================================
+        // A. DEPENDENT DROPDOWN WILAYAH
+        // =========================================================
+        var getWilayahUrl = <?= \yii\helpers\Json::encode(\yii\helpers\Url::to(['/bpjs/peserta/get-wilayah'])) ?>;
+
         function fetchAndPopulateWilayah(targetSelector, parentCode, placeholder, selectedVal = '') {
             var $target = $(targetSelector);
             $target.html('<option value="">-- Memuat ' + placeholder + '... --</option>').prop('disabled', true);
 
-            // Siapkan payload data + CSRF Token
             var requestData = { parent: parentCode };
             requestData[csrfParam] = csrfToken;
 
@@ -113,28 +114,26 @@
                 type: 'GET',
                 data: requestData,
                 dataType: 'json',
-                cache: false, // Menghindari caching browser
+                cache: false,
                 success: function(res) {
                     if (res.status === 'success' && res.data && res.data.length > 0) {
                         var options = '<option value="">-- Pilih ' + placeholder + ' --</option>';
-                        
                         $.each(res.data, function(idx, item) {
                             var isSelected = (item.kode === selectedVal) ? 'selected' : '';
                             options += '<option value="' + item.kode + '" ' + isSelected + '>' + item.nama + '</option>';
                         });
-
                         $target.html(options).prop('disabled', false);
                     } else {
                         $target.html('<option value="">-- Pilih ' + placeholder + ' --</option>').prop('disabled', false);
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function() {
                     $target.html('<option value="">-- Gagal Memuat Data --</option>').prop('disabled', true);
                 }
             });
         }
 
-        // 3. Initial Load Data saat Form Dibuka
+        // Load Awal Wilayah (Mode Tambah & Edit)
         var initProv = <?= \yii\helpers\Json::encode($model->kd_prov ?? '') ?>;
         var initKab  = <?= \yii\helpers\Json::encode($model->kd_kab ?? '') ?>;
         var initKec  = <?= \yii\helpers\Json::encode($model->kd_kec ?? '') ?>;
@@ -146,77 +145,66 @@
         if (initKab)  { fetchAndPopulateWilayah('#kd_kec', initKab, 'Kecamatan', initKec); }
         if (initKec)  { fetchAndPopulateWilayah('#kd_desa', initKec, 'Desa/Kelurahan', initDesa); }
 
-        // 4. Change Event Listeners (dengan pembersihan .off() untuk keamanan event binding)
+        // Event Change Handlers Wilayah
         $('#kd_prov').off('change').on('change', function() {
             var provKode = $(this).val();
             $('#kd_kab, #kd_kec, #kd_desa').html('<option value="">-- Pilih --</option>').prop('disabled', true);
-
-            if (provKode) {
-                fetchAndPopulateWilayah('#kd_kab', provKode, 'Kabupaten/Kota');
-            }
+            if (provKode) { fetchAndPopulateWilayah('#kd_kab', provKode, 'Kabupaten/Kota'); }
         });
 
         $('#kd_kab').off('change').on('change', function() {
             var kabKode = $(this).val();
             $('#kd_kec, #kd_desa').html('<option value="">-- Pilih --</option>').prop('disabled', true);
-
-            if (kabKode) {
-                fetchAndPopulateWilayah('#kd_kec', kabKode, 'Kecamatan');
-            }
+            if (kabKode) { fetchAndPopulateWilayah('#kd_kec', kabKode, 'Kecamatan'); }
         });
 
         $('#kd_kec').off('change').on('change', function() {
             var kecKode = $(this).val();
             $('#kd_desa').html('<option value="">-- Pilih --</option>').prop('disabled', true);
-
-            if (kecKode) {
-                fetchAndPopulateWilayah('#kd_desa', kecKode, 'Desa/Kelurahan');
-            }
+            if (kecKode) { fetchAndPopulateWilayah('#kd_desa', kecKode, 'Desa/Kelurahan'); }
         });
 
-    });
 
-    var getHubkelUrl = <?= \yii\helpers\Json::encode(\yii\helpers\Url::to(['/bpjs/peserta/get-hubkel'])) ?>;
-    var selectedHubkel = <?= \yii\helpers\Json::encode($model->hubkel ?? '') ?>;
+        // =========================================================
+        // B. DROPDOWN HUBUNGAN KELUARGA (HUBKEL)
+        // =========================================================
+        var getHubkelUrl = <?= \yii\helpers\Json::encode(\yii\helpers\Url::to(['/bpjs/peserta/get-hubkel'])) ?>;
+        var selectedHubkel = <?= \yii\helpers\Json::encode($model->hubkel ?? '') ?>;
 
-    function loadHubkelDropdown() {
-        var $hubkel = $('#hubkel');
-        $hubkel.html('<option value="">-- Memuat Hubkel... --</option>').prop('disabled', true);
+        function loadHubkelDropdown() {
+            var $hubkel = $('#hubkel');
+            $hubkel.html('<option value="">-- Memuat Hubkel... --</option>').prop('disabled', true);
 
-        // Siapkan data request + token CSRF
-        var requestData = {};
-        requestData[csrfParam] = csrfToken;
+            var requestData = {};
+            requestData[csrfParam] = csrfToken;
 
-        $.ajax({
-            url: getHubkelUrl,
-            type: 'GET',
-            data: requestData,
-            dataType: 'json',
-            cache: false, // Menghindari caching browser
-            success: function(res) {
-                if (res.status === 'success' && res.data && res.data.length > 0) {
-                    var options = '<option value="">-- Pilih Hubkel --</option>';
-
-                    $.each(res.data, function(idx, item) {
-                        // Pastikan mencocokkan property name (kd_hubkel & nm_hubkel)
-                        var isSelected = (item.kd_hubkel === selectedHubkel) ? 'selected' : '';
-                        options += '<option value="' + item.kd_hubkel + '" ' + isSelected + '>' + 
-                                   item.kd_hubkel + ' - ' + item.nm_hubkel + '</option>';
-                    });
-
-                    $hubkel.html(options).prop('disabled', false);
-                } else {
+            $.ajax({
+                url: getHubkelUrl,
+                type: 'GET',
+                data: requestData,
+                dataType: 'json',
+                cache: false,
+                success: function(res) {
+                    if (res.status === 'success' && res.data && res.data.length > 0) {
+                        var options = '<option value="">-- Pilih Hubkel --</option>';
+                        $.each(res.data, function(idx, item) {
+                            var isSelected = (item.kd_hubkel === selectedHubkel) ? 'selected' : '';
+                            options += '<option value="' + item.kd_hubkel + '" ' + isSelected + '>' + item.kd_hubkel + ' - ' + item.nm_hubkel + '</option>';
+                        });
+                        $hubkel.html(options).prop('disabled', false);
+                    } else {
+                        $hubkel.html('<option value="">-- Gagal Memuat --</option>').prop('disabled', false);
+                    }
+                },
+                error: function() {
                     $hubkel.html('<option value="">-- Gagal Memuat --</option>').prop('disabled', false);
                 }
-            },
-            error: function() {
-                $hubkel.html('<option value="">-- Gagal Memuat --</option>').prop('disabled', false);
-            }
-        });
-    }
+            });
+        }
 
-    // Jalankan fungsi load saat form dirender
-    loadHubkelDropdown();
+        // Jalankan pemanggilan Hubkel
+        loadHubkelDropdown();
+    });
 
 })(jQuery);
 </script>
