@@ -46,11 +46,16 @@ class PesertaController extends Controller
      */
     public function actionTabPeserta()
     {
-        $nip = Yii::$app->request->get('nip') ?? Yii::$app->session->get('nip');
+        $sess = Yii::$app->session;
+        $nip = Yii::$app->request->get('nip') ?? '';
+        $nama = Yii::$app->request->get('nama') ?? '';
         
         $pesertaUtama = [];
         $pesertaTambahan = [];
-        $pegawai = [];
+        $pegawai = [
+            'nip' => $nip,
+            'nama' => $nama,
+        ];
 
         if ($nip) {
             $client = new Client(['baseUrl' => $this->apiBaseUrl]); 
@@ -99,7 +104,7 @@ class PesertaController extends Controller
         $request = Yii::$app->request;
         $keyword    = $request->get('keyword');
         $subLokasi  = $request->get('sub_lokasi');
-        $kodeLokasi = $request->get('kode_lokasi', '');
+        $kodeLokasi = Yii::$app->session->get('tablok', '');
 
         // Buat URL lengkap beserta Query Params
         $queryParams = http_build_query([

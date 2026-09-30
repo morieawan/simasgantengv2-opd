@@ -2,22 +2,18 @@
     <input type="hidden" id="id_peserta" name="PesertaForm[id_peserta]" value="<?= $model->id_peserta ?? '' ?>">
 
     <div class="row">
+        <div class="col-md-8 form-group">
+            <label>Nama Peserta <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="nama_peserta" name="PesertaForm[nama_peserta]" maxlength="150" value="<?= $model->nama_peserta ?? '' ?>" required>
+        </div>
+    </div>
+    
+    <div class="row">
         <div class="col-md-6 form-group">
             <label>NIK <span class="text-danger">*</span></label>
             <input type="text" class="form-control" id="nik" name="PesertaForm[nik]" maxlength="20" value="<?= $model->nik ?? '' ?>" required>
         </div>
         <div class="col-md-6 form-group">
-            <label>No. KK <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="no_kk" name="PesertaForm[no_kk]" maxlength="20" value="<?= $model->no_kk ?? '' ?>" required>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-8 form-group">
-            <label>Nama Peserta <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="nama_peserta" name="PesertaForm[nama_peserta]" maxlength="150" value="<?= $model->nama_peserta ?? '' ?>" required>
-        </div>
-        <div class="col-md-4 form-group">
             <label>Hubungan Keluarga <span class="text-danger">*</span></label>
             <select class="form-control" id="hubkel" name="PesertaForm[hubkel]" required>
                 <option value="">-- Pilih Hubkel --</option>
@@ -26,6 +22,12 @@
                 <option value="02">02 - Anak</option>
             </select>
         </div>
+        <!--
+        <div class="col-md-6 form-group">
+            <label>No. KK <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="no_kk" name="PesertaForm[no_kk]" maxlength="20" value="" required>
+        </div>
+        -->
     </div>
 
     <div class="row">
@@ -84,8 +86,8 @@
     </div>
 
     <div class="modal-footer px-0 pb-0 pt-3">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <button type="submit" class="btn btn-primary" id="btn-save">Simpan Data</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-success" id="btn-save">Simpan Data</button>
     </div>
 </form>
 

@@ -10,7 +10,6 @@ $tabPesertaUrl    = Url::to(['/bpjs/peserta/tab-peserta']);
 <div class="card card-outline card-info">
     <div class="card-body">
         <form id="form-search-pegawai" class="row">
-            <input type="hidden" name="kode_lokasi" value="<?= $sess['tablok'] ?? '' ?>">
             <div class="col-md-4 form-group mb-2">
                 <input type="text" class="form-control" id="search_keyword" name="keyword" placeholder="Ketik NIP atau Nama Pegawai..." required>
             </div>
@@ -141,6 +140,7 @@ $(document).ready(function() {
                 '</td>' +
             '</tr>';
         });
+        
         $('#tbody-hasil-pegawai').html(html);
         $('#card-hasil-pencarian').slideDown();
     }
@@ -163,9 +163,17 @@ $(document).ready(function() {
         }
 
         // Pindah Tab dan Load Partial View _tab_peserta
+        // $('#btn-tab-peserta').tab('show');
+        // if (typeof window.loadTabContent === 'function') {
+        //     window.loadTabContent('peserta', tabPesertaUrl);
+        // }
+
+        // Pindah Tab dan Load Partial View _tab_peserta dengan membawa NIP pegawai yang dipilih
         $('#btn-tab-peserta').tab('show');
         if (typeof window.loadTabContent === 'function') {
-            window.loadTabContent('peserta', tabPesertaUrl);
+            let targetUrl = tabPesertaUrl + '?nip=' + encodeURIComponent(pegawaiData.nip) + '&nama=' + encodeURIComponent(pegawaiData.nama);
+            // let targetUrl = tabPesertaUrl + (tabPesertaUrl.indexOf('?') !== -1 ? '&' : '?') + 'nip=' + encodeURIComponent(pegawaiData.nip);
+            window.loadTabContent('peserta', targetUrl);
         }
     });
 });

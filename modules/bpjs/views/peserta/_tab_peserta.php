@@ -2,10 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-/* @var $this yii\web\View */
-/* @var $pegawai array Data pegawai utama/pns */
-/* @var $pesertaUtama array Data dari DB5 simgaji (keluarga.go) */
-/* @var $pesertaTambahan array Data dari DB21 bpjs_keluarga (peserta.go) */
+$createUrl  = Url::to(['/bpjs/peserta/create']);
 
 // Fungsi helper untuk mengurutkan array berdasarkan kdhubkel / hubkel ASC
 $fnSortHubkel = function ($a, $b) {
@@ -21,6 +18,7 @@ if (!empty($pesertaUtama) && is_array($pesertaUtama)) {
 if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
     usort($pesertaTambahan, $fnSortHubkel);
 }
+
 ?>
 
 <div class="tab-peserta-container" style="font-size: 13px;">
@@ -29,7 +27,7 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
     <!-- 1. TABEL DATA PESERTA UTAMA (DB5 - SIMGAJI) -->
     <!-- ========================================== -->
     <div class="panel panel-default mb-4" style="margin-bottom: 25px;">
-        <div class="panel-heading" style="background-color: #f8f9fa; font-weight: bold; font-size: 14px; padding: 10px 15px;">
+        <div class="panel-heading" style="background-color: #f8f9fa; font-weight: bold; font-size: 13px; padding: 10px 15px;">
             <i class="fa fa-users text-primary"></i> Data Peserta Utama (Simgaji)
             <?php if (!empty($pegawai)): ?>
                 <span class="text-muted" style="font-weight: normal; font-size: 13px;">
@@ -39,14 +37,14 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
         </div>
         <div class="panel-body padding-0" style="padding: 0;">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover mb-0" style="margin-bottom: 0; font-size: 12px;">
+                <table class="table table-striped table-bordered table-hover mb-0" style="margin-bottom: 0; font-size: 13px;">
                     <thead style="background-color: #f1f3f5;">
                         <tr>
-                            <th class="text-center" style="width: 50px;">No</th>
+                            <th class="text-center" style="width: 5%;">No</th>
                             <th>Nama Peserta</th>
-                            <th class="text-center" style="width: 120px;">Tgl. Lahir</th>
-                            <th class="text-center" style="width: 150px;">Hub. Keluarga</th>
-                            <th class="text-center" style="width: 100px;">Status</th>
+                            <th class="text-center" style="width: 10%;">Tgl. Lahir</th>
+                            <th class="text-center" style="width: 25%;">Hub. Keluarga</th>
+                            <th class="text-center" style="width: 15%;">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,15 +52,17 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
                             <?php foreach ($pesertaUtama as $index => $row): ?>
                                 <tr>
                                     <td class="text-center"><?= $index + 1 ?></td>
-                                    <td><?= Html::encode($row['NMBDG'] ?? $row['nama_peserta'] ?? '-') ?></td>
-                                    <td class="text-center"><?= !empty($row['TGLLHR']) ? Html::encode(date('d-m-Y', strtotime($row['TGLLHR']))) : '-' ?></td>
+                                    <td><?= Html::encode($row['NMBDG'] ?? $row['nm_kel'] ?? '-') ?></td>
+                                    <td class="text-center"><?= !empty($row['tgl_lhr']) ? Html::encode(date('d-m-Y', strtotime($row['tgl_lhr']))) : '-' ?></td>
                                     <td class="text-center">
-                                        <span class="label label-info" style="font-size: 11px;">
-                                            <?= Html::encode($row['nama_hubkel'] ?? $row['kdhubkel'] ?? '-') ?>
+                                        <span class="label label-info" style="font-size: 12px;">
+                                            <?= Html::encode($row['nama_hubkel'] ?? $row['kd_hubkel'].' - '.$row['nm_hubkel'] ?? '-') ?>
                                         </span>
                                     </td>
                                     <td class="text-center">
-                                        <span class="label label-success" style="font-size: 11px;">Tanggungan Utama</span>
+                                        <span class="label label-success" style="font-size: 12px;">
+                                            <?= Html::encode($row['is_calculated_tertunjang']) == true ? 'Tertunjang' : 'Tdk Tertunjang' ?>
+                                        </span>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -89,7 +89,7 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
                 <i class="fa fa-user-plus text-success"></i> Data Peserta BPJS Tambahan
             </div>
             <div class="pull-right">
-                <button type="button" class="btn btn-success btn-sm" id="btn-tambah-peserta-tambahan">
+                <button class="btn btn-sm btn-success" id="btn-tambah-peserta" data-nip="<?= Html::encode($pegawai['nip'] ?? $nip ?? '') ?>">
                     <i class="fa fa-plus"></i> Tambah Peserta
                 </button>
             </div>
@@ -152,5 +152,67 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
             </div>
         </div>
     </div>
-
 </div>
+<!-- Container Modal Global (jika belum ada di layout) -->
+<div class="modal fade" id="modal-global-bpjs" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" style="font-weight:bold;"><i class="fa fa-user-plus"></i> Tambah Data Peserta</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body-content">
+                <!-- File _form.php akan di-render di sini via AJAX -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function($) {
+    'use strict'; // 1. Aktifkan Strict Mode untuk mencegah kesalahan penulisan skrip
+
+    // 2. URL aman menggunakan Json::encode untuk menghindari XSS pada JavaScript
+    var createUrl = <?= \yii\helpers\Json::encode(\yii\helpers\Url::to(['/bpjs/peserta/create'])) ?>;
+
+    // 3. Matikan handler lama (.off) sebelum mendaftarkan handler baru (.on)
+    $(document).off('click', '#btn-tambah-peserta').on('click', '#btn-tambah-peserta', function(e) {
+        e.preventDefault();
+
+        var $btn = $(this);
+        var nip = $btn.data('nip');
+
+        if (!nip) {
+            alert('NIP Pegawai belum dipilih.');
+            return;
+        }
+
+        // Tampilkan Loading Indicator di Modal
+        $('#modal-body-content').html(
+            '<div class="text-center p-5" style="padding: 40px;">' +
+            '<i class="fa fa-spinner fa-spin fa-2x text-primary"></i>' +
+            '<p style="margin-top: 10px;">Memuat form tambah peserta...</p>' +
+            '</div>'
+        );
+
+        $('#modal-global-bpjs').modal('show');
+
+        // Request AJAX
+        $.ajax({
+            url: createUrl,
+            type: 'GET',
+            data: { nip: nip },
+            cache: false, // Hindari caching AJAX browser
+            success: function(response) {
+                $('#modal-body-content').html(response);
+            },
+            error: function(xhr, status, error) {
+                $('#modal-global-bpjs').modal('hide');
+                alert('Gagal memuat form: ' + (xhr.responseJSON?.message || error));
+            }
+        });
+    });
+})(jQuery);
+</script>
