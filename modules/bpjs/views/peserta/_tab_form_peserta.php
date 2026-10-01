@@ -1,3 +1,9 @@
+<?php
+
+    $this->registerCssFile('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
+    $this->registerJsFile('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
+
+?>
 <form id="form-peserta">
     <input type="hidden" id="id_peserta" name="PesertaForm[id_peserta]" value="<?= $model->id_peserta ?? '' ?>">
 
@@ -101,8 +107,6 @@ $script = <<< JS
 JS;
 $this->registerJS($script);
 
-$this->registerCssFile('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
-$this->registerJsFile('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 ?>
 
 <script>
