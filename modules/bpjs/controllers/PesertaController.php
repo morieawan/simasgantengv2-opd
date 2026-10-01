@@ -11,6 +11,8 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\httpclient\Client;
 
+use app\modules\bpjs\models\PesertaForm;
+
 
 class PesertaController extends Controller
 {
@@ -235,12 +237,12 @@ class PesertaController extends Controller
         ];
 
         if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('_form', [
+            return $this->renderAjax('_tab_form_peserta', [
                 'model' => $model,
             ]);
         }
 
-        return $this->render('_form', [
+        return $this->render('_tab_form_peserta', [
             'model' => $model,
         ]);
     }
@@ -353,5 +355,18 @@ class PesertaController extends Controller
                 'data'    => []
             ];
         }
+    }
+
+    public function actionTabFormPeserta()
+    {
+        if (Yii::$app->request->isAjax) {
+            $model = new PesertaForm(); 
+
+            return $this->renderPartial('_tab_form_peserta', [
+                'model' => $model,
+            ]);
+        }
+
+        throw new \yii\web\BadRequestHttpException('Request tidak valid.');
     }
 }

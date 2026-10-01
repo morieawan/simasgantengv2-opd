@@ -6,6 +6,8 @@ $this->title = 'BPJS Anggota Keluarga Tambahan ';
 $tabSearchUrl  = Url::to(['/bpjs/peserta/tab-search']);
 $tabPesertaUrl = Url::to(['/bpjs/peserta/tab-peserta']);
 $tabIuranUrl   = Url::to(['/bpjs/peserta/tab-iuran']);
+$tabFormPesertaUrl = Url::to(['/bpjs/peserta/tab-form-peserta']); 
+
 ?>
 
 <div class="card card-primary card-outline card-tabs">
@@ -19,6 +21,16 @@ $tabIuranUrl   = Url::to(['/bpjs/peserta/tab-iuran']);
             <li class="nav-item">
                 <a class="nav-link disabled" id="btn-tab-peserta" data-toggle="pill" href="#tab-content" role="tab" data-url="<?= $tabPesertaUrl ?>">
                     <i class="fas fa-users mr-1"></i> Data Peserta
+                </a>
+            </li>
+            <li class="nav-item" id="li-tab-form-peserta" style="display: none;">
+                <a class="nav-link" 
+                id="btn-tab-form-peserta" 
+                data-toggle="pill" 
+                href="#tab-content" 
+                role="tab" 
+                data-url="<?= $tabFormPesertaUrl ?>">
+                <i class="fas fa-user-plus mr-1"></i> Input Peserta
                 </a>
             </li>
             <li class="nav-item">
@@ -101,6 +113,16 @@ $script = <<< JS
         window.selectedPegawai = pegawaiData;
         $('#btn-tab-peserta, #btn-tab-iuran').removeClass('disabled');
     };
+
+    $(document).on('click', '.btn-tambah-peserta', function(e) {
+        e.preventDefault();
+            $('#li-tab-form-peserta').show();
+            $('#btn-tab-form-peserta').trigger('click');
+        });
+        $(document).on('click', '#btn-tab-search, #btn-tab-peserta, #btn-tab-iuran', function() {
+            $('#li-tab-form-peserta').hide();
+    });
+
 JS;
 
 $this->registerJs($script);

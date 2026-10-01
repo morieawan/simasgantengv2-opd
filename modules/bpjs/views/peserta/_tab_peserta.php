@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$createUrl  = Url::to(['/bpjs/peserta/create']);
+// $createUrl  = Url::to(['/bpjs/peserta/create']);
 
 // Fungsi helper untuk mengurutkan array berdasarkan kdhubkel / hubkel ASC
 $fnSortHubkel = function ($a, $b) {
@@ -89,9 +89,10 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
                 <i class="fa fa-user-plus text-success"></i> Data Peserta BPJS Tambahan
             </div>
             <div class="pull-right">
-                <button class="btn btn-sm btn-success" id="btn-tambah-peserta" data-nip="<?= Html::encode($pegawai['nip'] ?? $nip ?? '') ?>">
-                    <i class="fa fa-plus"></i> Tambah Peserta
-                </button>
+                <?= Html::a('<i class="fa fa-plus"></i> Tambah Peserta', '#tab-form-peserta', [
+                    'class' => 'btn btn-sm btn-success btn-tambah-peserta',
+                    'data-toggle' => 'tab', 
+                ]) ?>
             </div>
         </div>
         <div class="panel-body padding-0" style="padding: 0;">
@@ -153,66 +154,13 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
         </div>
     </div>
 </div>
-<!-- Container Modal Global (jika belum ada di layout) -->
-<div class="modal fade" id="modal-global-bpjs" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" style="font-weight:bold;"><i class="fa fa-user-plus"></i> Tambah Data Peserta</h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="modal-body-content">
-                <!-- File _form.php akan di-render di sini via AJAX -->
-            </div>
-        </div>
-    </div>
-</div>
+<?php
 
-<script>
-(function($) {
-    'use strict'; // 1. Aktifkan Strict Mode untuk mencegah kesalahan penulisan skrip
-
-    // 2. URL aman menggunakan Json::encode untuk menghindari XSS pada JavaScript
-    var createUrl = <?= \yii\helpers\Json::encode(\yii\helpers\Url::to(['/bpjs/peserta/create'])) ?>;
-
-    // 3. Matikan handler lama (.off) sebelum mendaftarkan handler baru (.on)
-    $(document).off('click', '#btn-tambah-peserta').on('click', '#btn-tambah-peserta', function(e) {
-        e.preventDefault();
-
-        var $btn = $(this);
-        var nip = $btn.data('nip');
-
-        if (!nip) {
-            alert('NIP Pegawai belum dipilih.');
-            return;
-        }
-
-        // Tampilkan Loading Indicator di Modal
-        $('#modal-body-content').html(
-            '<div class="text-center p-5" style="padding: 40px;">' +
-            '<i class="fa fa-spinner fa-spin fa-2x text-primary"></i>' +
-            '<p style="margin-top: 10px;">Memuat form tambah peserta...</p>' +
-            '</div>'
-        );
-
-        $('#modal-global-bpjs').modal('show');
-
-        // Request AJAX
-        $.ajax({
-            url: createUrl,
-            type: 'GET',
-            data: { nip: nip },
-            cache: false, // Hindari caching AJAX browser
-            success: function(response) {
-                $('#modal-body-content').html(response);
-            },
-            error: function(xhr, status, error) {
-                $('#modal-global-bpjs').modal('hide');
-                alert('Gagal memuat form: ' + (xhr.responseJSON?.message || error));
-            }
-        });
-    });
-})(jQuery);
-</script>
+$js = <<<'JS'
+$('.btn-tambah-peserta').on('click', function(e) {
+    e.preventDefault();
+    $('a[href="#tab-form-peserta"]').tab('show');
+});
+JS;
+$this->registerJs($js);
+?>
