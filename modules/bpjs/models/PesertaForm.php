@@ -18,6 +18,7 @@ class PesertaForm extends Model
     public $kelurahan;
     public $kecamatan;
     public $kabupaten;
+    public $provinsi;
     public $sumber_pembiayaan;
     public $aktif;
 
@@ -53,6 +54,7 @@ class PesertaForm extends Model
             'kelurahan' => 'Kelurahan',
             'kecamatan' => 'Kecamatan',
             'kabupaten' => 'Kabupaten',
+            'provinsi' => 'Provinsi',
             'sumber_pembiayaan' => 'Sumber Pembiayaan',
             'aktif' => 'Status Aktif',
         ];

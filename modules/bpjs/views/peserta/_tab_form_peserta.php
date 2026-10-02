@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use kartik\widgets\ActiveForm;
 use kartik\select2\Select2;
+use kartik\depdrop\DepDrop;
 use kartik\datecontrol\DateControl;   
 ?>
 
@@ -61,7 +62,7 @@ use kartik\datecontrol\DateControl;
     <div class="row">
         <div class="col-md-3 form-group">
             <?= $form->field($model, 'provinsi')->widget(Select2::class, [
-                'data' => [],
+                'data' => ArrayHelper::map($prov, 'kode', 'nama'),
                 'options' => [
                     'placeholder' => 'Pilih Provinsi...',
                     'id' => 'kd_prov',
@@ -83,7 +84,7 @@ use kartik\datecontrol\DateControl;
                 'pluginOptions' => [
                     'depends' => ['kd_prov'],
                     'placeholder' => 'Pilih Kabupaten...',
-                    'url' => Url::to(['/bpjs-peserta/get-wilayah?parent=']),
+                    'url' => Url::to(['/bpjs-peserta/get-wilayah']),
                     'loadingText' => 'Memuat Kabupaten...',
                 ],
             ]) ?>
@@ -100,7 +101,7 @@ use kartik\datecontrol\DateControl;
                 'pluginOptions' => [
                     'depends' => ['kd_kab'],
                     'placeholder' => 'Pilih Kecamatan...',
-                    'url' => Url::to(['/bpjs-peserta/get-wilayah?parent=']),
+                    'url' => Url::to(['/bpjs-peserta/get-wilayah']),
                     'loadingText' => 'Memuat Kecamatan...',
                 ],
             ]) ?>
@@ -117,7 +118,7 @@ use kartik\datecontrol\DateControl;
                 'pluginOptions' => [
                     'depends' => ['kd_kec'],
                     'placeholder' => 'Pilih Kel/ Desa...',
-                    'url' => Url::to(['/bpjs-peserta/get-wilayah?parent=']),
+                    'url' => Url::to(['/bpjs-peserta/get-wilayah']),
                     'loadingText' => 'Memuat Kel/ Desa...',
                 ],
             ]) ?>
@@ -132,3 +133,16 @@ use kartik\datecontrol\DateControl;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<?php
+$js = <<<'JS'
+setTimeout(function() {
+    if (typeof initDepdropControl === 'function') {
+        initDepdropControl('kd_kab');
+        initDepdropControl('kd_kec');
+        initDepdropControl('kd_desa');
+    }
+}, 100);
+JS;
+$this->registerJs($js);
+?>

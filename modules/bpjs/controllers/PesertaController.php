@@ -26,7 +26,8 @@ class PesertaController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'get-wilayah' => ['GET'],
-                    'get-hubkel'  => ['GET'], // Tambahkan pembatasan verb untuk Hubkel
+                    'get-provinsi' => ['GET'],
+                    'get-hubkel'  => ['GET'], 
                 ],
             ],
         ]);
@@ -286,9 +287,72 @@ class PesertaController extends Controller
         }
     }
 
+    public function actionGetProvinsi($parent = '')
+    {
+        $request = Yii::$app->request;
+        $parent = $request->get('parent', '');
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        try {
+            $client = new \yii\httpclient\Client(['baseUrl' => $this->apiBaseUrl]);
+            $response = $client->get('/bpjs/wilayah', ['parent' => $parent])->send();
+
+            if ($response->isOk) {
+                return $response->data['data'];
+            }
+
+            return [
+                'status'  => false,
+                'message' => $response->data['message'] ?? 'Gagal mengambil data provinsi',
+                'data'    => []
+            ];
+        } catch (\Exception $e) {
+            return [
+                'status'  => false,
+                'message' => $e->getMessage(),
+                'data'    => []
+            ];
+        }
+    }
+
+    // public function actionGetWilayah()
+    // {
+    //     Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+    //     $request = Yii::$app->request;
+    //     $parent = $request->get('parent', '');
+
+    //     // DepDrop mengirimkan parent ID melalui POST param 'depdrop_parents'
+    //     $parents = $request->post('depdrop_parents');
+    //     if (!empty($parents) && !empty($parents[0])) {
+    //         $parent = $parents[0];
+    //     }
+
+    //     try {
+    //         $client = new \yii\httpclient\Client(['baseUrl' => $this->apiBaseUrl]);
+    //         $response = $client->get('/bpjs/wilayah', ['parent' => $parent])->send();
+
+    //         if ($response->isOk && !empty($response->data['data'])) {
+    //             $out = [];
+    //             foreach ($response->data['data'] as $item) {
+    //                 $out[] = [
+    //                     'id'   => $item['kode'],
+    //                     'name' => $item['nama'],
+    //                 ];
+    //             }
+    //             return ['output' => $out, 'selected' => ''];
+    //         }
+
+    //         return ['output' => [], 'selected' => ''];
+    //     } catch (\Exception $e) {
+    //         return ['output' => [], 'selected' => ''];
+    //     }
+    // }
+
     public function actionGetWilayah($parent = '')
     {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        // Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         // Ambil parameter parent jika dipanggil oleh DepDrop (biasanya dikirim via POST/GET depdrop_parents)
         $request = Yii::$app->request;
@@ -323,11 +387,7 @@ class PesertaController extends Controller
     {
         $request = Yii::$app->request;
 
-        if (!$request->isAjax) {
-            throw new BadRequestHttpException('Request tidak valid.');
-        }
-
-        // Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
 
         try {
             $client = new Client(['baseUrl' => $this->apiBaseUrl]);
@@ -356,15 +416,19 @@ class PesertaController extends Controller
         // if (Yii::$app->request->isAjax) {
             $model = new PesertaForm(); 
 
+            $getprov = $this->actionGetProvinsi();
+            $prov = $getprov['data'];
+
             $gethubkel = $this->actionGetHubkel();
             $hubkel = $gethubkel['data'];
 
             return $this->renderAjax('_tab_form_peserta', [
                 'hubkel' => $hubkel,
+                'prov' => $prov,
                 'model' => $model,
             ]);
         // }
 
-        throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        // throw new \yii\web\BadRequestHttpException('Request tidak valid.');
     }
 }
