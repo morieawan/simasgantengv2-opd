@@ -33,7 +33,7 @@ class PesertaForm extends Model
             [['hubkel'], 'string', 'max' => 2],
             [['nik', 'no_kk'], 'string', 'max' => 20],
             [['nama_peserta', 'alamat'], 'string', 'max' => 150],
-            [['kelurahan', 'kecamatan', 'kabupaten', 'sumber_pembiayaan'], 'string', 'max' => 50],
+            [['kelurahan', 'kecamatan', 'kabupaten', 'provinsi', 'sumber_pembiayaan'], 'string', 'max' => 50],
         ];
     }
 

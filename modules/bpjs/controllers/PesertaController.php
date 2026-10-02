@@ -10,6 +10,7 @@ use yii\web\BadRequestHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\httpclient\Client;
+use yii\helpers\Json;
 
 use app\modules\bpjs\models\PesertaForm;
 
@@ -285,43 +286,36 @@ class PesertaController extends Controller
         }
     }
 
-    /**
-     * Action Proxy Wilayah (DepDrop) - Aman dari Unrecognized format
-     */
     public function actionGetWilayah($parent = '')
     {
-        $request = Yii::$app->request;
-        
-        // // 1. Validasi HANYA menerima request AJAX
-        // if (!$request->isAjax) {
-        //     throw new BadRequestHttpException('Request tidak valid.');
-        // }
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-        Yii::$app->response->format = Response::FORMAT_JSON;
+        // Ambil parameter parent jika dipanggil oleh DepDrop (biasanya dikirim via POST/GET depdrop_parents)
+        $request = Yii::$app->request;
+        $parents = $request->post('depdrop_parents');
+        
+        if (!empty($parents)) {
+            $parent = $parents[0];
+        }
 
         try {
-            $client = new Client(['baseUrl' => $this->apiBaseUrl]);
-            $response = $client->get('/bpjs/wilayah', [
-                'parent' => $parent
-            ])->send();
+            $client = new \yii\httpclient\Client(['baseUrl' => $this->apiBaseUrl]);
+            $response = $client->get('/bpjs/wilayah', ['parent' => $parent])->send();
 
-            // 2. Cek apakah response sukses dan body content tidak kosong
-            if ($response->isOk && !empty($response->content)) {
-                return $response->data['data'];
+            if ($response->isOk && !empty($response->data['data'])) {
+                $out = [];
+                foreach ($response->data['data'] as $item) {
+                    $out[] = [
+                        'id'   => $item['kode'],
+                        'name' => $item['nama'],
+                    ];
+                }
+                return ['output' => $out, 'selected' => ''];
             }
 
-            return [
-                'status'  => false,
-                'message' => 'Gagal mengambil data wilayah',
-                'data'    => []
-            ];
+            return ['output' => [], 'selected' => ''];
         } catch (\Exception $e) {
-            // Tangkap exception jika terjadi error parsing atau koneksi
-            return [
-                'status'  => false,
-                'message' => 'Error API: ' . $e->getMessage(),
-                'data'    => []
-            ];
+            return ['output' => [], 'selected' => ''];
         }
     }
 
@@ -329,11 +323,11 @@ class PesertaController extends Controller
     {
         $request = Yii::$app->request;
 
-        // if (!$request->isAjax) {
-        //     throw new BadRequestHttpException('Request tidak valid.');
-        // }
+        if (!$request->isAjax) {
+            throw new BadRequestHttpException('Request tidak valid.');
+        }
 
-        Yii::$app->response->format = Response::FORMAT_JSON;
+        // Yii::$app->response->format = Response::FORMAT_JSON;
 
         try {
             $client = new Client(['baseUrl' => $this->apiBaseUrl]);
@@ -359,13 +353,17 @@ class PesertaController extends Controller
 
     public function actionTabFormPeserta()
     {
-        if (Yii::$app->request->isAjax) {
+        // if (Yii::$app->request->isAjax) {
             $model = new PesertaForm(); 
 
-            return $this->renderPartial('_tab_form_peserta', [
+            $gethubkel = $this->actionGetHubkel();
+            $hubkel = $gethubkel['data'];
+
+            return $this->renderAjax('_tab_form_peserta', [
+                'hubkel' => $hubkel,
                 'model' => $model,
             ]);
-        }
+        // }
 
         throw new \yii\web\BadRequestHttpException('Request tidak valid.');
     }
