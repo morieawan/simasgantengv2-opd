@@ -25,12 +25,21 @@ class PesertaController extends Controller
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
-                    'get-wilayah' => ['GET'],
+                    'get-wilayah' => ['POST'],
                     'get-provinsi' => ['GET'],
                     'get-hubkel'  => ['GET'], 
                 ],
             ],
         ]);
+    }
+
+    public function beforeAction($action)
+    {
+        if ($action->id === 'get-wilayah') {
+            $this->enableCsrfValidation = false;
+        }
+
+        return parent::beforeAction($action);
     }
 
     /**
@@ -56,11 +65,13 @@ class PesertaController extends Controller
 
     public function actionTabSearch()
     {
-        
+        if (!Yii::$app->request->isAjax) 
+            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+
         $sess = [
             'tablok' => Yii::$app->session->get('tablok', ''),
         ];
-        return $this->renderPartial('_tab_search', ['sess' => $sess]);
+        return $this->renderAjax('_tab_search', ['sess' => $sess]);
     }
 
     /**
@@ -68,6 +79,9 @@ class PesertaController extends Controller
      */
     public function actionTabPeserta()
     {
+        if (!Yii::$app->request->isAjax) 
+            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        
         $sess = Yii::$app->session;
         $nip = Yii::$app->request->get('nip') ?? '';
         $nama = Yii::$app->request->get('nama') ?? '';
@@ -103,7 +117,7 @@ class PesertaController extends Controller
             }
         }
 
-        return $this->renderPartial('_tab_peserta', [
+        return $this->renderAjax('_tab_peserta', [
             'pegawai' => $pegawai,
             'pesertaUtama' => $pesertaUtama,
             'pesertaTambahan' => $pesertaTambahan,
@@ -112,7 +126,10 @@ class PesertaController extends Controller
 
     public function actionTabIuran()
     {
-        return $this->renderPartial('_tab_iuran');
+        if (!Yii::$app->request->isAjax) 
+            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        
+        return $this->renderAjax('_tab_iuran');
     }
 
     // ==========================================
@@ -217,6 +234,9 @@ class PesertaController extends Controller
      */
     public function actionCreate()
     {
+        if (!Yii::$app->request->isAjax) 
+            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        
         $nip = Yii::$app->request->get('nip');
 
         // Minta data template/default dari API jika diperlukan
@@ -289,10 +309,13 @@ class PesertaController extends Controller
 
     public function actionGetProvinsi($parent = '')
     {
+        if (!Yii::$app->request->isAjax) 
+            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        
         $request = Yii::$app->request;
         $parent = $request->get('parent', '');
 
-        Yii::$app->response->format = Response::FORMAT_JSON;
+        // Yii::$app->response->format = Response::FORMAT_JSON;
 
         try {
             $client = new \yii\httpclient\Client(['baseUrl' => $this->apiBaseUrl]);
@@ -316,75 +339,11 @@ class PesertaController extends Controller
         }
     }
 
-    // public function actionGetWilayah()
-    // {
-    //     Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
-    //     $request = Yii::$app->request;
-    //     $parent = $request->get('parent', '');
-
-    //     // DepDrop mengirimkan parent ID melalui POST param 'depdrop_parents'
-    //     $parents = $request->post('depdrop_parents');
-    //     if (!empty($parents) && !empty($parents[0])) {
-    //         $parent = $parents[0];
-    //     }
-
-    //     try {
-    //         $client = new \yii\httpclient\Client(['baseUrl' => $this->apiBaseUrl]);
-    //         $response = $client->get('/bpjs/wilayah', ['parent' => $parent])->send();
-
-    //         if ($response->isOk && !empty($response->data['data'])) {
-    //             $out = [];
-    //             foreach ($response->data['data'] as $item) {
-    //                 $out[] = [
-    //                     'id'   => $item['kode'],
-    //                     'name' => $item['nama'],
-    //                 ];
-    //             }
-    //             return ['output' => $out, 'selected' => ''];
-    //         }
-
-    //         return ['output' => [], 'selected' => ''];
-    //     } catch (\Exception $e) {
-    //         return ['output' => [], 'selected' => ''];
-    //     }
-    // }
-
-    public function actionGetWilayah($parent = '')
-    {
-        // Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
-        // Ambil parameter parent jika dipanggil oleh DepDrop (biasanya dikirim via POST/GET depdrop_parents)
-        $request = Yii::$app->request;
-        $parents = $request->post('depdrop_parents');
-        
-        if (!empty($parents)) {
-            $parent = $parents[0];
-        }
-
-        try {
-            $client = new \yii\httpclient\Client(['baseUrl' => $this->apiBaseUrl]);
-            $response = $client->get('/bpjs/wilayah', ['parent' => $parent])->send();
-
-            if ($response->isOk && !empty($response->data['data'])) {
-                $out = [];
-                foreach ($response->data['data'] as $item) {
-                    $out[] = [
-                        'id'   => $item['kode'],
-                        'name' => $item['nama'],
-                    ];
-                }
-                return ['output' => $out, 'selected' => ''];
-            }
-
-            return ['output' => [], 'selected' => ''];
-        } catch (\Exception $e) {
-            return ['output' => [], 'selected' => ''];
-        }
-    }
-
     public function actionGetHubkel()
     {
+        // if (!Yii::$app->request->isAjax) 
+        //     throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        
         $request = Yii::$app->request;
 
         Yii::$app->response->format = Response::FORMAT_JSON;
@@ -394,7 +353,15 @@ class PesertaController extends Controller
             $response = $client->get('/simgaji/hubkel')->send();
 
             if ($response->isOk) {
-                return $response->data['data'];
+                $response = $response->data['data'];
+                $kode_dihapus = ["00", "10", "11", "12", "13"];
+
+                $data_tersaring = array_filter($response['data'], function($item) use ($kode_dihapus) {
+                    return !in_array($item['kd_hubkel'], $kode_dihapus);
+                });
+
+                $response['data'] = array_values($data_tersaring);
+                return $response;
             }
 
             return [
@@ -413,22 +380,70 @@ class PesertaController extends Controller
 
     public function actionTabFormPeserta()
     {
-        // if (Yii::$app->request->isAjax) {
-            $model = new PesertaForm(); 
+        if (!Yii::$app->request->isAjax) 
+            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+       
+        $model = new PesertaForm(); 
 
-            $getprov = $this->actionGetProvinsi();
-            $prov = $getprov['data'];
+        $getprov = $this->actionGetProvinsi();
+        $prov = $getprov['data'];
 
-            $gethubkel = $this->actionGetHubkel();
-            $hubkel = $gethubkel['data'];
+        $gethubkel = $this->actionGetHubkel();
+        $hubkel = $gethubkel['data'];
+        $dataHubkel = [];
+        foreach ($hubkel as $item) {
+            $dataHubkel[$item['kd_hubkel']] = $item['kd_hubkel'] . ': ' . $item['nm_hubkel'];
+        }
 
-            return $this->renderAjax('_tab_form_peserta', [
-                'hubkel' => $hubkel,
-                'prov' => $prov,
-                'model' => $model,
-            ]);
-        // }
+        return $this->renderAjax('_tab_form_peserta', [
+            'hubkel' => $dataHubkel,
+            'prov' => $prov,
+            'model' => $model,
+        ]);
 
-        // throw new \yii\web\BadRequestHttpException('Request tidak valid.');
     }
+
+    public function actionGetDataWilayah($parent = '')
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        
+        try {
+            $client = new Client(['baseUrl' => $this->apiBaseUrl]);
+            $response = $client->get('/bpjs/wilayah', ['parent' => $parent])->send();
+
+            if ($response->isOk) {
+                return $response->data['data'];
+            }
+
+            return [
+                'status'  => false,
+                'message' => $response->data['message'] ?? 'Gagal mengambil data wilayah',
+                'data'    => []
+            ];
+        } catch (\Exception $e) {
+            return [
+                'status'  => false,
+                'message' => $e->getMessage(),
+                'data'    => []
+            ];
+        }
+    }
+
+    public function actionGetWilayah()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+
+            if ($parents != null) {
+                $cat_id = $parents[0] ?? $parents;
+                $get = $this->actionGetDataWilayah($cat_id);
+                $out = $get['data'];
+                return ['output'=>$out, 'selected'=>''];
+            }
+        }
+        return ['output'=>'', 'selected'=>''];
+    }
+
 }

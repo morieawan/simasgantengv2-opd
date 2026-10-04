@@ -111,7 +111,7 @@ $(document).ready(function() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: 'Gagal terhubung ke server BFF Yii2.'
+                    text: 'Gagal terhubung ke server BFF Yii2, silahkan refresh atau tekan F5'
                 });
             },
             complete: function() {
