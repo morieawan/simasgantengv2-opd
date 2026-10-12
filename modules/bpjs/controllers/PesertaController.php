@@ -28,6 +28,7 @@ class PesertaController extends Controller
                 'actions' => [
                     'get-wilayah' => ['POST'],
                     'save-peserta' => ['POST'],
+                    'del-peserta' => ['POST'],
                     'get-provinsi' => ['GET'],
                     'get-hubkel'  => ['GET'], 
                 ],
@@ -81,8 +82,8 @@ class PesertaController extends Controller
      */
     public function actionTabPeserta()
     {
-        if (!Yii::$app->request->isAjax) 
-            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        // if (!Yii::$app->request->isAjax) 
+        //     throw new \yii\web\BadRequestHttpException('Request tidak valid.');
         
         $sess = Yii::$app->session;
         $nip = Yii::$app->request->get('nip') ?? '';
@@ -513,6 +514,57 @@ class PesertaController extends Controller
                 'message' => 'Detail Error: ' . $e->getMessage(), 
             ];
         }
+    }
+
+    public function actionGetDetail($id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        if (empty($id)) {
+            return [
+                'status' => 'error',
+                'message' => 'Tidak ada data yang dipilih.',
+            ];
+        }
+
+        try {
+            $client = new Client();
+            $response = $client->createRequest()
+                ->setMethod('GET')
+                ->setUrl($this->apiBaseUrl . '/bpjs/peserta/' . $id)
+                ->addHeaders([
+                    'Authorization' => 'Bearer ' . Yii::$app->session->get('token'),
+                ])
+                ->send();
+
+            if ($response->isOk) {
+
+                return [
+                    'status' => 'success',
+                    'data' => $response->data['data'],
+                ];
+            }
+
+            return [
+                'status' => 'error',
+                'message' => 'Gagal mengambil data BPJS.',
+            ];
+
+        } catch (\Exception $e) {
+            Yii::error('BFF Error [GetDataBPJS]: ' . $e->getMessage(), __METHOD__);
+            return [
+                'status' => 'error',
+                'message' => 'Gagal terhubung ke layanan BPJS.',
+            ];
+        }
+    }
+
+    public function actionDelPeserta()
+    {
+        $request = Yii::$app->request;
+        $nip    = $request->post('id');
+
+        return $nip;
     }
 
 }

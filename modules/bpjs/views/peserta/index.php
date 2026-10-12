@@ -55,75 +55,75 @@ $getGabunganUrl = Url::to(['/bpjs/peserta/get-gabungan-gaji-tpp']);
 
 <?php
 $script = <<< JS
-    // Store State Pegawai Terpilih di Level Window (Global SPA State)
-    window.selectedPegawai = null;
-    window.lastSearchParams = {
-        keyword: '',
-        sub_lokasi: ''
-    };
+// Store State Pegawai Terpilih di Level Window (Global SPA State)
+window.selectedPegawai = null;
+window.lastSearchParams = {
+    keyword: '',
+    sub_lokasi: ''
+};
 
-    // Cache untuk menyimpan HTML partial view yang sudah di-load
-    window.tabCache = {};
+// Cache untuk menyimpan HTML partial view yang sudah di-load
+window.tabCache = {};
 
-    // Fungsi Render Partial View dengan Sistem Cache
-    window.loadTabContent = function(tabId, url, callback) {
-        // Jika tab sudah ada di cache, tampilkan langsung tanpa AJAX request ulang
-        if (window.tabCache[tabId]) {
-            $('#main-bpjs-container').html(window.tabCache[tabId]);
+// Fungsi Render Partial View dengan Sistem Cache
+window.loadTabContent = function(tabId, url, callback) {
+    // Jika tab sudah ada di cache, tampilkan langsung tanpa AJAX request ulang
+    if (window.tabCache[tabId]) {
+        $('#main-bpjs-container').html(window.tabCache[tabId]);
+        if (typeof callback === 'function') callback();
+        return;
+    }
+
+    // Jika belum ada di cache, lakukan AJAX ke Yii2 Controller
+    $('#main-bpjs-container').html('<div class="text-center p-4"><i class="fas fa-spinner fa-spin fa-2x text-primary"></i></div>');
+    $.ajax({
+        url: url,
+        type: 'GET',
+        success: function(html) {
+            window.tabCache[tabId] = html; // Simpan HTML ke cache
+            $('#main-bpjs-container').html(html);
             if (typeof callback === 'function') callback();
-            return;
+        },
+        error: function() {
+            $('#main-bpjs-container').html('<div class="alert alert-danger">Gagal memuat konten tab.</div>');
         }
-
-        // Jika belum ada di cache, lakukan AJAX ke Yii2 Controller
-        $('#main-bpjs-container').html('<div class="text-center p-4"><i class="fas fa-spinner fa-spin fa-2x text-primary"></i></div>');
-        $.ajax({
-            url: url,
-            type: 'GET',
-            success: function(html) {
-                window.tabCache[tabId] = html; // Simpan HTML ke cache
-                $('#main-bpjs-container').html(html);
-                if (typeof callback === 'function') callback();
-            },
-            error: function() {
-                $('#main-bpjs-container').html('<div class="alert alert-danger">Gagal memuat konten tab.</div>');
-            }
-        });
-    };
-
-    // Load Tab Search secara default saat halaman pertama kali dibuka
-    window.loadTabContent('search', '{$tabSearchUrl}');
-
-    // Switch Tab Listener
-    $('#bpjs-tab a[data-toggle="pill"]').on('click', function(e) {
-        if ($(this).hasClass('disabled')) {
-            e.preventDefault();
-            return false;
-        }
-        
-        let tabId = $(this).attr('id').replace('btn-tab-', ''); // Mengambil id tab (search, peserta, atau iuran)
-        let url = $(this).data('url');
-        
-        window.loadTabContent(tabId, url);
     });
+};
 
-    // Buka akses tab lanjutan setelah pencarian pegawai berhasil
-    window.enableBpjsTabs = function(pegawaiData) {
-        // Jika cari pegawai baru, bersihkan cache tab data peserta & iuran agar merender data pegawai baru
-        delete window.tabCache['peserta'];
-        delete window.tabCache['iuran'];
+// Load Tab Search secara default saat halaman pertama kali dibuka
+window.loadTabContent('search', '{$tabSearchUrl}');
 
-        window.selectedPegawai = pegawaiData;
-        $('#btn-tab-peserta, #btn-tab-iuran').removeClass('disabled');
-    };
+// Switch Tab Listener
+$('#bpjs-tab a[data-toggle="pill"]').on('click', function(e) {
+    if ($(this).hasClass('disabled')) {
+        e.preventDefault();
+        return false;
+    }
+    
+    let tabId = $(this).attr('id').replace('btn-tab-', ''); // Mengambil id tab (search, peserta, atau iuran)
+    let url = $(this).data('url');
+    
+    window.loadTabContent(tabId, url);
+});
 
-    // $(document).on('click', '.btn-tambah-peserta', function(e) {
-    //     e.preventDefault();
-    //         $('#li-tab-form-peserta').show();
-    //         $('#btn-tab-form-peserta').trigger('click');
-    //     });
-    //     $(document).on('click', '#btn-tab-search, #btn-tab-peserta, #btn-tab-iuran', function() {
-    //         $('#li-tab-form-peserta').hide();
-    // });
+// Buka akses tab lanjutan setelah pencarian pegawai berhasil
+window.enableBpjsTabs = function(pegawaiData) {
+    // Jika cari pegawai baru, bersihkan cache tab data peserta & iuran agar merender data pegawai baru
+    delete window.tabCache['peserta'];
+    delete window.tabCache['iuran'];
+
+    window.selectedPegawai = pegawaiData;
+    $('#btn-tab-peserta, #btn-tab-iuran').removeClass('disabled');
+};
+
+// $(document).on('click', '.btn-tambah-peserta', function(e) {
+//     e.preventDefault();
+//         $('#li-tab-form-peserta').show();
+//         $('#btn-tab-form-peserta').trigger('click');
+//     });
+//     $(document).on('click', '#btn-tab-search, #btn-tab-peserta, #btn-tab-iuran', function() {
+//         $('#li-tab-form-peserta').hide();
+// });
 
 // URL validasi kelayakan peserta
 window.getGabunganUrl = '{$getGabunganUrl}';
@@ -147,7 +147,7 @@ $(document).on('click', '.btn-tambah-peserta', function(e) {
     $('#li-tab-form-peserta').hide();
 
     Swal.fire({
-        title: 'Memeriksa kelayakan...',
+        title: 'Memeriksa data penghasilan...',
         allowOutsideClick: false,
         allowEscapeKey: false,
         didOpen: function() {
@@ -184,7 +184,7 @@ $(document).on('click', '.btn-tambah-peserta', function(e) {
                 let pesan = data && data.alasan
                     ? data.alasan
                     : (response.message ||
-                       'Pegawai tidak memenuhi persyaratan.');
+                    'Pegawai tidak memenuhi persyaratan.');
 
                 Swal.fire({
                     icon: 'warning',
@@ -201,7 +201,7 @@ $(document).on('click', '.btn-tambah-peserta', function(e) {
             Swal.fire({
                 icon: 'error',
                 title: 'Server Error',
-                text: 'Gagal memeriksa kelayakan: ' + errorThrown,
+                text: 'Gagal memeriksa gaji dan penghasilan: ' + errorThrown,
                 confirmButtonText: 'OK'
             });
         }

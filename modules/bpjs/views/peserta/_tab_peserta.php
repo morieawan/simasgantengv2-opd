@@ -155,6 +155,9 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
 $getGabunganUrl = Url::to(['/bpjs/peserta/get-gabungan-gaji-tpp']); 
 $nipPegawai = $pegawai['nip'] ?? ''; 
 
+$getUrl = Url::to(['/bpjs/peserta/get-detail']);    
+$deleteUrl = Url::to(['/bpjs/peserta/del-peserta']);     
+
 $js = <<<JS
 $('.btn-tambah-peserta').on('click', function(e) {
     e.preventDefault();
@@ -214,7 +217,100 @@ $('.btn-tambah-peserta').on('click', function(e) {
         }
     });
 });
-JS;
 
+// --- 1. HANDLE TOMBOL UPDATE (EDIT) ---
+$(document).on('click', '.btn-update', function(e) {
+    e.preventDefault();
+    let idPeserta = $(this).data('id');
+
+    if (!idPeserta) {
+        Swal.fire('Error', 'ID Peserta tidak ditemukan.', 'error');
+        return;
+    }
+
+    Swal.showLoading();
+
+    // Ambil data detail peserta via AJAX untuk mengisi form
+    $.ajax({
+        url: '{$getUrl}',
+        type: 'GET',
+        data: { id: idPeserta },
+        dataType: 'json',
+        success: function(response) {
+            Swal.close();
+            if (response.status === 'success') {
+                let data = response.data;
+                
+                // CONTOH: Isi field form berdasarkan ID elemen input Anda
+                // Sesuaikan selector '#id_peserta', '#nik', dll dengan form di tab-form-peserta
+                $('#form-peserta-id').val(data.id_peserta);
+                $('#form-peserta-nik').val(data.nik);
+                $('#form-peserta-nama').val(data.nama_peserta);
+                // ... isi input lainnya sesuai kebutuhan ...
+
+                // Pindah / buka tab form peserta secara otomatis (Konsep SPA)
+                $('a[href="#tab-form-peserta"]').tab('show');
+            } else {
+                Swal.fire('Gagal', response.message || 'Gagal memuat data peserta.', 'error');
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            Swal.close();
+            Swal.fire('Server Error', 'Terjadi kesalahan saat mengambil data.', 'error');
+        }
+    });
+});
+
+// --- 2. HANDLE TOMBOL DELETE (HAPUS) ---
+$(document).on('click', '.btn-delete', function(e) {
+    e.preventDefault();
+    let idPeserta = $(this).data('id');
+
+    if (!idPeserta) {
+        Swal.fire('Error', 'ID Peserta tidak ditemukan.', 'error');
+        return;
+    }
+
+    // Konfirmasi SweetAlert sebelum hapus
+    Swal.fire({
+        title: 'Apakah Anda yakin?',
+        text: "Data peserta tambahan ini akan dihapus permanen!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, Hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.showLoading();
+
+            $.ajax({
+                url: '{$deleteUrl}',
+                type: 'POST', 
+                data: { id: idPeserta, _csrf: yii.getCsrfToken() },
+                dataType: 'json',
+                success: function(response) {
+                    Swal.close();
+                    if (response.status === 'success') {
+                        Swal.fire('Terhapus!', response.message || 'Data berhasil dihapus.', 'success').then(() => {
+                            // Konsep SPA: Refresh container tabel atau reload tab peserta secara dinamis tanpa refresh halaman penuh
+                            // Contoh: reload kontainer tabel atau pindah kembali/reload tab aktif
+                            $.pjax.reload({container: '#pjax-container-tabel-peserta'}); // Jika menggunakan Pjax, atau load ulang via AJAX
+                        });
+                    } else {
+                        Swal.fire('Gagal!', response.message || 'Gagal menghapus data.', 'error');
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    Swal.close();
+                    Swal.fire('Server Error', 'Gagal menghubungi server.', 'error');
+                }
+            });
+        }
+    });
+});
+
+JS;
 $this->registerJs($js);
 ?>
