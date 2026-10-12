@@ -25,7 +25,7 @@ class PesertaForm extends Model
     public function rules()
     {
         return [
-            [['nip', 'hubkel', 'nik', 'no_kk', 'nama_peserta'], 'required', 'message' => '{attribute} tidak boleh kosong.'],
+            [['nip', 'hubkel', 'nik', 'nama_peserta'], 'required', 'message' => '{attribute} tidak boleh kosong.'],
             [['tgl_lahir', 'updated'], 'safe'],
             [['jk', 'aktif'], 'integer'],
             [['id_peserta'], 'string', 'max' => 21],

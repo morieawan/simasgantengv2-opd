@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\httpclient\Client;
 use yii\helpers\Json;
+use yii\helpers\ArrayHelper;
 
 use app\modules\bpjs\models\PesertaForm;
 
@@ -26,6 +27,7 @@ class PesertaController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'get-wilayah' => ['POST'],
+                    'save-peserta' => ['POST'],
                     'get-provinsi' => ['GET'],
                     'get-hubkel'  => ['GET'], 
                 ],
@@ -35,7 +37,7 @@ class PesertaController extends Controller
 
     public function beforeAction($action)
     {
-        if ($action->id === 'get-wilayah') {
+        if ($action->id === 'get-wilayah' || $action->id === 'save-peserta') {
             $this->enableCsrfValidation = false;
         }
 
@@ -93,6 +95,9 @@ class PesertaController extends Controller
             'nama' => $nama,
         ];
 
+        $sess['peserta-nip'] = $nip;
+        $sess['peserta-nama'] = $nama;
+
         if ($nip) {
             $client = new Client(['baseUrl' => $this->apiBaseUrl]); 
 
@@ -106,11 +111,20 @@ class PesertaController extends Controller
                 Yii::error("Gagal mengambil data peserta utama: " . $e->getMessage());
             }
 
+            //get hubkel
+            $gethubkel = $this->actionGetHubkel();
+            $hubkel = $gethubkel['data'];
+
             // 2. Ambil Data Peserta BPJS Tambahan (DB21)
             try {
                 $responseTambahan = $client->get('/bpjs/peserta', ['nip' => $nip])->send();
                 if ($responseTambahan->isOk) {
                     $pesertaTambahan = $responseTambahan->data['data'] ?? [];
+
+                    $hubkelMap = ArrayHelper::map( $hubkel, 'kd_hubkel', 'nm_hubkel' ); 
+                    foreach ($pesertaTambahan as &$item) { 
+                        $item['nama_hubkel'] = $hubkelMap[$item['hubkel']] ?? '-'; 
+                    } unset($item);
                 }
             } catch (\Exception $e) {
                 Yii::error("Gagal mengambil data peserta tambahan: " . $e->getMessage());
@@ -138,6 +152,9 @@ class PesertaController extends Controller
 
     public function actionSearchPegawai()
     {
+        if (!Yii::$app->request->isAjax) 
+            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        
         Yii::$app->response->format = Response::FORMAT_JSON;
 
         $request = Yii::$app->request;
@@ -150,15 +167,14 @@ class PesertaController extends Controller
             'kode_lokasi' => $kodeLokasi,
             'keyword'     => $keyword,
             'sub_lokasi'  => $subLokasi,
+            'action'      => 'bpjstambahan',
         ]);
 
-        // Gunakan 127.0.0.1 untuk menghindari isu IP resolution IPv6 (::1) pada Windows
         $fullUrl = $this->apiBaseUrl.'/pegawai/search?' . $queryParams;
-        // return $fullUrl;
 
         try {
             $client = new Client([
-                'transport' => 'yii\httpclient\CurlTransport' // Pakai cURL transport agar lebih stabil
+                'transport' => 'yii\httpclient\CurlTransport' 
             ]);
             
             $response = $client->createRequest()
@@ -170,19 +186,17 @@ class PesertaController extends Controller
                 return $response->data;
             }
 
-            // Jika Go Backend merespons selain status HTTP 200 (misal 400/500)
             return [
                 'status'  => 'error',
                 'message' => $response->data['message'] ?? 'Response error dari Go Backend.',
             ];
 
         } catch (\Exception $e) {
-            // Catat pesan error asli PHP/cURL ke runtime/logs/app.log
             Yii::error('BFF Error [SearchPegawai]: ' . $e->getMessage(), __METHOD__);
             
             return [
                 'status'  => 'error',
-                'message' => 'Detail Error: ' . $e->getMessage(), // Tampilkan pesan error asli untuk debugging
+                'message' => 'Detail Error: ' . $e->getMessage(), 
             ];
         }
     }
@@ -229,82 +243,93 @@ class PesertaController extends Controller
         }
     }
 
-    /**
-     * Action Render Modal Form Tambah Peserta
-     */
-    public function actionCreate()
-    {
-        if (!Yii::$app->request->isAjax) 
-            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
-        
-        $nip = Yii::$app->request->get('nip');
-
-        // Minta data template/default dari API jika diperlukan
-        $model = (object) [
-            'id_peserta' => null,
-            'nip' => $nip,
-            'nama_peserta' => '',
-            'hubkel' => '',
-            'nik' => '',
-            'no_kk' => '',
-            'opd' => '',
-            'tgl_lahir' => '',
-            'jk' => '1',
-            'aktif' => '1',
-            'alamat' => '',
-            'kd_prov' => '',
-            'kd_kab' => '',
-            'kd_kec' => '',
-            'kd_desa' => '',
-        ];
-
-        if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('_tab_form_peserta', [
-                'model' => $model,
-            ]);
-        }
-
-        return $this->render('_tab_form_peserta', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * BFF Action: Simpan Data Peserta (Forward POST ke Microservice)
-     */
-    public function actionSave()
+    public function actionSavePeserta()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
 
-        $postData = Yii::$app->request->post('PesertaForm', []);
+        $request = Yii::$app->request;
 
-        try {
-            $client = new Client();
-            $response = $client->createRequest()
-                ->setMethod('POST')
-                ->setUrl($this->apiBaseUrl . '/bpjs/peserta/store')
-                ->setData($postData)
-                ->addHeaders([
-                    'Authorization' => 'Bearer ' . Yii::$app->session->get('token'),
-                ])
-                ->send();
+        $model = new PesertaForm();
+        $model->id_peserta = '';
+        $model->no_kk = '';
+        $model->opd = Yii::$app->session->get('tablokb');
+        $model->sumber_pembiayaan = '1-2';
 
-            if ($response->isOk) {
-                return $response->data;
+        // 1. Load data dari request POST
+        if ($model->load($request->post())) {
+            
+            // 2. Validasi inputan di level BFF (Frontend Contract Validation)
+            if (!$model->validate()) {
+                return [
+                    'success' => false,
+                    'message' => 'Validasi data gagal, mohon periksa inputan Anda.',
+                    'errors'  => $model->getErrors()
+                ];
             }
 
-            return [
-                'status' => 'error',
-                'errors' => $response->data['errors'] ?? 'Gagal menyimpan data.',
-            ];
+            if (!empty($model->tgl_lahir)) {
+                $date = \DateTime::createFromFormat('d-m-Y', $model->tgl_lahir);
 
-        } catch (\Exception $e) {
-            Yii::error('BFF Error [SaveBPJS]: ' . $e->getMessage(), __METHOD__);
-            return [
-                'status' => 'error',
-                'message' => 'Terjadi kesalahan sistem saat menyimpan data.',
-            ];
+                if ($date !== false) {
+                    $model->tgl_lahir = $date->format('Y-m-d');
+                }
+            }
+
+            $model->jk = (int)$model->jk;
+            $model->aktif = (int)$model->aktif;
+
+            // return $model->attributes;
+            // 3. Forward Data ke Backend Service / API BPJS (Core BFF Task)
+            try {
+                $client = new Client(['baseUrl' => $this->apiBaseUrl]); 
+                
+                $response = $client
+                    ->post('/bpjs/peserta/simpan')
+                    ->setFormat(\yii\httpclient\Client::FORMAT_JSON)
+                    ->setData($model->attributes)
+                    // ->addHeaders([
+                    //     'Authorization' => 'Bearer ' . Yii::$app->session->get('token')
+                    // ])
+                    ->send();
+
+                // 4. Transformasi Respon Backend untuk Client Frontend SPA
+                if (
+                    $response->isOk &&
+                    isset($response->data['status']) &&
+                    $response->data['status'] === true
+                ) {
+                    return [
+                        'success' => true,
+                        'message' => $response->data['data']['message']
+                            ?? 'Data peserta berhasil disimpan.',
+                        'data' => $response->data['data']['data'] ?? null,
+                        'redirectUrl' => \yii\helpers\Url::to(['/bpjs/peserta/index'])
+                    ];
+                }
+
+                return [
+                    'success' => false,
+                    'message' => $response->data['message']
+                        ?? $response->data['data']['message']
+                        ?? 'Gagal menyimpan data ke server BPJS.',
+                    'errors' => $response->data['errors'] ?? []
+                ];
+
+            } catch (\Exception $e) {
+                // Logging error untuk penanganan internal
+                Yii::error('BFF Save Peserta Error: ' . $e->getMessage(), __METHOD__);
+
+                return [
+                    'success' => false,
+                    'message' => 'Terjadi gangguan komunikasi dengan server backend/API.'
+                ];
+            }
         }
+
+        return [
+            'success' => false,
+            'message' => 'Data tidak ditemukan atau struktur payload tidak sesuai.'
+        ];
     }
 
     public function actionGetProvinsi($parent = '')
@@ -346,7 +371,7 @@ class PesertaController extends Controller
         
         $request = Yii::$app->request;
 
-        Yii::$app->response->format = Response::FORMAT_JSON;
+        // Yii::$app->response->format = Response::FORMAT_JSON;
 
         try {
             $client = new Client(['baseUrl' => $this->apiBaseUrl]);
@@ -383,7 +408,10 @@ class PesertaController extends Controller
         if (!Yii::$app->request->isAjax) 
             throw new \yii\web\BadRequestHttpException('Request tidak valid.');
        
+        $sess = Yii::$app->session;
+
         $model = new PesertaForm(); 
+        $model->nip = $sess['peserta-nip'] ?? '';
 
         $getprov = $this->actionGetProvinsi();
         $prov = $getprov['data'];
@@ -444,6 +472,47 @@ class PesertaController extends Controller
             }
         }
         return ['output'=>'', 'selected'=>''];
+    }
+
+    public function actionGetGabunganGajiTpp()
+    {
+        // if (!Yii::$app->request->isAjax) 
+        //     throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $request = Yii::$app->request;
+        $nip    = $request->get('nip');
+
+        $fullUrl = $this->apiBaseUrl.'/pegawai-gabungan/cek?nip=' . $nip;
+
+        try {
+            $client = new Client([
+                'transport' => 'yii\httpclient\CurlTransport' 
+            ]);
+            
+            $response = $client->createRequest()
+                ->setMethod('GET')
+                ->setUrl($fullUrl)
+                ->send();
+
+            if ($response->isOk) {
+                return $response->data;
+            }
+
+            return [
+                'status'  => 'error',
+                'message' => $response->data['message'] ?? 'Response error dari Go Backend.',
+            ];
+
+        } catch (\Exception $e) {
+            Yii::error('BFF Error [SearchPegawai]: ' . $e->getMessage(), __METHOD__);
+            
+            return [
+                'status'  => 'error',
+                'message' => 'Detail Error: ' . $e->getMessage(), 
+            ];
+        }
     }
 
 }

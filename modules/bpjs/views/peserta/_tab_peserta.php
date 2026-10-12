@@ -2,8 +2,6 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-// $createUrl  = Url::to(['/bpjs/peserta/create']);
-
 // Fungsi helper untuk mengurutkan array berdasarkan kdhubkel / hubkel ASC
 $fnSortHubkel = function ($a, $b) {
     $hubA = isset($a['kdhubkel']) ? (int)$a['kdhubkel'] : (int)($a['hubkel'] ?? 0);
@@ -27,10 +25,10 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
     <!-- 1. TABEL DATA PESERTA UTAMA (DB5 - SIMGAJI) -->
     <!-- ========================================== -->
     <div class="panel panel-default mb-4" style="margin-bottom: 25px;">
-        <div class="panel-heading" style="background-color: #f8f9fa; font-weight: bold; font-size: 13px; padding: 10px 15px;">
+        <div class="panel-heading" style="background-color: #f8f9fa; font-weight: bold; font-size: 14px; padding: 10px 15px;">
             <i class="fa fa-users text-primary"></i> Data Peserta Utama (Simgaji)
             <?php if (!empty($pegawai)): ?>
-                <span class="text-muted" style="font-weight: normal; font-size: 13px;">
+                <span class="text-muted" style="font-weight: normal; font-size: 14px;">
                     : <strong><?= Html::encode($pegawai['nama'] ?? '') ?></strong> (<?= Html::encode($pegawai['nip'] ?? '') ?>)
                 </span>
             <?php endif; ?>
@@ -97,12 +95,11 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
         </div>
         <div class="panel-body padding-0" style="padding: 0;">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover mb-0" style="margin-bottom: 0; font-size: 12px;">
+                <table class="table table-striped table-bordered table-hover mb-0" style="margin-bottom: 0; font-size: 14px;">
                     <thead style="background-color: #f1f3f5;">
                         <tr>
                             <th class="text-center" style="width: 40px;">No</th>
                             <th class="text-center" style="width: 140px;">NIK</th>
-                            <th class="text-center" style="width: 140px;">No. KK</th>
                             <th>Nama Peserta</th>
                             <th class="text-center" style="width: 110px;">Tgl. Lahir</th>
                             <th class="text-center" style="width: 130px;">Hub. Keluarga</th>
@@ -116,24 +113,23 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
                                 <tr>
                                     <td class="text-center"><?= $index + 1 ?></td>
                                     <td class="text-center"><?= Html::encode($row['nik'] ?? '-') ?></td>
-                                    <td class="text-center"><?= Html::encode($row['no_kk'] ?? '-') ?></td>
                                     <td><strong><?= Html::encode($row['nama_peserta'] ?? '-') ?></strong></td>
                                     <td class="text-center"><?= !empty($row['tgl_lahir']) ? Html::encode(date('d-m-Y', strtotime($row['tgl_lahir']))) : '-' ?></td>
                                     <td class="text-center">
-                                        <span class="label label-default" style="font-size: 11px;">
-                                            <?= Html::encode($row['nama_hubkel'] ?? $row['hubkel'] ?? '-') ?>
+                                        <span class="label label-default" style="font-size: 12px;">
+                                            <?= Html::encode($row['hubkel'].': '.$row['nama_hubkel'] ?? $row['hubkel'] ?? '-') ?>
                                         </span>
                                     </td>
                                     <td class="text-center">
                                         <?php if (isset($row['aktif']) && $row['aktif'] == 1): ?>
-                                            <span class="label label-success" style="font-size: 10px;">Aktif</span>
+                                            <span class="label label-success" style="font-size: 12px;">Aktif</span>
                                         <?php else: ?>
-                                            <span class="label label-danger" style="font-size: 10px;">Non-Aktif</span>
+                                            <span class="label label-danger" style="font-size: 12px;">Non-Aktif</span>
                                         <?php endif; ?>
                                     </td>
                                     <td class="text-center">
-                                        <button class="btn btn-xs btn-primary btn-edit" data-id="<?= Html::encode($row['id_peserta'] ?? '') ?>" title="Edit">
-                                            <i class="fa fa-pencil"></i>
+                                        <button class="btn btn-xs btn-primary btn-update" data-id="<?= Html::encode($row['id_peserta'] ?? '') ?>" title="Edit">
+                                            <i class="fas fa-pencil-alt"></i>
                                         </button>
                                         <button class="btn btn-xs btn-danger btn-delete" data-id="<?= Html::encode($row['id_peserta'] ?? '') ?>" title="Hapus">
                                             <i class="fa fa-trash"></i>
@@ -154,13 +150,70 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
         </div>
     </div>
 </div>
-<?php
 
-$js = <<<'JS'
+<?php
+$getGabunganUrl = Url::to(['/bpjs/peserta/get-gabungan-gaji-tpp']); 
+$nipPegawai = $pegawai['nip'] ?? ''; 
+
+$js = <<<JS
 $('.btn-tambah-peserta').on('click', function(e) {
     e.preventDefault();
-    $('a[href="#tab-form-peserta"]').tab('show');
+    
+    let nip = '{$nipPegawai}'; // NIP pegawai yang dicek
+    
+    if (!nip) {
+        Swal.fire('Error', 'NIP Pegawai tidak ditemukan.', 'error');
+        return;
+    }
+
+    // Tampilkan loading / indikator opsional jika perlu
+    Swal.showLoading();
+
+    $.ajax({
+        url: '{$getGabunganUrl}',
+        type: 'GET',
+        data: { nip: nip },
+        dataType: 'json',
+        success: function(response) {
+            // Tutup loading Swal jika aktif
+            Swal.close();
+
+            if (response.status === 'success') {
+                let data = response.data;
+                
+                if (data && data.eligible === true) {                    
+                    $('a[href="#tab-form-peserta"]').tab('show');
+                } else {
+                    // Jika eligible false, tampilkan Swal dengan alasan dari backend
+                    let pesan = data && data.alasan ? data.alasan : 'Data TPP tidak memenuhi syarat.';
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Tidak Dapat Melanjutkan',
+                        text: pesan,
+                        confirmButtonText: 'OK'
+                    });
+                }
+            } else {
+                // Handle error jika status dari backend bukan success
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: response.message || 'Terjadi kesalahan pada sistem.',
+                    confirmButtonText: 'OK'
+                });
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Server Error',
+                text: 'Gagal menghubungi server: ' + errorThrown,
+                confirmButtonText: 'OK'
+            });
+        }
+    });
 });
 JS;
+
 $this->registerJs($js);
 ?>
