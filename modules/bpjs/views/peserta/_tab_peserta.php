@@ -89,7 +89,7 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
             <div class="pull-right">
                 <?= Html::a('<i class="fa fa-plus"></i> Tambah Peserta', '#tab-form-peserta', [
                     'class' => 'btn btn-sm btn-success btn-tambah-peserta',
-                    'data-toggle' => 'tab', 
+                    // 'data-toggle' => 'tab', 
                 ]) ?>
             </div>
         </div>
@@ -185,6 +185,7 @@ $('.btn-tambah-peserta').on('click', function(e) {
                     $('a[href="#tab-form-peserta"]').tab('show');
                 } else {
                     // Jika eligible false, tampilkan Swal dengan alasan dari backend
+                     $('a[href="#tab-form-peserta"]').tab('hide');
                     let pesan = data && data.alasan ? data.alasan : 'Data TPP tidak memenuhi syarat.';
                     Swal.fire({
                         icon: 'warning',
