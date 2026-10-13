@@ -8,6 +8,8 @@ $tabPesertaUrl = Url::to(['/bpjs/peserta/tab-peserta']);
 $tabIuranUrl   = Url::to(['/bpjs/peserta/tab-iuran']);
 $tabFormPesertaUrl = Url::to(['/bpjs/peserta/tab-form-peserta']); 
 $getGabunganUrl = Url::to(['/bpjs/peserta/get-gabungan-gaji-tpp']); 
+$getDataPeserta = Url::to(['/bpjs/peserta/get-peserta']); 
+
 // $nipPegawai = $pegawai['nip'] ?? ''; 
 
 ?>
@@ -189,6 +191,79 @@ $(document).on('click', '.btn-tambah-peserta', function(e) {
                 icon: 'error',
                 title: 'Server Error',
                 text: 'Gagal memeriksa gaji dan penghasilan: ' + errorThrown,
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+});
+
+// Tombol Tambah Peserta pada partial Data Peserta
+$(document).on('click', '.btn-iuran', function(e) {
+    e.preventDefault();
+
+    let pegawai = window.selectedPegawai;
+
+    if (!pegawai || !pegawai.nip) {
+        Swal.fire(
+            'Peringatan',
+            'Silakan pilih pegawai terlebih dahulu.',
+            'warning'
+        );
+        return;
+    }
+
+    $('#li-tab-iuran').hide();
+
+    Swal.fire({
+        title: 'Memeriksa data peserta...',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: function() {
+            Swal.showLoading();
+        }
+    });
+
+    $.ajax({
+        url: window.getDataPeserta,
+        type: 'GET',
+        data: {
+            nip: pegawai.nip
+        },
+        dataType: 'json',
+
+        success: function(response) {
+            Swal.close();
+
+            let data = response.data;
+
+            if (response.status === 'success' &&  data !== null) {
+                
+                // Tampilkan dan buka tab Input Peserta.
+                $('#li-tab-iuran').show();
+                $('#btn-tab-iuran').trigger('click');
+
+            } else {
+                let pesan = data && data.alasan
+                    ? data.alasan
+                    : (response.message ||
+                    'Peserta belum ditambahkan.');
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Tidak Dapat Melanjutkan',
+                    text: pesan,
+                    confirmButtonText: 'OK'
+                });
+            }
+        },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+            Swal.close();
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Server Error',
+                text: 'Gagal memeriksa data peserta: ' + errorThrown,
                 confirmButtonText: 'OK'
             });
         }

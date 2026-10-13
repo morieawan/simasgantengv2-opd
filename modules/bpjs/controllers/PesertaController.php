@@ -558,6 +558,50 @@ class PesertaController extends Controller
         }
     }
 
+    public function actionGetPeserta($nip)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        if (empty($nip)) {
+            return [
+                'status' => 'error',
+                'message' => 'Tidak ada data yang dipilih.',
+            ];
+        }
+
+        try {
+            $client = new Client();
+            $response = $client->createRequest()
+                ->setMethod('GET')
+                ->setUrl($this->apiBaseUrl . '/bpjs/peserta')
+                ->setData(['nip' => $nip])
+                ->addHeaders([
+                    'Authorization' => 'Bearer ' . Yii::$app->session->get('token'),
+                ])
+                ->send();
+
+            if ($response->isOk) {
+
+                return [
+                    'status' => 'success',
+                    'data' => $response->data['data'],
+                ];
+            }
+
+            return [
+                'status' => 'error',
+                'message' => 'Gagal mengambil data BPJS.',
+            ];
+
+        } catch (\Exception $e) {
+            Yii::error('BFF Error [GetDataBPJS]: ' . $e->getMessage(), __METHOD__);
+            return [
+                'status' => 'error',
+                'message' => 'Gagal terhubung ke layanan BPJS.',
+            ];
+        }
+    }
+
     public function actionGetDetail($id)
     {
         Yii::$app->response->format = Response::FORMAT_JSON;

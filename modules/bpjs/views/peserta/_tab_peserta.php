@@ -161,37 +161,34 @@ $nipPegawai = $pegawai['nip'] ?? '';
 $getUrl = Url::to(['/bpjs/peserta/get-detail']);    
 $deleteUrl = Url::to(['/bpjs/peserta/del-peserta']);     
 
+$getPeserta = Url::to(['/bpjs/peserta/get-peserta']);    
+
+
 $js = <<<JS
 $('.btn-tambah-peserta').on('click', function(e) {
     e.preventDefault();
-    
-    let nip = '{$nipPegawai}'; // NIP pegawai yang dicek
-    
+    let nip = '{$nipPegawai}';     
     if (!nip) {
         Swal.fire('Error', 'NIP Pegawai tidak ditemukan.', 'error');
         return;
     }
 
-    // Tampilkan loading / indikator opsional jika perlu
     Swal.showLoading();
 
     $.ajax({
-        url: '{$getUrl}',
+        url: '{$getPeserta}',
         type: 'GET',
         data: { nip: nip },
         dataType: 'json',
         success: function(response) {
-            // Tutup loading Swal jika aktif
             Swal.close();
-
             if (response.status === 'success') {
                 let data = response.data;
                 
                 if (data && data.eligible === true) {                    
-                    $('a[href="#tab-iuran"]').tab('show');
+                    $('a[href="#tab-form-peserta"]').tab('show');
                 } else {
-                    // Jika eligible false, tampilkan Swal dengan alasan dari backend
-                     $('a[href="#tab-iuran"]').tab('hide');
+                     $('a[href="#tab-form-peserta"]').tab('hide');
                     let pesan = data && data.alasan ? data.alasan : 'Data TPP tidak memenuhi syarat.';
                     Swal.fire({
                         icon: 'warning',
@@ -223,35 +220,29 @@ $('.btn-tambah-peserta').on('click', function(e) {
 
 $('.btn-iuran').on('click', function(e) {
     e.preventDefault();
-    
-    let nip = '{$nipPegawai}'; // NIP pegawai yang dicek
-    
+    let nip = '{$nipPegawai}';
     if (!nip) {
         Swal.fire('Error', 'NIP Pegawai tidak ditemukan.', 'error');
         return;
     }
 
-    // Tampilkan loading / indikator opsional jika perlu
     Swal.showLoading();
-
     $.ajax({
-        url: '{$getGabunganUrl}',
+        url: '{$getPeserta}',
         type: 'GET',
         data: { nip: nip },
         dataType: 'json',
         success: function(response) {
-            // Tutup loading Swal jika aktif
             Swal.close();
-
             if (response.status === 'success') {
                 let data = response.data;
-                
-                if (data && data.eligible === true) {                    
-                    $('a[href="#tab-form-peserta"]').tab('show');
+                if (data !== null) {
+                    $('#li-tab-iuran').show(); 
+
+                    $('a[href="#tab-iuran"]').tab('show');
                 } else {
-                    // Jika eligible false, tampilkan Swal dengan alasan dari backend
-                     $('a[href="#tab-form-peserta"]').tab('hide');
-                    let pesan = data && data.alasan ? data.alasan : 'Data TPP tidak memenuhi syarat.';
+                    $('#li-tab-iuran').hide(); 
+                    let pesan = data && data.alasan ? data.alasan : 'Data peserta belum ditambahkan.';
                     Swal.fire({
                         icon: 'warning',
                         title: 'Tidak Dapat Melanjutkan',
@@ -260,7 +251,6 @@ $('.btn-iuran').on('click', function(e) {
                     });
                 }
             } else {
-                // Handle error jika status dari backend bukan success
                 Swal.fire({
                     icon: 'error',
                     title: 'Gagal',
@@ -270,6 +260,7 @@ $('.btn-iuran').on('click', function(e) {
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
+            Swal.close();
             Swal.fire({
                 icon: 'error',
                 title: 'Server Error',
