@@ -83,13 +83,16 @@ if (!empty($pesertaTambahan) && is_array($pesertaTambahan)) {
     <!-- ==================================================== -->
     <div class="panel panel-default">
         <div class="panel-heading clearfix" style="background-color: #f8f9fa; padding: 8px 15px;">
-            <div class="pull-left" style="font-weight: bold; font-size: 14px; line-height: 32px;">
+            <div class="float-left" style="font-weight: bold; font-size: 14px; line-height: 32px;">
                 <i class="fa fa-user-plus text-success"></i> Data Peserta BPJS Tambahan
             </div>
-            <div class="pull-right">
+            <div class="float-right">
                 <?= Html::a('<i class="fa fa-plus"></i> Tambah Peserta', '#tab-form-peserta', [
                     'class' => 'btn btn-sm btn-success btn-tambah-peserta',
-                    // 'data-toggle' => 'tab', 
+                ]) ?>
+
+                <?= Html::a('<i class="fa fa-file-invoice-dollar"></i> Iuran Peserta', '#tab-iuran', [
+                    'class' => 'btn btn-sm btn-info btn-iuran',
                 ]) ?>
             </div>
         </div>
@@ -173,6 +176,65 @@ $('.btn-tambah-peserta').on('click', function(e) {
     Swal.showLoading();
 
     $.ajax({
+        url: '{$getUrl}',
+        type: 'GET',
+        data: { nip: nip },
+        dataType: 'json',
+        success: function(response) {
+            // Tutup loading Swal jika aktif
+            Swal.close();
+
+            if (response.status === 'success') {
+                let data = response.data;
+                
+                if (data && data.eligible === true) {                    
+                    $('a[href="#tab-iuran"]').tab('show');
+                } else {
+                    // Jika eligible false, tampilkan Swal dengan alasan dari backend
+                     $('a[href="#tab-iuran"]').tab('hide');
+                    let pesan = data && data.alasan ? data.alasan : 'Data TPP tidak memenuhi syarat.';
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Tidak Dapat Melanjutkan',
+                        text: pesan,
+                        confirmButtonText: 'OK'
+                    });
+                }
+            } else {
+                // Handle error jika status dari backend bukan success
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: response.message || 'Terjadi kesalahan pada sistem.',
+                    confirmButtonText: 'OK'
+                });
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Server Error',
+                text: 'Gagal menghubungi server: ' + errorThrown,
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+});
+
+$('.btn-iuran').on('click', function(e) {
+    e.preventDefault();
+    
+    let nip = '{$nipPegawai}'; // NIP pegawai yang dicek
+    
+    if (!nip) {
+        Swal.fire('Error', 'NIP Pegawai tidak ditemukan.', 'error');
+        return;
+    }
+
+    // Tampilkan loading / indikator opsional jika perlu
+    Swal.showLoading();
+
+    $.ajax({
         url: '{$getGabunganUrl}',
         type: 'GET',
         data: { nip: nip },
@@ -218,9 +280,10 @@ $('.btn-tambah-peserta').on('click', function(e) {
     });
 });
 
-// --- 1. HANDLE TOMBOL UPDATE (EDIT) ---
+// --- HANDLE TOMBOL UPDATE (EDIT) ---
 $(document).on('click', '.btn-update', function(e) {
     e.preventDefault();
+
     let idPeserta = $(this).data('id');
 
     if (!idPeserta) {
@@ -228,37 +291,20 @@ $(document).on('click', '.btn-update', function(e) {
         return;
     }
 
-    Swal.showLoading();
+    // Tampilkan tab form
+    $('#li-tab-form-peserta').show();
+    delete window.tabCache['form-peserta'];
 
-    // Ambil data detail peserta via AJAX untuk mengisi form
-    $.ajax({
-        url: '{$getUrl}',
-        type: 'GET',
-        data: { id: idPeserta },
-        dataType: 'json',
-        success: function(response) {
-            Swal.close();
-            if (response.status === 'success') {
-                let data = response.data;
-                
-                // CONTOH: Isi field form berdasarkan ID elemen input Anda
-                // Sesuaikan selector '#id_peserta', '#nik', dll dengan form di tab-form-peserta
-                $('#form-peserta-id').val(data.id_peserta);
-                $('#form-peserta-nik').val(data.nik);
-                $('#form-peserta-nama').val(data.nama_peserta);
-                // ... isi input lainnya sesuai kebutuhan ...
+    let formUrl = $('#btn-tab-form-peserta').data('url');
 
-                // Pindah / buka tab form peserta secara otomatis (Konsep SPA)
-                $('a[href="#tab-form-peserta"]').tab('show');
-            } else {
-                Swal.fire('Gagal', response.message || 'Gagal memuat data peserta.', 'error');
-            }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            Swal.close();
-            Swal.fire('Server Error', 'Terjadi kesalahan saat mengambil data.', 'error');
+    window.loadTabContent(
+        'form-peserta',
+        formUrl + (formUrl.includes('?') ? '&' : '?') +
+            'id=' + encodeURIComponent(idPeserta),
+        function() {
+            $('#btn-tab-form-peserta').tab('show');
         }
-    });
+    );
 });
 
 // --- 2. HANDLE TOMBOL DELETE (HAPUS) ---
@@ -290,16 +336,50 @@ $(document).on('click', '.btn-delete', function(e) {
                 type: 'POST', 
                 data: { id: idPeserta, _csrf: yii.getCsrfToken() },
                 dataType: 'json',
-                success: function(response) {
-                    Swal.close();
-                    if (response.status === 'success') {
-                        Swal.fire('Terhapus!', response.message || 'Data berhasil dihapus.', 'success').then(() => {
-                            // Konsep SPA: Refresh container tabel atau reload tab peserta secara dinamis tanpa refresh halaman penuh
-                            // Contoh: reload kontainer tabel atau pindah kembali/reload tab aktif
-                            $.pjax.reload({container: '#pjax-container-tabel-peserta'}); // Jika menggunakan Pjax, atau load ulang via AJAX
+                success: function (response) {
+                    if (response.status === 'success' || response.status === true) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: response.message || 'Data peserta berhasil dihapus.',
+                            confirmButtonText: 'OK'
+                        }).then(function () {
+                            // Hapus cache tab peserta agar tidak memakai HTML lama
+                            delete window.tabCache['peserta'];
+
+                            // Ambil NIP pegawai yang sedang dipilih
+                            var pegawai = window.selectedPegawai || {};
+                            var nip = pegawai.nip || '';
+
+                            if (!nip) {
+                                Swal.fire(
+                                    'Peringatan',
+                                    'NIP pegawai tidak ditemukan. Silakan pilih kembali pegawai.',
+                                    'warning'
+                                );
+                                return;
+                            }
+
+                            // Muat ulang data peserta melalui controller Yii2
+                            var url = $('#btn-tab-peserta').data('url');
+
+                            window.loadTabContent(
+                                'peserta',
+                                url + (url.indexOf('?') >= 0 ? '&' : '?') +
+                                    'nip=' + encodeURIComponent(nip),
+                                function () {
+                                    $('#btn-tab-peserta')
+                                        .removeClass('disabled')
+                                        .tab('show');
+                                }
+                            );
                         });
                     } else {
-                        Swal.fire('Gagal!', response.message || 'Gagal menghapus data.', 'error');
+                        Swal.fire(
+                            'Gagal',
+                            response.message || 'Gagal menghapus data peserta.',
+                            'error'
+                        );
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {

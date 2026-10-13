@@ -7,8 +7,7 @@ use kartik\widgets\ActiveForm;
 use kartik\select2\Select2;
 use kartik\depdrop\DepDrop;
 
-// if (empty($model->provinsi)) $model->provinsi = '33';
-// if (empty($model->kabupaten)) $model->kabupaten = '33.29';
+$tabPesertaUrl    = Url::to(['/bpjs/peserta/tab-peserta']);
  
 $sess = Yii::$app->session;
 ?>
@@ -28,6 +27,7 @@ $sess = Yii::$app->session;
         <?php $form = ActiveForm::begin([
             'id' => 'form-tambah-peserta', 
             'type' => ActiveForm::TYPE_VERTICAL,
+            'method' => 'post',
             'action' => Url::to(['/bpjs/peserta/save-peserta'])
         ]); ?>
             
@@ -104,23 +104,26 @@ $sess = Yii::$app->session;
             </div>
 
             <div class="col-md-3 form-group">
-                <?= $form->field($model, 'kabupaten')->widget(DepDrop::classname(), [
-                        'options'=>['id'=>'id_kab'],
-                        'type' => DepDrop::TYPE_SELECT2,
-                        'select2Options' => ['pluginOptions' => ['allowClear' => true]],
-                        'pluginOptions'=>[
-                            'depends'=>['id_prov'],
-                            'placeholder' => 'Pilih Kabupaten...',
-                            'url' => Url::to(['/bpjs/peserta/get-wilayah']),
-                            'loadingText' => 'Memuat Kabupaten...',
-                        ]
-                    ])->label('Kabupaten/ Kota'); 
-                ?>
+                <?= $form->field($model, 'kabupaten')->widget(DepDrop::class, [
+                    'data' => ArrayHelper::map($kab, 'id', 'name'),
+                    'options' => ['id' => 'id_kab'],
+                    'type' => DepDrop::TYPE_SELECT2,
+                    'select2Options' => [
+                        'pluginOptions' => ['allowClear' => true],
+                    ],
+                    'pluginOptions' => [
+                        'depends' => ['id_prov'],
+                        'placeholder' => 'Pilih Kabupaten...',
+                        'url' => Url::to(['/bpjs/peserta/get-wilayah']),
+                        'loadingText' => 'Memuat Kabupaten...',
+                    ],
+                ])->label('Kabupaten/Kota') ?>
                 
             </div>
 
             <div class="col-md-3 form-group">
                 <?= $form->field($model, 'kecamatan')->widget(DepDrop::class, [
+                    'data' => ArrayHelper::map($kec, 'id', 'name'),
                     'options' => ['id' => 'id_kec'],
                     'type' => DepDrop::TYPE_SELECT2,
                     'select2Options' => ['pluginOptions' => ['allowClear' => true]],
@@ -135,6 +138,7 @@ $sess = Yii::$app->session;
 
             <div class="col-md-3 form-group">
                 <?= $form->field($model, 'kelurahan')->widget(DepDrop::class, [
+                    'data' => ArrayHelper::map($desa, 'id', 'name'),
                     'options' => ['id' => 'id_desa'],
                     'type' => DepDrop::TYPE_SELECT2,
                     'select2Options' => ['pluginOptions' => ['allowClear' => true]],
@@ -150,8 +154,7 @@ $sess = Yii::$app->session;
 
             </div>
 
-            <div class="form-group">
-                <?= Html::submitButton('Simpan', ['class' => 'btn btn-danger']) ?>
+            <div class="form-group">               
                 <?= Html::button('<i class="fas fa-save"></i> Simpan', [
                     'class' => 'btn btn-success',
                     'id' => 'btn-simpan-peserta',
@@ -168,105 +171,153 @@ $sess = Yii::$app->session;
 
 <?php
 
-$targetForm = Url::to(['/bpjs/peserta/save-peserta']);
+$js = <<<JS
 
-$js = <<< JS
+// =====================================================
+// 1. TOMBOL SIMPAN FORM SPA
+// =====================================================
+$(document)
+    .off('click.tambahPeserta', '#btn-simpan-peserta')
+    .on('click.tambahPeserta', '#btn-simpan-peserta', function (e) {
+        e.preventDefault();
 
-$('#id_kec').change(function(){
-    var kec = $('#id_kec').val() || '';     
+        $('#form-tambah-peserta').trigger('submit');
+    });
 
-    if(kec.length == 2){
-        Swal.fire({
-            title: 'Pilih Kabupaten/ Kota',
-            text: 'Kabupaten/ Kota belum dipilih ...',
-            icon: 'warning',
-            timer: 2000, 
-            showConfirmButton: false, 
-            timerProgressBar: true 
+
+// =====================================================
+// 2. SUBMIT FORM MELALUI AJAX
+// =====================================================
+$(document)
+    .off('beforeSubmit.tambahPeserta', '#form-tambah-peserta')
+    .on('beforeSubmit.tambahPeserta', '#form-tambah-peserta', function (e) {
+        e.preventDefault();
+
+        var form = $(this);
+        var tombol = $('#btn-simpan-peserta');
+
+        if (tombol.prop('disabled')) {
+            return false;
+        }
+
+        tombol.prop('disabled', true)
+              .html('<i class="fas fa-spinner fa-spin"></i> Menyimpan...');
+
+        $.ajax({
+            url: form.attr('action'),
+            type: 'POST',
+            data: form.serialize(),
+            dataType: 'json',
+
+            success: function (res) {
+                if (res.success === true) {
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: res.message || 'Data peserta berhasil disimpan.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(function (result) {
+                        if (!result.isConfirmed && !result.isDismissed) {
+                            return;
+                        }
+
+                        // Ambil data pegawai yang sedang dipilih di SPA
+                        var pegawai = window.selectedPegawai || {};
+
+                        // Gunakan NIP dari state SPA, atau session jika state tersedia
+                        var nip = pegawai.nip || '';
+
+                        if (!nip) {
+                            Swal.fire(
+                                'Peringatan',
+                                'NIP pegawai tidak ditemukan. Silakan pilih kembali pegawai.',
+                                'warning'
+                            );
+                            return;
+                        }
+
+                        // Hapus cache daftar peserta agar data terbaru dimuat
+                        delete window.tabCache['peserta'];
+
+                        // Sembunyikan tab form
+                        $('#li-tab-form-peserta').hide();
+
+                        // Muat ulang tab peserta dengan NIP
+                        var url = $('#btn-tab-peserta').data('url');
+
+                        window.loadTabContent(
+                            'peserta',
+                            url + (url.indexOf('?') >= 0 ? '&' : '?') +
+                                'nip=' + encodeURIComponent(nip),
+                            function () {
+                                $('#btn-tab-peserta')
+                                    .removeClass('disabled')
+                                    .tab('show');
+                            }
+                        );
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Gagal',
+                        text: res.message || 'Data gagal disimpan.',
+                        icon: 'error'
+                    });
+                }
+            },
+
+            error: function (xhr) {
+                var pesan = 'Terjadi kesalahan saat menghubungi server.';
+
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    pesan = xhr.responseJSON.message;
+                }
+
+                Swal.fire({
+                    title: 'Kesalahan',
+                    text: pesan,
+                    icon: 'error'
+                });
+            },
+
+            complete: function () {
+                tombol.prop('disabled', false)
+                      .html('<i class="fas fa-save"></i> Simpan');
+            }
         });
-    }
-});
 
-$('#id_desa').change(function(){
-    
-    var kec = $('#id_kec').val() || '';     
-    var kel = $('#id_desa').val() || ''; 
+        return false;
+    });
 
-    if(kel.length == 2 || kel.length == 5){
-        Swal.fire({
-            title: 'Pilih Kecamatan',
-            text: 'Kecamatan belum dipilih ...',
-            icon: 'warning',
-            timer: 2000, 
-            showConfirmButton: false, 
-            timerProgressBar: true 
-        });
-        
-        kel = $('#id_desa').val('').prop('disabled', true);
-        // kec = $('#id_kec').val('').prop('disabled', true);
-    }
-});
 
-// Mencegah form di-submit secara native jika menekan tombol Enter
-// $('#form-tambah-peserta').on('submit', function(e) {
-//     e.preventDefault();
-// });
+// =====================================================
+// 3. VALIDASI PERUBAHAN KECAMATAN
+// =====================================================
+$(document)
+    .off('change.wilayah', '#id_kec')
+    .on('change.wilayah', '#id_kec', function () {
+        var kec = $(this).val() || '';
 
-// Handling Submit via AJAX
-// $('#btn-simpan-peserta').off('click').on('click', function(e) {
-//     e.preventDefault();
+        if (!kec) {
+            return;
+        }
+    });
 
-//     var \$form = $('#form-tambah-peserta');
-//     // var targetUrl = \$form.attr('action') || window.location.href; // Mengambil action form
-//     var targetUrl = '{$targetForm}';
 
-//     // Ambil semua data form termasuk input text, dropdown Select2, dll.
-//     var formData = new FormData(\$form[0]);
+// =====================================================
+// 4. VALIDASI PERUBAHAN KELURAHAN / DESA
+// =====================================================
+$(document)
+    .off('change.wilayah', '#id_desa')
+    .on('change.wilayah', '#id_desa', function () {
+        var desa = $(this).val() || '';
 
-//     $.ajax({
-//         url: targetUrl,
-//         type: 'POST',
-//         data: formData,
-//         processData: false, 
-//         contentType: false, 
-//         beforeSend: function() {
-//             $('#btn-simpan-peserta').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Menyimpan...');
-//         },
-//         success: function(response) {
-//             $('#btn-simpan-peserta').prop('disabled', false).html('<i class="fas fa-save"></i> Simpan');
+        if (!desa) {
+            return;
+        }
+    });
 
-//             // Tangani response JSON dari controller
-//             if (response.success) {
-//                 Swal.fire({
-//                     icon: 'success',
-//                     title: 'Berhasil!',
-//                     text: response.message || 'Data peserta berhasil disimpan.',
-//                     timer: 2000,
-//                     showConfirmButton: false
-//                 });
-
-//                 // Opsional: Reset form atau refresh tabel partial di SPA Anda
-//                 // \$form[0].reset();
-//                 // $('#id_prov').val(null).trigger('change');
-//             } else {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Gagal!',
-//                     text: response.message || 'Terjadi kesalahan saat menyimpan data.'
-//                 });
-//             }
-//         },
-//         error: function(xhr, status, error) {
-//             $('#btn-simpan-peserta').prop('disabled', false).html('<i class="fas fa-save"></i> Simpan');
-            
-//             Swal.fire({
-//                 icon: 'error',
-//                 title: 'Error ' + xhr.status,
-//                 text: 'Gagal mengirim data ke server.'
-//             });
-//         }
-//     });
-// });
 JS;
+
 $this->registerJs($js);
+
 ?>

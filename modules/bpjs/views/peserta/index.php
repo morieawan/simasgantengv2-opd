@@ -26,17 +26,12 @@ $getGabunganUrl = Url::to(['/bpjs/peserta/get-gabungan-gaji-tpp']);
                 </a>
             </li>
             <li class="nav-item" id="li-tab-form-peserta" style="display: none;">
-                <a class="nav-link" 
-                id="btn-tab-form-peserta" 
-                data-toggle="pill" 
-                href="#tab-content" 
-                role="tab" 
-                data-url="<?= $tabFormPesertaUrl ?>">
-                <i class="fas fa-user-plus mr-1"></i> Input Peserta
+                <a class="nav-link" id="btn-tab-form-peserta" data-toggle="pill" href="#tab-content" role="tab" data-url="<?= $tabFormPesertaUrl ?>">
+                    <i class="fas fa-user-plus mr-1"></i> Input Peserta
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" id="btn-tab-iuran" data-toggle="pill" href="#tab-content" role="tab" data-url="<?= $tabIuranUrl ?>">
+            <li class="nav-item" id="li-tab-iuran" style="display: none;">
+                <a class="nav-link" id="btn-tab-iuran" data-toggle="pill" href="#tab-content" role="tab" data-url="<?= $tabIuranUrl ?>">
                     <i class="fas fa-file-invoice-dollar mr-1"></i> Iuran BPJS
                 </a>
             </li>
@@ -116,15 +111,6 @@ window.enableBpjsTabs = function(pegawaiData) {
     $('#btn-tab-peserta, #btn-tab-iuran').removeClass('disabled');
 };
 
-// $(document).on('click', '.btn-tambah-peserta', function(e) {
-//     e.preventDefault();
-//         $('#li-tab-form-peserta').show();
-//         $('#btn-tab-form-peserta').trigger('click');
-//     });
-//     $(document).on('click', '#btn-tab-search, #btn-tab-peserta, #btn-tab-iuran', function() {
-//         $('#li-tab-form-peserta').hide();
-// });
-
 // URL validasi kelayakan peserta
 window.getGabunganUrl = '{$getGabunganUrl}';
 
@@ -145,6 +131,7 @@ $(document).on('click', '.btn-tambah-peserta', function(e) {
 
     // Tutup akses form sebelum melakukan validasi ulang.
     $('#li-tab-form-peserta').hide();
+    $('#li-tab-iuran').hide();
 
     Swal.fire({
         title: 'Memeriksa data penghasilan...',

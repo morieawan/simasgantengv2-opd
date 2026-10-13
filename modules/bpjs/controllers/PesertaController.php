@@ -335,8 +335,8 @@ class PesertaController extends Controller
 
     public function actionGetProvinsi($parent = '')
     {
-        if (!Yii::$app->request->isAjax) 
-            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        // if (!Yii::$app->request->isAjax) 
+        //     throw new \yii\web\BadRequestHttpException('Request tidak valid.');
         
         $request = Yii::$app->request;
         $parent = $request->get('parent', '');
@@ -406,16 +406,46 @@ class PesertaController extends Controller
 
     public function actionTabFormPeserta()
     {
-        if (!Yii::$app->request->isAjax) 
-            throw new \yii\web\BadRequestHttpException('Request tidak valid.');
+        // if (!Yii::$app->request->isAjax) 
+        //     throw new \yii\web\BadRequestHttpException('Request tidak valid.');
        
         $sess = Yii::$app->session;
 
-        $model = new PesertaForm(); 
-        $model->nip = $sess['peserta-nip'] ?? '';
+        $idPeserta = Yii::$app->request->get('id');
+        if ($idPeserta) {
+            $cek = $this->actionGetDetail($idPeserta);
+
+            if ($cek['status'] != 'success') {
+                throw new \yii\web\NotFoundHttpException('Data peserta tidak ditemukan.');
+            }
+
+            $model = new PesertaForm();
+            $model->setAttributes($cek['data'], false);
+
+        } else {
+            $model = new PesertaForm();
+            $model->nip = $sess['peserta-nip'] ?? '';
+        }
 
         $getprov = $this->actionGetProvinsi();
         $prov = $getprov['data'];
+
+        $kab = [];
+        if (!empty($model->provinsi)) {
+            $kab = $this->actionGetDataWilayah($model->provinsi)['data'];
+        }
+
+        // Data kecamatan berdasarkan kabupaten terpilih
+        $kec = [];
+        if (!empty($model->kabupaten)) {
+            $kec = $this->actionGetDataWilayah($model->kabupaten)['data'];
+        }
+
+        // Data kelurahan berdasarkan kecamatan terpilih
+        $desa = [];
+        if (!empty($model->kecamatan)) {
+            $desa = $this->actionGetDataWilayah($model->kecamatan)['data'];
+        }
 
         $gethubkel = $this->actionGetHubkel();
         $hubkel = $gethubkel['data'];
@@ -427,6 +457,9 @@ class PesertaController extends Controller
         return $this->renderAjax('_tab_form_peserta', [
             'hubkel' => $dataHubkel,
             'prov' => $prov,
+            'kab' => $kab,
+            'kec' => $kec,
+            'desa' => $desa, 
             'model' => $model,
         ]);
 
@@ -434,45 +467,54 @@ class PesertaController extends Controller
 
     public function actionGetDataWilayah($parent = '')
     {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        
         try {
-            $client = new Client(['baseUrl' => $this->apiBaseUrl]);
-            $response = $client->get('/bpjs/wilayah', ['parent' => $parent])->send();
+            $client = new Client([
+                'baseUrl' => $this->apiBaseUrl,
+            ]);
+
+            $response = $client->get('/bpjs/wilayah', [
+                'parent' => $parent,
+            ])->send();
 
             if ($response->isOk) {
-                return $response->data['data'];
+                return $response->data['data'] ?? [];
             }
 
-            return [
-                'status'  => false,
-                'message' => $response->data['message'] ?? 'Gagal mengambil data wilayah',
-                'data'    => []
-            ];
+            return [];
         } catch (\Exception $e) {
-            return [
-                'status'  => false,
-                'message' => $e->getMessage(),
-                'data'    => []
-            ];
+            Yii::error(
+                'Gagal mengambil data wilayah: ' . $e->getMessage(),
+                __METHOD__
+            );
+
+            return [];
         }
     }
-
+    
     public function actionGetWilayah()
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $out = [];
-        if (isset($_POST['depdrop_parents'])) {
-            $parents = $_POST['depdrop_parents'];
 
-            if ($parents != null) {
-                $cat_id = $parents[0] ?? $parents;
-                $get = $this->actionGetDataWilayah($cat_id);
-                $out = $get['data'];
-                return ['output'=>$out, 'selected'=>''];
-            }
+        $parents = Yii::$app->request->post('depdrop_parents', []);
+
+        if (empty($parents) || empty($parents[0])) {
+            return [
+                'output' => [],
+                'selected' => '',
+            ];
         }
-        return ['output'=>'', 'selected'=>''];
+
+        $parentId = $parents[0];
+
+        $get = $this->actionGetDataWilayah($parentId);
+
+        // Ambil daftar wilayah dari pembungkus respons API
+        $output = $get['data'] ?? [];
+
+        return [
+            'output' => is_array($output) ? $output : [],
+            'selected' => '',
+        ];
     }
 
     public function actionGetGabunganGajiTpp()
@@ -561,10 +603,77 @@ class PesertaController extends Controller
 
     public function actionDelPeserta()
     {
-        $request = Yii::$app->request;
-        $nip    = $request->post('id');
+        Yii::$app->response->format = Response::FORMAT_JSON;
 
-        return $nip;
+        $id = Yii::$app->request->post('id');
+
+        if (empty($id)) {
+            return [
+                'status' => 'error',
+                'message' => 'Tidak ada data yang dipilih.',
+            ];
+        }
+
+        try {
+            $client = new Client();
+
+            $response = $client->createRequest()
+                ->setMethod('DELETE')
+                ->setUrl($this->apiBaseUrl . '/bpjs/peserta/' . rawurlencode((string) $id))
+                ->addHeaders([
+                    // 'Authorization' => 'Bearer ' . Yii::$app->session->get('token'),
+                    'Accept' => 'application/json',
+                ])
+                // ->setFormat(Client::FORMAT_JSON)
+                // ->setResponseFormat(Client::FORMAT_JSON)
+                ->send();
+
+            if ($response->isOk) {
+                return [
+                    'status' => 'success',
+                    'message' => $response->data['data']['message']
+                        ?? 'Data peserta berhasil dihapus.',
+                    'data' => $response->data['data'] ?? null,
+                ];
+            }
+
+            Yii::error(
+                'Delete peserta HTTP ' . $response->statusCode
+                . ': ' . $response->content,
+                __METHOD__
+            );
+
+            return [
+                'status' => 'error',
+                'message' => $response->data['message']
+                    ?? 'Gagal menghapus data peserta.',
+            ];
+        // } catch (\Throwable $e) {
+        //     Yii::error(
+        //         'BFF Error [Del Peserta]: ' . $e->getMessage(),
+        //         __METHOD__
+        //     );
+
+        //     return [
+        //         'status' => 'error',
+        //         'message' => 'Gagal terhubung ke layanan peserta.',
+        //     ];
+        // }
+        } catch (\Throwable $e) {
+            Yii::error(
+                'BFF Error [Del Peserta]: '
+                . get_class($e)
+                . ' - '
+                . $e->getMessage()
+                . "\n"
+                . $e->getTraceAsString(),
+                __METHOD__
+            );
+
+            return [
+                'status' => 'error',
+                'message' => 'Gagal terhubung ke layanan peserta.',
+            ];
+        }
     }
-
 }
